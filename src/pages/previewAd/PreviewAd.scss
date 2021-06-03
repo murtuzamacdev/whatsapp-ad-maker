@@ -1,0 +1,14 @@
+.previewAd{
+    height: 100vh;
+    overflow: hidden;
+
+    .product-image-card{
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+          }
+    }
+}

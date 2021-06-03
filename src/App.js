@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import CreateAd from './pages/createAd/CreateAd';
+import PreviewAd from './pages/previewAd/PreviewAd.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container p-0">
+      <Router>
+        <Switch>
+          <Route path="/createAd">
+            <CreateAd />
+          </Route>
+          <Route path="/previewAd">
+            <PreviewAd />
+          </Route>
+        </Switch>
+      </Router>
     </div>
+
   );
 }
 

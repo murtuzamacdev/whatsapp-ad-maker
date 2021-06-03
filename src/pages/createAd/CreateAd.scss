@@ -1,0 +1,43 @@
+.createAd {
+  .product-image-card {
+    height: 400px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.83) 0%, rgba(213, 209, 209, 0.83) 0.01%, rgba(255, 255, 255, 0.83) 100%);
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .product-name-card {
+    height: 57px;
+
+    .product-name {
+      flex: 0.7;
+    }
+
+    .product-price {
+      flex: 0.3;
+    }
+  }
+
+  .product-desc-card {
+    height: 90px;
+  }
+
+  .business-name-card {
+    height: 72px;
+  }
+
+  .whatsapp-number-card {
+    height: 72px;
+  }
+
+  .change-image {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}
