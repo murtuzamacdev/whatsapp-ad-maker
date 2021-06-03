@@ -50,7 +50,7 @@ const PreviewAd = () => {
 
         {/* Business name */}
         <div style={{ flex: 0.11 }} className="card business-name-card justify-content-center align-items-start">
-            <p className="store-name m-0">Best Shoes Store Ever</p>
+            <p className="store-name m-0">Best Shoes Store Pvt Ltd</p>
             <div className="d-flex mt-2">
                 <img src={whatsappLogo} height="24px" width="24px"></img>
                 <p className="whatsapp-number m-0 ml-2">9054832425</p>
