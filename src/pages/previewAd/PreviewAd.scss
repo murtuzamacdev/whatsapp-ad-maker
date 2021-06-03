@@ -1,14 +1,70 @@
-.previewAd{
-    height: 100vh;
+.previewAd {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  .product-image-card {
     overflow: hidden;
 
-    .product-image-card{
-        overflow: hidden;
-
-        img {
-            object-fit: cover;
-            height: 100%;
-            width: 100%;
-          }
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
     }
+  }
+
+  .product-name {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 25px;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .product-price {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    background: linear-gradient(90deg, #88ee57 0%, #35a600 113.52%);
+    border-radius: 25px;
+    color: #ffffff;
+  }
+
+  .product-desc {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .store-name {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .whatsapp-number {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 25px;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .download-btn{
+      position: absolute;
+      height: 70px;
+      width: 70px;
+      right: 10px;
+      bottom: 10px;
+  }
 }

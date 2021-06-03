@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import * as htmlToImage from 'html-to-image';
 import './PreviewAd.scss';
-import html2canvas from 'html2canvas'
+import html2canvas from 'html2canvas';
+import whatsappLogo from '../../assets/images/logos_whatsapp.png';
+import downloadBtn from '../../assets/images/downloadBtn.png'
 
 const PreviewAd = () => {
 
@@ -31,33 +33,32 @@ const PreviewAd = () => {
 
     return (<div className="d-flex flex-column previewAd p-3" id="html-content-holder">
         {/* Main Image */}
-        <div style={{ flex: 0.7 }} className="card product-image-card mb-3 justify-content-center p-0">
+        <div style={{ flex: 0.65 }} className="card product-image-card mb-3 justify-content-center p-0">
             <img src={selectedProductImage} />
         </div>
 
         {/* Product name */}
-        <div style={{ flex: 0.08 }} className="card product-name-card justify-content-center align-items-center mb-3 flex-row">
-            <p className="m-0">Awesome Shoes</p>
-            <p className="m-0">Rs. 3000</p>
+        <div style={{ flex: 0.09 }} className="card product-name-card justify-content-between align-items-center mb-3 flex-row">
+            <p className="m-0 product-name">Awesome Shoes</p>
+            <p className="m-0 product-price pl-3 pr-3 pt-2 pb-2">Rs. 3000</p>
         </div>
 
         {/* Product descrption */}
         <div style={{ flex: 0.15 }} className="card product-desc-card justify-content-center align-items-center mb-3">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-            <button onClick={downloadScreenshot}>click</button>
+            <p className="m-0 product-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </p>
         </div>
 
         {/* Business name */}
-        <div style={{ flex: 0.05 }} className="card business-name-card justify-content-center align-items-center">
-            <p>Best Shoes Store Ever</p>
-            <p>9054832425</p>
+        <div style={{ flex: 0.11 }} className="card business-name-card justify-content-center align-items-start">
+            <p className="store-name m-0">Best Shoes Store Ever</p>
+            <div className="d-flex mt-2">
+                <img src={whatsappLogo} height="24px" width="24px"></img>
+                <p className="whatsapp-number m-0 ml-2">9054832425</p>
+            </div>
         </div>
 
-        {/* <div className="d-flex justify-content-around btns-ctnr pb-3">
-            <div className="buttons-ctrns mr-1"> <button className="reset-button ">Reset</button></div>
-            <div className="buttons-ctrns ml-1"> <button className="preview-button ">Preview</button></div>
-
-        </div> */}
+        <input type="image" class="download-btn" alt="Login"
+            src={downloadBtn}></input>
 
     </div>);
 }

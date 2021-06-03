@@ -42,10 +42,12 @@
 }
 
 .card {
-  box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
   border-radius: 25px;
   padding-left: 1.3rem;
   padding-right: 1.3rem;
+  border: 0;
+  background-clip: unset;
 }
 
 .card input {
@@ -70,13 +72,13 @@ button,
 }
 
 .reset-button {
-  background: url(assets/images/reset.png) 25px ;
+  background: url(assets/images/reset.png) 25px;
   background-repeat: no-repeat;
   background-size: 20px;
 }
 
 .preview-button {
-  background: url(assets/images/play.png) 25px ;
+  background: url(assets/images/play.png) 25px;
   background-repeat: no-repeat;
   background-size: 20px;
 }
@@ -93,6 +95,6 @@ button,
   border: 0;
   color: #ffffff;
   font-weight: bold;
-  padding:0 ;
+  padding: 0;
   width: 100%;
 }
