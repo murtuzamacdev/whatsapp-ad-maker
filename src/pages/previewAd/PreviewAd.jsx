@@ -1,66 +1,109 @@
-import React, { useState } from "react";
-import * as htmlToImage from 'html-to-image';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import './PreviewAd.scss';
 import html2canvas from 'html2canvas';
 import whatsappLogo from '../../assets/images/logos_whatsapp.png';
-import downloadBtn from '../../assets/images/downloadBtn.png'
+import downloadBtn from '../../assets/images/downloadBtn.png';
+import editBtn from '../../assets/images/editBtn.png';
+import backdrop from '../../assets/images/backdrop.png';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 const PreviewAd = () => {
+    const [productData, setProductData] = useState(null);
+    let history = useHistory();
 
-    const [selectedProductImage, setSelectedProductImage] = useState(null);
-
-    const updatePicture = (file) => {
-        var reader = new FileReader();
-        reader.onload = function (event) {
-            setSelectedProductImage(event.target.result);
-        };
-        reader.readAsDataURL(file);
-    };
+    useEffect(() => {
+        let data = JSON.parse(localStorage.getItem('productData'));
+        if (data) {
+            setProductData(data);
+        } else {
+            history.push('createAd');
+        }
+    }, [])
 
     const downloadScreenshot = (params) => {
-        console.log(document.querySelector("#html-content-holder"))
-        html2canvas(document.querySelector("#mainBody")).then(canvas => {
-            let x = canvas.toDataURL("image/png");
-            var y = x.replace(/^data:image\/png/, "data:application/octet-stream");
-            console.log(y)
-            var a = document.createElement("a"); //Create <a>
-            a.href = y; //Image Base64 Goes here
-            a.download = "Image.png"; //File name Here
-            a.click(); //Downloaded file
-            // document.body.appendChild(canvas)
-        }, { useCORS: true, scale: window.devicePixelRatio });
+        const scale = 5
+        const node = document.getElementById("html-content-holder")
+
+        const style = {
+            transform: 'scale(' + scale + ')',
+            transformOrigin: 'top left',
+            width: node.offsetWidth + "px",
+            height: node.offsetHeight + "px"
+        }
+
+        const param = {
+            height: node.offsetHeight * scale,
+            width: node.offsetWidth * scale,
+            quality: 1,
+            style
+        }
+
+
+        domtoimage.toJpeg(node, param)
+            .then(function (dataUrl) {
+                var link = document.createElement('a');
+                link.download = 'my-image-name.jpeg';
+                link.href = dataUrl;
+                link.click();
+            });
+
+        // html2canvas(document.querySelector("#html-content-holder"), {scale:4}).then(canvas => {
+        //     let x = canvas.toDataURL("image/png");
+        //     var y = x.replace(/^data:image\/png/, "data:application/octet-stream");
+        //     console.log(y)
+        //     var a = document.createElement("a"); //Create <a>
+        //     a.href = y; //Image Base64 Goes here
+        //     a.download = "Image.png"; //File name Here
+        //     a.click(); //Downloaded file
+        //     // document.body.appendChild(canvas)
+        // });
     }
 
-    return (<div className="d-flex flex-column previewAd p-3" id="html-content-holder">
-        {/* Main Image */}
-        <div style={{ flex: 0.65 }} className="card product-image-card mb-3 justify-content-center p-0">
-            <img src={selectedProductImage} />
-        </div>
+    const goToCreateAd = () => {
+        history.push('createAd')
+    }
 
-        {/* Product name */}
-        <div style={{ flex: 0.09 }} className="card product-name-card justify-content-between align-items-center mb-3 flex-row">
-            <p className="m-0 product-name">Awesome Shoes</p>
-            <p className="m-0 product-price pl-3 pr-3 pt-2 pb-2">Rs. 3000</p>
-        </div>
+    return (
+        <>{productData && <>
+            <div className="d-flex flex-column previewAd p-4" id="html-content-holder">
+                {/* Main Image */}
+                <div style={{ minHeight: '60%', flexGrow: 1 }} className="card product-image-card mb-3 justify-content-center p-0">
+                    <img className="product-image" src={productData.productImage} />
+                    <img className="product-image-backdrop" src={backdrop} />
+                    <div className="d-flex name-price-ctnr product-name-card justify-content-between align-items-center flex-row">
+                        <p style={{ flexGrow: 0.7 }} className="m-0 product-name">{productData.productName}</p>
+                        {productData.productPrice !== '' && <p className="m-0 product-price pt-2 pb-2">₹ {productData.productPrice}</p>}
+                    </div>
 
-        {/* Product descrption */}
-        <div style={{ flex: 0.15 }} className="card product-desc-card justify-content-center align-items-center mb-3">
-            <p className="m-0 product-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </p>
-        </div>
+                </div>
 
-        {/* Business name */}
-        <div style={{ flex: 0.11 }} className="card business-name-card justify-content-center align-items-start">
-            <p className="store-name m-0">Best Shoes Store Pvt Ltd</p>
-            <div className="d-flex mt-2">
-                <img src={whatsappLogo} height="24px" width="24px"></img>
-                <p className="whatsapp-number m-0 ml-2">9054832425</p>
+                <div style={{ maxHeight: '40%' }}>
+                    {/* Product descrption */}
+                    {productData.productDescription !== '' && <div style={{ flex: 1 }} className="card product-desc-card justify-content-center mb-3">
+                        <p className="m-0 product-desc">{productData.productDescription}</p>
+                    </div>}
+
+                    {/* Business name */}
+                    {(productData.sellerName !== '' || productData.whatsappNumber !== '') && <div style={{ flex: 1 }} className="card business-name-card justify-content-center align-items-start">
+                        {productData.sellerName !== '' && <p className="store-name m-0">{productData.sellerName}</p>}
+                        {productData.whatsappNumber !== '' && <div className="d-flex mt-2">
+                            <img src={whatsappLogo} height="24px" width="24px"></img>
+                            <p className="whatsapp-number m-0 ml-2">{productData.whatsappNumber}</p>
+                        </div>}
+                    </div>}
+
+                </div>
+
             </div>
-        </div>
+            <input type="image" class="edit-btn" alt="Login"
+                src={editBtn} onClick={goToCreateAd}></input>
+            <input type="image" class="download-btn" alt="Login"
+                src={downloadBtn} onClick={downloadScreenshot}></input></>}
 
-        <input type="image" class="download-btn" alt="Login"
-            src={downloadBtn}></input>
 
-    </div>);
+        </>);
 }
 
 export default PreviewAd;
