@@ -29,7 +29,7 @@ const CreateAd = () => {
         };
         reader.readAsDataURL(file);
     };
-    
+
     const resetFormCustom = (setFieldValue) => {
         setFieldValue('productImage', '');
         setFieldValue('productName', '');
@@ -72,7 +72,7 @@ const CreateAd = () => {
                         <div className="d-flex justify-content-center">
                             <label class="btn btn-default buttons-ctrns p-0 w-auto">
                                 <div className="upload-button pl-5 pr-5 image-select-button">Select Product Image</div>
-                                <input type="file" hidden onChange={(data) => {
+                                <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
                                     updatePicture(data.target.files[0], setFieldValue);
                                 }} />
                             </label>
@@ -83,7 +83,7 @@ const CreateAd = () => {
                             <div className="d-flex justify-content-center change-image">
                                 <label class="btn btn-default buttons-ctrns p-0 w-auto">
                                     <div className="upload-button pl-5 pr-5 image-select-button">Change Product Image</div>
-                                    <input type="file" hidden onChange={(data) => {
+                                    <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
                                         updatePicture(data.target.files[0], setFieldValue);
                                     }} />
                                 </label>

@@ -18,6 +18,7 @@ const PreviewAd = () => {
         } else {
             history.push('createAd');
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const downloadScreenshot = (params) => {
@@ -38,25 +39,13 @@ const PreviewAd = () => {
             style
         }
 
-
         domtoimage.toJpeg(node, param)
             .then(function (dataUrl) {
                 var link = document.createElement('a');
-                link.download = 'my-image-name.jpeg';
+                link.download = new Date().getTime() + '.jpeg';
                 link.href = dataUrl;
                 link.click();
             });
-
-        // html2canvas(document.querySelector("#html-content-holder"), {scale:4}).then(canvas => {
-        //     let x = canvas.toDataURL("image/png");
-        //     var y = x.replace(/^data:image\/png/, "data:application/octet-stream");
-        //     console.log(y)
-        //     var a = document.createElement("a"); //Create <a>
-        //     a.href = y; //Image Base64 Goes here
-        //     a.download = "Image.png"; //File name Here
-        //     a.click(); //Downloaded file
-        //     // document.body.appendChild(canvas)
-        // });
     }
 
     const goToCreateAd = () => {
@@ -69,8 +58,8 @@ const PreviewAd = () => {
                 <div className="card p-0 main-card">
                     {/* Main Image */}
                     <div style={{ minHeight: '60%', flexGrow: 1 }} className="d-flex product-image-card justify-content-center p-0">
-                        <img className="product-image" src={productData.productImage} />
-                        <img className="product-image-backdrop" src={backdrop} />
+                        <img className="product-image" src={productData.productImage} alt="productImage"/>
+                        <img className="product-image-backdrop" src={backdrop} alt="productBackdrop"/>
                         <div className="d-flex name-price-ctnr product-name-card justify-content-between align-items-center flex-row">
                             <p style={{ flexGrow: 0.7 }} className="m-0 product-name">{productData.productName}</p>
                             {productData.productPrice !== '' && <p className="m-0 product-price pt-2 pb-2">₹ {productData.productPrice}</p>}
@@ -88,7 +77,7 @@ const PreviewAd = () => {
                         {(productData.sellerName !== '' || productData.whatsappNumber !== '') && <div style={{ flex: 1 }} className=" business-name-card justify-content-center align-items-start">
                             {productData.sellerName !== '' && <p className="store-name m-0">{productData.sellerName}</p>}
                             {productData.whatsappNumber !== '' && <div className="d-flex mt-1">
-                                <img src={whatsappLogo} height="24px" width="24px"></img>
+                                <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
                                 <p className="whatsapp-number m-0 ml-2">{productData.whatsappNumber}</p>
                             </div>}
                         </div>}
