@@ -158,7 +158,7 @@ const CreateAd = () => {
                 )}
 
                 <div className="d-flex justify-content-around btns-ctnr pb-3 mt-3">
-                    <div className="buttons-ctrns mr-1"> <button type="button" className="reset-button " onClick={() => {resetFormCustom(setFieldValue)}}>Reset</button></div>
+                    <div className="buttons-ctrns mr-1"> <button type="button" className="reset-button " onClick={() => { resetFormCustom(setFieldValue) }}>Reset</button></div>
                     <div className="buttons-ctrns ml-1"> <button type="submit" className="preview-button ">Preview</button></div>
                 </div>
             </Form>
@@ -166,7 +166,7 @@ const CreateAd = () => {
 
         </Formik>
 
-
+        <a href="mailto:murtuza.mac.dev@gmail.com" className="contact-link">Contact developer</a>
 
     </div>);
 }
