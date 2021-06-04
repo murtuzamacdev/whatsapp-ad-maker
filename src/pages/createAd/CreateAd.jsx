@@ -29,11 +29,7 @@ const CreateAd = () => {
         };
         reader.readAsDataURL(file);
     };
-
-    const goToPreviewAd = () => {
-        history.push('previewAd')
-    }
-
+    
     const resetFormCustom = (setFieldValue) => {
         setFieldValue('productImage', '');
         setFieldValue('productName', '');

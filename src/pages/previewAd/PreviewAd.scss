@@ -2,11 +2,15 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-image: linear-gradient(#d4e8ff, rgb(157, 211, 184));
+  background-color: #97C7FE;
+  // background-image: linear-gradient(#d4e8ff, rgb(157, 211, 184));
   background-repeat: no-repeat;
 
   .product-image-card {
     overflow: hidden;
+    position: relative;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
 
     img.product-image {
       object-fit: cover;
@@ -16,7 +20,7 @@
   }
 
   .product-name {
-    font-family: Roboto;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
     font-size: 21px;
@@ -28,7 +32,7 @@
   }
 
   .product-price {
-    font-family: Roboto;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -42,7 +46,7 @@
   }
 
   .product-desc {
-    font-family: Roboto;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -51,7 +55,7 @@
   }
 
   .store-name {
-    font-family: Roboto;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
@@ -60,7 +64,7 @@
   }
 
   .whatsapp-number {
-    font-family: Roboto;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
     font-size: 21px;
@@ -80,7 +84,12 @@
     right: 0px;
     bottom: 10px;
     width: 100%;
-    padding: 0 0.6rem;
+    padding: 0 1rem;
+  }
+
+  .main-card{
+    height: 100%;
+    overflow: hidden;
   }
 }
 
