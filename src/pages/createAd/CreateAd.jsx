@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import './CreateAd.scss';
 import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
+import { GlobalContext } from '../../context/global.context';
 
 const CreateAd = () => {
+    const globalContext = useContext(GlobalContext);
     const [productData, setProductData] = useState({
         productImage: "",
         productName: "",
@@ -16,10 +18,15 @@ const CreateAd = () => {
     let history = useHistory();
 
     useEffect(() => {
-        let data = JSON.parse(localStorage.getItem('productData'));
+        let data = globalContext.state.productData;
         if (data) {
             setProductData(data);
+        } else {
+            let _data = JSON.parse(localStorage.getItem('productData'));
+            _data && setProductData(_data);
         }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const updatePicture = (file, setFieldValue) => {
@@ -59,8 +66,10 @@ const CreateAd = () => {
                 whatsappNumber: Yup.string().trim().max(10),
             })}
             onSubmit={(values) => {
-                let data = JSON.stringify(values);
-                localStorage.setItem('productData', data);
+                globalContext.setProductData(values);
+                let jsonWithoutImage = JSON.parse(JSON.stringify(values)); // Because large images cannot be stored in local storage. So images will stay only in global context variable
+                delete jsonWithoutImage.productImage;
+                localStorage.setItem('productData', JSON.stringify(jsonWithoutImage));
                 history.push('previewAd');
             }}
             enableReinitialize
@@ -68,7 +77,7 @@ const CreateAd = () => {
             <Form>
                 {/* Main Image */}
                 <div className="card product-image-card justify-content-center p-0">
-                    {values.productImage === '' ?
+                    {(values.productImage === '' || values.productImage === undefined) ?
                         <div className="d-flex justify-content-center">
                             <label class="btn btn-default buttons-ctrns p-0 w-auto">
                                 <div className="upload-button pl-5 pr-5 image-select-button">Select Product Image</div>

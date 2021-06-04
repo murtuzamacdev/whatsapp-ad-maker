@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import './PreviewAd.scss';
 import whatsappLogo from '../../assets/images/logos_whatsapp.png';
@@ -6,15 +6,17 @@ import downloadBtn from '../../assets/images/downloadBtn.png';
 import editBtn from '../../assets/images/editBtn.png';
 import backdrop from '../../assets/images/backdrop.png';
 import domtoimage from 'dom-to-image';
-import Loading from '../../components/loading/Loading'
+import Loading from '../../components/loading/Loading';
+import { GlobalContext } from '../../context/global.context';
 
 const PreviewAd = () => {
+    const globalContext = useContext(GlobalContext);
     const [productData, setProductData] = useState(null);
     const [loading, setLoading] = useState(false);
     let history = useHistory();
 
     useEffect(() => {
-        let data = JSON.parse(localStorage.getItem('productData'));
+        let data = globalContext.state.productData;
         if (data) {
             setProductData(data);
         } else {
