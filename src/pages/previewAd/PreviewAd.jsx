@@ -6,9 +6,11 @@ import downloadBtn from '../../assets/images/downloadBtn.png';
 import editBtn from '../../assets/images/editBtn.png';
 import backdrop from '../../assets/images/backdrop.png';
 import domtoimage from 'dom-to-image';
+import Loading from '../../components/loading/Loading'
 
 const PreviewAd = () => {
     const [productData, setProductData] = useState(null);
+    const [loading, setLoading] = useState(false);
     let history = useHistory();
 
     useEffect(() => {
@@ -22,6 +24,7 @@ const PreviewAd = () => {
     }, [])
 
     const downloadScreenshot = (params) => {
+        setLoading(true);
         const scale = 5
         const node = document.getElementById("html-content-holder")
 
@@ -45,6 +48,7 @@ const PreviewAd = () => {
                 link.download = new Date().getTime() + '.jpeg';
                 link.href = dataUrl;
                 link.click();
+                setLoading(false);
             });
     }
 
@@ -53,7 +57,9 @@ const PreviewAd = () => {
     }
 
     return (
-        <>{productData && <>
+        <>
+        {loading && <Loading></Loading>}
+        {productData && <>
             <div className="d-flex flex-column previewAd p-4" id="html-content-holder">
                 <div className="card p-0 main-card">
                     {/* Main Image */}
@@ -92,7 +98,7 @@ const PreviewAd = () => {
             <input type="image" class="download-btn" alt="Login"
                 src={downloadBtn} onClick={downloadScreenshot}></input></>}
 
-
+            
         </>);
 }
 
