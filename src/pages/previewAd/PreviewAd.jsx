@@ -27,7 +27,7 @@ const PreviewAd = () => {
 
     const downloadScreenshot = (params) => {
         setLoading(true);
-        const scale = 5
+        const scale = 3
         const node = document.getElementById("html-content-holder")
 
         const style = {
