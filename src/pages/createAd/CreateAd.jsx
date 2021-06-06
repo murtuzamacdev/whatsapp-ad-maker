@@ -46,7 +46,7 @@ const CreateAd = () => {
         setFieldValue('whatsappNumber', '');
     }
 
-    return (<div className="mb-5 createAd p-4">
+    return (<div className="createAd p-4">
 
         <Formik
             initialValues={{
