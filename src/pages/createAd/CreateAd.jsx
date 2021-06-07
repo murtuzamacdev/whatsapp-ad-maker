@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import './CreateAd.scss';
 import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
 import { GlobalContext } from '../../context/global.context';
 import currencies from '../../configs/currencies.json';
+import { CirclePicker } from 'react-color';
 
 const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
@@ -15,9 +16,11 @@ const CreateAd = () => {
         currencyCode: "INR",
         productDescription: "",
         sellerName: "",
-        whatsappNumber: ""
+        whatsappNumber: "",
+        selectedBackgroundColor: "#607d8b"
     });
     let history = useHistory();
+    const ref = useRef(null);
 
     useEffect(() => {
         let data = globalContext.state.productData;
@@ -25,7 +28,7 @@ const CreateAd = () => {
             setProductData(data);
         } else {
             let _data = JSON.parse(localStorage.getItem('productData'));
-            _data && setProductData(_data);
+            _data && setProductData({ ...productData, ..._data });
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,11 +50,19 @@ const CreateAd = () => {
         setFieldValue('productDescription', '');
         setFieldValue('sellerName', '');
         setFieldValue('whatsappNumber', '');
+        setFieldValue('selectedBackgroundColor', '#607d8b');
+        setProductData({ ...productData, selectedBackgroundColor: '#607d8b' })
     }
 
-    return (<div className="createAd p-3">
+    const handleChangeComplete = (color, setFieldValue) => {
+        setFieldValue('selectedBackgroundColor', color.hex);
+        setProductData({ ...productData, selectedBackgroundColor: ref.current.values.selectedBackgroundColor })
+    }
+
+    return (<div className="createAd p-3" style={{ backgroundColor: productData.selectedBackgroundColor }}>
 
         <Formik
+            innerRef={ref}
             initialValues={{
                 productImage: productData.productImage,
                 productName: productData.productName,
@@ -59,7 +70,8 @@ const CreateAd = () => {
                 currencyCode: productData.currencyCode,
                 productDescription: productData.productDescription,
                 sellerName: productData.sellerName,
-                whatsappNumber: productData.whatsappNumber
+                whatsappNumber: productData.whatsappNumber,
+                selectedBackgroundColor: productData.selectedBackgroundColor
             }}
             validationSchema={Yup.object().shape({
                 productImage: Yup.string().required("Please provide product image"),
@@ -85,7 +97,7 @@ const CreateAd = () => {
                         {(values.productImage === '' || values.productImage === undefined) ?
                             <div className="d-flex justify-content-center">
                                 <label class="btn btn-default buttons-ctrns p-0 w-auto">
-                                    <div className="upload-button pl-5 pr-5 image-select-button">Select Product Image *</div>
+                                    <div style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button ">Select Product Image *</div>
                                     <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
                                         updatePicture(data.target.files[0], setFieldValue);
                                     }} />
@@ -96,7 +108,7 @@ const CreateAd = () => {
                                 <img src={values.productImage} alt="productImage" />
                                 <div className="d-flex justify-content-center change-image">
                                     <label class="btn btn-default buttons-ctrns p-0 w-auto">
-                                        <div className="upload-button pl-5 pr-5 image-select-button">Change Product Image</div>
+                                        <div style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button">Change Product Image</div>
                                         <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
                                             updatePicture(data.target.files[0], setFieldValue);
                                         }} />
@@ -184,19 +196,33 @@ const CreateAd = () => {
                         </div>
                     )}
 
+                    {/* Color theme */}
+                    <div className="  mt-4 fields-ctnr">
+                        <label className="pb-2">Select a color theme?</label>
+                        <CirclePicker
+                            color={values.selectedBackgroundColor}
+                            onChangeComplete={(color) => { handleChangeComplete(color, setFieldValue) }}
+                        />
+                    </div>
+
+
+
                     <p className="form-disclaimer fields-ctnr mt-4 ">Fields marked with * are required. Rest of the fields are optional.</p>
+
+                    <div className="d-flex justify-content-around btns-ctnr pb-3 mt-3">
+                        <div className="buttons-ctrns mr-1"> <button type="button" style={{ backgroundColor: productData.selectedBackgroundColor }} className="reset-button " onClick={() => { resetFormCustom(setFieldValue) }}>Reset</button></div>
+                        <div className="buttons-ctrns ml-1"> <button type="submit" style={{ backgroundColor: productData.selectedBackgroundColor }} className="preview-button " onClick={() => { window.scrollTo(0, 0); }} >Preview</button></div>
+                    </div>
+
                 </div>
 
-                <div className="d-flex justify-content-around btns-ctnr pb-3 mt-3">
-                    <div className="buttons-ctrns mr-1"> <button type="button" className="reset-button " onClick={() => { resetFormCustom(setFieldValue) }}>Reset</button></div>
-                    <div className="buttons-ctrns ml-1"> <button type="submit" className="preview-button " onClick={() => { window.scrollTo(0, 0); }} >Preview</button></div>
-                </div>
+
             </Form>
         )}
 
         </Formik>
 
-        <a href="mailto:murtuza.mac.dev@gmail.com" className="contact-link">Contact developer</a>
+        <a href="mailto:murtuza.mac.dev@gmail.com" className="contact-link mt-3">Contact developer</a>
 
     </div>);
 }

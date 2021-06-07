@@ -1,6 +1,5 @@
 .createAd {
   font-family: "Roboto";
-  background-color: #97c7fe;
 
   .product-image-card {
     position: relative;
@@ -37,6 +36,8 @@
     text-align: center;
     width: 100%;
     display: inline-block;
+    color: white;
+    text-decoration: underline;
   }
 
   label {

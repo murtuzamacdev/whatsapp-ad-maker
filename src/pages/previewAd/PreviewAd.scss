@@ -37,7 +37,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
-    background: linear-gradient(90deg, #88ee57 0%, #35a600 113.52%);
+    // background: linear-gradient(90deg, #88ee57 0%, #35a600 113.52%);
     border-radius: 25px;
     color: #ffffff;
     min-width: 95px;
@@ -91,6 +91,7 @@
   .main-card{
     height: 100%;
     overflow: hidden;
+    border: 0;
   }
 }
 
