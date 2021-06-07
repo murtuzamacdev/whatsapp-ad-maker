@@ -46,7 +46,7 @@ const CreateAd = () => {
         setFieldValue('whatsappNumber', '');
     }
 
-    return (<div className="createAd p-4">
+    return (<div className="createAd p-3">
 
         <Formik
             initialValues={{
@@ -75,96 +75,105 @@ const CreateAd = () => {
             enableReinitialize
         >{({ errors, touched, setFieldValue, values, resetForm }) => (
             <Form>
-                {/* Main Image */}
-                <div className="card product-image-card justify-content-center p-0">
-                    {(values.productImage === '' || values.productImage === undefined) ?
-                        <div className="d-flex justify-content-center">
-                            <label class="btn btn-default buttons-ctrns p-0 w-auto">
-                                <div className="upload-button pl-5 pr-5 image-select-button">Select Product Image</div>
-                                <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
-                                    updatePicture(data.target.files[0], setFieldValue);
-                                }} />
-                            </label>
-                        </div>
-                        :
-                        <>
-                            <img src={values.productImage} alt="productImage" />
-                            <div className="d-flex justify-content-center change-image">
+                <div className="card pb-4">
+                    {/* Main Image */}
+                    <div className=" product-image-card justify-content-center p-0 d-flex flex-column">
+                        {(values.productImage === '' || values.productImage === undefined) ?
+                            <div className="d-flex justify-content-center">
                                 <label class="btn btn-default buttons-ctrns p-0 w-auto">
-                                    <div className="upload-button pl-5 pr-5 image-select-button">Change Product Image</div>
+                                    <div className="upload-button pl-5 pr-5 image-select-button">Select Product Image *</div>
                                     <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
                                         updatePicture(data.target.files[0], setFieldValue);
                                     }} />
                                 </label>
                             </div>
-                        </>
-                    }
-                </div>
-                {errors.productImage && touched.productImage && (
-                    <div className="form-error d-block mt-1 ml-2">
-                        {errors.productImage}
+                            :
+                            <>
+                                <img src={values.productImage} alt="productImage" />
+                                <div className="d-flex justify-content-center change-image">
+                                    <label class="btn btn-default buttons-ctrns p-0 w-auto">
+                                        <div className="upload-button pl-5 pr-5 image-select-button">Change Product Image</div>
+                                        <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
+                                            updatePicture(data.target.files[0], setFieldValue);
+                                        }} />
+                                    </label>
+                                </div>
+                            </>
+                        }
                     </div>
-                )}
+                    {errors.productImage && touched.productImage && (
+                        <div className="form-error d-block mt-1 ml-2">
+                            {errors.productImage}
+                        </div>
+                    )}
 
-                {/* Product name */}
-                <div className="card product-name-card justify-content-center align-items-center mt-3">
-                    <Field
-                        type="text"
-                        placeholder="Product name"
-                        className="ml-2"
-                        class="product-name"
-                        name="productName"
-                    />
-                </div>
-                {errors.productName && touched.productName && (
-                    <div className="form-error d-block mt-1 ml-2">
-                        {errors.productName}
+                    {/* Product name */}
+                    <div className=" fields-ctnr mt-4 ">
+                        <label>What's your product name? *</label>
+                        <Field
+                            type="text"
+                            placeholder="Example: Nike Shoes"
+                            className="ml-2"
+                            class="product-name"
+                            name="productName"
+                        />
                     </div>
-                )}
+                    {errors.productName && touched.productName && (
+                        <div className="form-error d-block mt-1 ml-2">
+                            {errors.productName}
+                        </div>
+                    )}
 
-                {/* Product price */}
-                <div className="card product-name-card justify-content-center align-items-center mt-3">
-                    <Field
-                        type="number"
-                        placeholder="Price in Rs. (Optional)"
-                        className="ml-2"
-                        class="product-price"
-                        name="productPrice"
-                    />
-                </div>
-
-                {/* Product descrption */}
-                <div className="card product-desc-card justify-content-center align-items-center mt-3">
-                    <Field
-                        type="textarea"
-                        rows="2"
-                        placeholder="Comments or description (Optional)"
-                        name="productDescription"
-                    />
-                </div>
-
-                {/* Business name */}
-                <div className="card business-name-card justify-content-center align-items-center mt-3">
-                    <Field
-                        type="text"
-                        placeholder="Business or seller name (Optional)"
-                        name="sellerName"
-                    />
-                </div>
-
-                {/* whatsapp number */}
-                <div className="card whatsapp-number-card justify-content-center align-items-center mt-3">
-                    <Field
-                        type="number"
-                        placeholder="Whatsapp number (Optional)"
-                        name="whatsappNumber"
-                    />
-                </div>
-                {errors.whatsappNumber && touched.whatsappNumber && (
-                    <div className="form-error d-block mt-1 ml-2">
-                        {errors.whatsappNumber}
+                    {/* Product price */}
+                    <div className=" mt-4 fields-ctnr">
+                        <label>What’s the price in Rupees of this product?</label>
+                        <Field
+                            type="number"
+                            placeholder="Example: 5000"
+                            className="ml-2"
+                            class="product-price"
+                            name="productPrice"
+                        />
                     </div>
-                )}
+
+                    {/* Product descrption */}
+                    <div className=" mt-4 fields-ctnr">
+                        <label>Want to add any description or comment about the product?</label>
+                        <Field
+                            type="textarea"
+                            rows="2"
+                            placeholder="Example: It's a quality product..."
+                            name="productDescription"
+                        />
+                    </div>
+
+                    {/* Business name */}
+                    <div className="  mt-4 fields-ctnr">
+                        <label>Who is selling this product?</label>
+                        <Field
+                            type="text"
+                            placeholder="Individual or Company name"
+                            name="sellerName"
+                        />
+                    </div>
+
+                    {/* whatsapp number */}
+                    <div className="  mt-4 fields-ctnr">
+                        <label>What’s the seller’s Whatsapp number?</label>
+                        <Field
+                            type="number"
+                            placeholder="10 digits phone number"
+                            name="whatsappNumber"
+                        />
+                    </div>
+                    {errors.whatsappNumber && touched.whatsappNumber && (
+                        <div className="form-error d-block mt-1 ml-2">
+                            {errors.whatsappNumber}
+                        </div>
+                    )}
+
+                    <p className="form-disclaimer fields-ctnr mt-4 ">Fields marked with * are required. Rest of the fields are optional.</p>
+                </div>
 
                 <div className="d-flex justify-content-around btns-ctnr pb-3 mt-3">
                     <div className="buttons-ctrns mr-1"> <button type="button" className="reset-button " onClick={() => { resetFormCustom(setFieldValue) }}>Reset</button></div>

@@ -1,10 +1,12 @@
 .createAd {
-  font-family: 'Roboto';
-  background-color: #97C7FE;
+  font-family: "Roboto";
+  background-color: #97c7fe;
 
   .product-image-card {
+    position: relative;
+    border-radius: 25px;
     height: 400px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.83) 0%, rgba(213, 209, 209, 0.83) 0.01%, rgba(255, 255, 255, 0.83) 100%);
+    background: #e5e2e2;
     overflow: hidden;
 
     img {
@@ -15,8 +17,7 @@
   }
 
   .product-name-card {
-    height: 57px;
-
+    
     .product-name {
       flex: 0.7;
     }
@@ -26,27 +27,29 @@
     }
   }
 
-  .product-desc-card {
-    height: 90px;
-  }
-
-  .business-name-card {
-    height: 72px;
-  }
-
-  .whatsapp-number-card {
-    height: 72px;
-  }
-
   .change-image {
     position: absolute;
     bottom: 0;
     width: 100%;
   }
 
-  .contact-link{
+  .contact-link {
     text-align: center;
     width: 100%;
     display: inline-block;
+  }
+
+  label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 21px;
+    /* identical to box height */
+
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  .fields-ctnr{
+    padding: 0 0.8rem;
   }
 }
