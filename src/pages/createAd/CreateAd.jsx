@@ -4,6 +4,7 @@ import './CreateAd.scss';
 import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
 import { GlobalContext } from '../../context/global.context';
+import currencies from '../../configs/currencies.json';
 
 const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
@@ -11,6 +12,7 @@ const CreateAd = () => {
         productImage: "",
         productName: "",
         productPrice: "",
+        currencyCode: "INR",
         productDescription: "",
         sellerName: "",
         whatsappNumber: ""
@@ -41,6 +43,7 @@ const CreateAd = () => {
         setFieldValue('productImage', '');
         setFieldValue('productName', '');
         setFieldValue('productPrice', '');
+        setFieldValue('currencyCode', 'INR');
         setFieldValue('productDescription', '');
         setFieldValue('sellerName', '');
         setFieldValue('whatsappNumber', '');
@@ -53,6 +56,7 @@ const CreateAd = () => {
                 productImage: productData.productImage,
                 productName: productData.productName,
                 productPrice: productData.productPrice,
+                currencyCode: productData.currencyCode,
                 productDescription: productData.productDescription,
                 sellerName: productData.sellerName,
                 whatsappNumber: productData.whatsappNumber
@@ -126,14 +130,22 @@ const CreateAd = () => {
 
                     {/* Product price */}
                     <div className=" mt-4 fields-ctnr">
-                        <label>What’s the price in Rupees of this product?</label>
-                        <Field
-                            type="number"
-                            placeholder="Example: 5000"
-                            className="ml-2"
-                            class="product-price"
-                            name="productPrice"
-                        />
+                        <label>What’s the price of this product?</label>
+                        <div className="d-flex">
+                            <Field as="select" name="currencyCode" className="currency-select mr-3">
+                                {currencies.map((currency) => {
+                                    return (<option key={currency.code} value={currency.code}>{currency.code}</option>)
+                                })}
+                            </Field>
+                            <Field
+                                type="number"
+                                placeholder="Example: 5000"
+                                className="ml-2"
+                                class="product-price"
+                                name="productPrice"
+                            />
+                        </div>
+
                     </div>
 
                     {/* Product descrption */}
@@ -177,7 +189,7 @@ const CreateAd = () => {
 
                 <div className="d-flex justify-content-around btns-ctnr pb-3 mt-3">
                     <div className="buttons-ctrns mr-1"> <button type="button" className="reset-button " onClick={() => { resetFormCustom(setFieldValue) }}>Reset</button></div>
-                    <div className="buttons-ctrns ml-1"> <button type="submit" className="preview-button ">Preview</button></div>
+                    <div className="buttons-ctrns ml-1"> <button type="submit" className="preview-button " onClick={() => { window.scrollTo(0, 0); }} >Preview</button></div>
                 </div>
             </Form>
         )}

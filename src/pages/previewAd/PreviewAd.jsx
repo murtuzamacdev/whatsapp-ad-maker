@@ -8,6 +8,7 @@ import backdrop from '../../assets/images/backdrop.png';
 import domtoimage from 'dom-to-image';
 import Loading from '../../components/loading/Loading';
 import { GlobalContext } from '../../context/global.context';
+import currencies from '../../configs/currencies.json';
 
 const PreviewAd = () => {
     const globalContext = useContext(GlobalContext);
@@ -35,7 +36,7 @@ const PreviewAd = () => {
             transformOrigin: 'top left',
             width: node.offsetWidth + "px",
             height: node.offsetHeight + "px"
-        }
+        } 
 
         const param = {
             height: node.offsetHeight * scale,
@@ -70,7 +71,7 @@ const PreviewAd = () => {
                         <img className="product-image-backdrop" src={backdrop} alt="productBackdrop"/>
                         <div className="d-flex name-price-ctnr product-name-card justify-content-between align-items-center flex-row">
                             <p style={{ flexGrow: 0.7 }} className="m-0 product-name">{productData.productName}</p>
-                            {productData.productPrice !== '' && <p className="m-0 product-price pt-2 pb-2">₹ {productData.productPrice}</p>}
+                            {productData.productPrice !== '' && <p className="m-0 product-price pt-2 pb-2">{currencies.find((item) => item.code === productData.currencyCode).symbol} {productData.productPrice}</p>}
                         </div>
 
                     </div>

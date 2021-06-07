@@ -50,7 +50,7 @@
   background-clip: unset;
 }
 
-.card input {
+.card input, .card select {
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   width: 100%;
@@ -78,8 +78,17 @@
   color: rgba(0, 0, 0, 0.22);
 }
 
-.card input:focus-visible {
+.card input:focus-visible, .card select:focus-visible {
   outline: none;
+}
+
+select{
+  background: url(assets/images/selectDown.png) 80%;
+  background-repeat: no-repeat;
+  background-size: 13px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 button,
