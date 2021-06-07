@@ -9,6 +9,7 @@ import { CirclePicker } from 'react-color';
 
 const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
+    const [safeToShowForm, setSafeToShowForm] = useState(false);
     const [productData, setProductData] = useState({
         productImage: "",
         productName: "",
@@ -30,7 +31,7 @@ const CreateAd = () => {
             let _data = JSON.parse(localStorage.getItem('productData'));
             _data && setProductData({ ...productData, ..._data });
         }
-
+        setSafeToShowForm(true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -60,8 +61,7 @@ const CreateAd = () => {
     }
 
     return (<div className="createAd p-3" style={{ backgroundColor: productData.selectedBackgroundColor }}>
-
-        <Formik
+        {safeToShowForm && <Formik
             innerRef={ref}
             initialValues={{
                 productImage: productData.productImage,
@@ -88,7 +88,7 @@ const CreateAd = () => {
                 localStorage.setItem('productData', JSON.stringify(jsonWithoutImage));
                 history.push('previewAd');
             }}
-            enableReinitialize
+            // enableReinitialize
         >{({ errors, touched, setFieldValue, values, resetForm }) => (
             <Form>
                 <div className="card pb-4">
@@ -220,7 +220,7 @@ const CreateAd = () => {
             </Form>
         )}
 
-        </Formik>
+        </Formik>}
 
         <a href="mailto:murtuza.mac.dev@gmail.com" className="contact-link mt-3">Contact developer</a>
 
