@@ -15,6 +15,7 @@ const PreviewAd = () => {
     const [productData, setProductData] = useState(null);
     const [loading, setLoading] = useState(false);
     let history = useHistory();
+    const productDescDivHeight = window.innerHeight * (122/812);
 
     useEffect(() => {
         let data = globalContext.state.productData;
@@ -63,7 +64,7 @@ const PreviewAd = () => {
         <>
         {loading && <Loading></Loading>}
         {productData && <>
-            <div className="d-flex flex-column previewAd p-4" id="html-content-holder" style={{ backgroundColor: productData.selectedBackgroundColor }}>
+            <div className="d-flex flex-column previewAd" id="html-content-holder" style={{ backgroundColor: productData.selectedBackgroundColor }}>
                 <div className="card p-0 main-card">
                     {/* Main Image */}
                     <div style={{ minHeight: '60%', flexGrow: 1 }} className="d-flex product-image-card justify-content-center p-0">
@@ -71,7 +72,7 @@ const PreviewAd = () => {
                         <img className="product-image-backdrop" src={backdrop} alt="productBackdrop"/>
                         <div className="d-flex name-price-ctnr product-name-card justify-content-between align-items-center flex-column">
                             <p style={{ flexGrow: 0.7 }} className="m-0 product-name">{productData.productName}</p>
-                            {productData.productPrice !== '' && <p className="m-0 mt-3 product-price pt-3 pb-3 pl-5 pr-5" style={{ backgroundColor: productData.selectedBackgroundColor }}>{currencies.find((item) => item.code === productData.currencyCode).symbol} {productData.productPrice}</p>}
+                            {productData.productPrice !== '' && <p className="m-0 mt-3 product-price pt-2 pb-2 pl-4 pr-4" style={{ backgroundColor: productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === productData.currencyCode).symbol}</small> {productData.productPrice}<small>.00</small></p>}
                         </div>
 
                     </div>
@@ -79,7 +80,7 @@ const PreviewAd = () => {
                     <div style={{ maxHeight: '40%' }} className="p-4">
                         {/* Product descrption */}
                         {productData.productDescription !== '' && <div style={{ flex: 1 }} className=" product-desc-card justify-content-center mb-3">
-                            <p className="m-0 product-desc">{productData.productDescription}</p>
+                            <p className="m-0 product-desc" style={{maxHeight: `${productDescDivHeight}px`}}>{productData.productDescription}</p>
                         </div>}
 
                         {/* Business name */}

@@ -1,9 +1,13 @@
+html{
+  font-size: 17px;
+}
+
 .container {
   max-width: 475px;
 }
 
 .card {
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
   border-radius: 25px;
   padding: 0.8rem 1rem;
   /* padding-right: 1.3rem; */
@@ -11,7 +15,7 @@
   background-clip: unset;
 }
 
-.card input, .card select {
+.card input, .card select, .card textarea {
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   width: 100%;
@@ -21,6 +25,10 @@
   padding: 16px 20px;
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.65);
+}
+
+.card textarea{
+  border-radius: 25px;
 }
 
 ::placeholder {
@@ -39,7 +47,7 @@
   color: rgba(0, 0, 0, 0.22);
 }
 
-.card input:focus-visible, .card select:focus-visible {
+.card input:focus-visible, .card select:focus-visible, .card textarea:focus-visible {
   outline: none;
 }
 

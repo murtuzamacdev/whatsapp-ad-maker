@@ -89,7 +89,7 @@ const CreateAd = () => {
                 history.push('previewAd');
             }}
             // enableReinitialize
-        >{({ errors, touched, setFieldValue, values, resetForm }) => (
+        >{({ errors, touched, setFieldValue, values, resetForm, handleChange }) => (
             <Form>
                 <div className="card pb-4">
                     {/* Main Image */}
@@ -163,11 +163,13 @@ const CreateAd = () => {
                     {/* Product descrption */}
                     <div className=" mt-4 fields-ctnr">
                         <label>Want to add any description or comment about the product?</label>
-                        <Field
+                        <textarea
                             type="textarea"
-                            rows="2"
+                            rows="3"
                             placeholder="Example: It's a quality product..."
                             name="productDescription"
+                            value={values.productDescription}
+                            onChange={handleChange}
                         />
                     </div>
 

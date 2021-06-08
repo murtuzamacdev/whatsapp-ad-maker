@@ -3,6 +3,7 @@
   overflow: hidden;
   position: relative;
   background-color: #97C7FE;
+  padding: 2.5rem;
   // background-image: linear-gradient(#d4e8ff, rgb(157, 211, 184));
   background-repeat: no-repeat;
 
@@ -23,25 +24,24 @@
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
-    font-size: 21px;
+    font-size: 1.2rem;
     line-height: 25px;
     color: white;
-    // white-space: nowrap;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
+    text-align: center;
   }
 
   .product-price {
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.1rem;
     line-height: 19px;
     // background: linear-gradient(90deg, #88ee57 0%, #35a600 113.52%);
     border-radius: 25px;
     color: #ffffff;
     min-width: 95px;
     text-align: center;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
  
   }
 
@@ -49,25 +49,31 @@
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 0.85rem;
     line-height: 19px;
     color: rgba(0, 0, 0, 0.7);
+    white-space: break-spaces;
+    overflow: hidden;
   }
 
   .store-name {
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 0.85rem;
     line-height: 18px;
     color: rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }
 
   .whatsapp-number {
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
-    font-size: 21px;
+    font-size: 1.1rem;
     line-height: 25px;
     color: rgba(0, 0, 0, 0.7);
     width: 100%;
@@ -83,7 +89,7 @@
   .name-price-ctnr{
     position: absolute;
     right: 0px;
-    bottom: 20px;
+    bottom: 10px;
     width: 100%;
     padding: 0 1rem;
   }
