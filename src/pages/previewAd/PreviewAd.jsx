@@ -69,9 +69,9 @@ const PreviewAd = () => {
                     <div style={{ minHeight: '60%', flexGrow: 1 }} className="d-flex product-image-card justify-content-center p-0">
                         <img className="product-image" src={productData.productImage} alt="productImage"/>
                         <img className="product-image-backdrop" src={backdrop} alt="productBackdrop"/>
-                        <div className="d-flex name-price-ctnr product-name-card justify-content-between align-items-center flex-row">
+                        <div className="d-flex name-price-ctnr product-name-card justify-content-between align-items-center flex-column">
                             <p style={{ flexGrow: 0.7 }} className="m-0 product-name">{productData.productName}</p>
-                            {productData.productPrice !== '' && <p className="m-0 product-price pt-2 pb-2" style={{ backgroundColor: productData.selectedBackgroundColor }}>{currencies.find((item) => item.code === productData.currencyCode).symbol} {productData.productPrice}</p>}
+                            {productData.productPrice !== '' && <p className="m-0 mt-3 product-price pt-3 pb-3 pl-5 pr-5" style={{ backgroundColor: productData.selectedBackgroundColor }}>{currencies.find((item) => item.code === productData.currencyCode).symbol} {productData.productPrice}</p>}
                         </div>
 
                     </div>
@@ -84,7 +84,7 @@ const PreviewAd = () => {
 
                         {/* Business name */}
                         {(productData.sellerName !== '' || productData.whatsappNumber !== '') && <div style={{ flex: 1 }} className=" business-name-card justify-content-center align-items-start">
-                            {productData.sellerName !== '' && <p className="store-name m-0">{productData.sellerName}</p>}
+                            {productData.sellerName !== '' && <p className="store-name m-0"><small style={{fontSize: '11px'}}>Order now at: </small><br/>{productData.sellerName}</p>}
                             {productData.whatsappNumber !== '' && <div className="d-flex mt-1">
                                 <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
                                 <p className="whatsapp-number m-0 ml-2">{productData.whatsappNumber}</p>
