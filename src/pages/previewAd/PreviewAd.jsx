@@ -1,21 +1,30 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import './PreviewAd.scss';
+import domtoimage from 'dom-to-image';
+import { GlobalContext } from '../../context/global.context';
+import currencies from '../../configs/currencies.json';
+
+//assets
 import whatsappLogo from '../../assets/images/logos_whatsapp.png';
 import downloadBtn from '../../assets/images/downloadBtn.png';
 import editBtn from '../../assets/images/editBtn.png';
 import backdrop from '../../assets/images/backdrop.png';
-import domtoimage from 'dom-to-image';
+import changeTemplateBtn from '../../assets/images/changeTempBtn.png';
+
+// Templates
+import { TEMPLATES } from '../../templates/TemplateController';
+
+// Components
 import Loading from '../../components/loading/Loading';
-import { GlobalContext } from '../../context/global.context';
-import currencies from '../../configs/currencies.json';
+import TemplateSelectionModal from '../../components/modals/templateSelection/TemplateSelectionModal';
 
 const PreviewAd = () => {
     const globalContext = useContext(GlobalContext);
     const [productData, setProductData] = useState(null);
     const [loading, setLoading] = useState(false);
     let history = useHistory();
-    const productDescDivHeight = window.innerHeight * (122/812);
+    const productDescDivHeight = window.innerHeight * (122 / 812);
 
     useEffect(() => {
         let data = globalContext.state.productData;
@@ -37,7 +46,7 @@ const PreviewAd = () => {
             transformOrigin: 'top left',
             width: node.offsetWidth + "px",
             height: node.offsetHeight + "px"
-        } 
+        }
 
         const param = {
             height: node.offsetHeight * scale,
@@ -60,50 +69,30 @@ const PreviewAd = () => {
         history.push('createAd')
     }
 
+    const getSelectedTemplateComponent = () => {
+        let X = TEMPLATES[globalContext.state.selectedTemplate].component;
+        console.log('x :>> ', X);
+        return <X/>
+    }
+
     return (
-        <>
-        {loading && <Loading></Loading>}
-        {productData && <>
-            <div className="d-flex flex-column previewAd" id="html-content-holder" style={{ backgroundColor: productData.selectedBackgroundColor }}>
-                <div className="card p-0 main-card">
-                    {/* Main Image */}
-                    <div style={{ minHeight: '60%', flexGrow: 1 }} className="d-flex product-image-card justify-content-center p-0">
-                        <img className="product-image" src={productData.productImage} alt="productImage"/>
-                        <img className="product-image-backdrop" src={backdrop} alt="productBackdrop"/>
-                        <div className="d-flex name-price-ctnr product-name-card justify-content-between align-items-center flex-column">
-                            <p style={{ flexGrow: 0.7 }} className="m-0 product-name">{productData.productName}</p>
-                            {productData.productPrice !== '' && <p className="m-0 mt-3 product-price pt-2 pb-2 pl-4 pr-4" style={{ backgroundColor: productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === productData.currencyCode).symbol}</small> {productData.productPrice}<small>.00</small></p>}
-                        </div>
-
-                    </div>
-
-                    <div style={{ maxHeight: '40%' }} className="p-4">
-                        {/* Product descrption */}
-                        {productData.productDescription !== '' && <div style={{ flex: 1 }} className=" product-desc-card justify-content-center mb-3">
-                            <p className="m-0 product-desc" style={{maxHeight: `${productDescDivHeight}px`}}>{productData.productDescription}</p>
-                        </div>}
-
-                        {/* Business name */}
-                        {(productData.sellerName !== '' || productData.whatsappNumber !== '') && <div style={{ flex: 1 }} className=" business-name-card justify-content-center align-items-start">
-                            {productData.sellerName !== '' && <p className="store-name m-0"><small style={{fontSize: '11px'}}>Order now at: </small><br/>{productData.sellerName}</p>}
-                            {productData.whatsappNumber !== '' && <div className="d-flex mt-1">
-                                <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
-                                <p className="whatsapp-number m-0 ml-2">{productData.whatsappNumber}</p>
-                            </div>}
-                        </div>}
-
-                    </div>
+        <div className="preview-ad-ctnr">
+            {loading && <Loading></Loading>}
+            {productData && <>
+                <div className="d-flex flex-column previewAd" id="html-content-holder" style={{ backgroundColor: productData.selectedBackgroundColor }}>
+                {getSelectedTemplateComponent()}
                 </div>
 
+                <input type="image" class="edit-btn" alt="Edit Button"
+                    src={editBtn} onClick={goToCreateAd}></input>
+                <input type="image" class="download-btn" alt="Download Button"
+                    src={downloadBtn} onClick={downloadScreenshot}></input>
 
-            </div>
-            <input type="image" class="edit-btn" alt="Login"
-                src={editBtn} onClick={goToCreateAd}></input>
-            <input type="image" class="download-btn" alt="Login"
-                src={downloadBtn} onClick={downloadScreenshot}></input></>}
-
-            
-        </>);
+                <TemplateSelectionModal />
+            </>}
+            <input type="image" class="change-temp-btn" alt="Change Template Button"
+                src={changeTemplateBtn} data-toggle="modal" data-target="#exampleModal"></input>
+        </div>);
 }
 
 export default PreviewAd;

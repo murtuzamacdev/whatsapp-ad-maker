@@ -1,118 +1,130 @@
-.previewAd {
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-  background-color: #97C7FE;
-  padding: 2.5rem;
-  // background-image: linear-gradient(#d4e8ff, rgb(157, 211, 184));
-  background-repeat: no-repeat;
-
-  .product-image-card {
+.preview-ad-ctnr {
+  .previewAd {
+    height: 100vh;
     overflow: hidden;
     position: relative;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
+    background-color: #97c7fe;
+    padding: 2.5rem;
+    // background-image: linear-gradient(#d4e8ff, rgb(157, 211, 184));
+    background-repeat: no-repeat;
 
-    img.product-image {
-      object-fit: cover;
-      height: 100%;
+    .product-image-card {
+      overflow: hidden;
+      position: relative;
+      border-bottom-right-radius: 25px;
+      border-bottom-left-radius: 25px;
+
+      img.product-image {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .product-name {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 25px;
+      color: white;
+      text-align: center;
+    }
+
+    .product-price {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 1.1rem;
+      line-height: 19px;
+      // background: linear-gradient(90deg, #88ee57 0%, #35a600 113.52%);
+      border-radius: 25px;
+      color: #ffffff;
+      min-width: 95px;
+      text-align: center;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .product-desc {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.85rem;
+      line-height: 19px;
+      color: rgba(0, 0, 0, 0.7);
+      white-space: break-spaces;
+      overflow: hidden;
+    }
+
+    .store-name {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 0.85rem;
+      line-height: 18px;
+      color: rgba(0, 0, 0, 0.6);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       width: 100%;
+    }
+
+    .whatsapp-number {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 1.1rem;
+      line-height: 25px;
+      color: rgba(0, 0, 0, 0.7);
+      width: 100%;
+    }
+
+    .product-image-backdrop {
+      position: absolute;
+      width: 100%;
+      height: 35%;
+      bottom: 0;
+    }
+
+    .name-price-ctnr {
+      position: absolute;
+      right: 0px;
+      bottom: 10px;
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    .main-card {
+      height: 100%;
+      overflow: hidden;
+      border: 0;
     }
   }
 
-  .product-name {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1.2rem;
-    line-height: 25px;
-    color: white;
+  .download-btn {
+    position: fixed;
+    height: 70px;
+    width: 70px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .edit-btn {
+    position: fixed;
+    height: 70px;
+    width: 70px;
+    right: 10px;
+    bottom: 85px;
+  }
+
+  .change-temp-btn {
+    width: 10rem;
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
     text-align: center;
-  }
-
-  .product-price {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1.1rem;
-    line-height: 19px;
-    // background: linear-gradient(90deg, #88ee57 0%, #35a600 113.52%);
-    border-radius: 25px;
-    color: #ffffff;
-    min-width: 95px;
-    text-align: center;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
- 
-  }
-
-  .product-desc {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 0.85rem;
-    line-height: 19px;
-    color: rgba(0, 0, 0, 0.7);
-    white-space: break-spaces;
-    overflow: hidden;
-  }
-
-  .store-name {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 0.85rem;
-    line-height: 18px;
-    color: rgba(0, 0, 0, 0.6);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-  }
-
-  .whatsapp-number {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1.1rem;
-    line-height: 25px;
-    color: rgba(0, 0, 0, 0.7);
-    width: 100%;
-  }
-
-  .product-image-backdrop{
-    position: absolute;
-    width: 100%;
-    height: 35%;
     bottom: 0;
   }
-
-  .name-price-ctnr{
-    position: absolute;
-    right: 0px;
-    bottom: 10px;
-    width: 100%;
-    padding: 0 1rem;
-  }
-
-  .main-card{
-    height: 100%;
-    overflow: hidden;
-    border: 0;
-  }
-}
-
-.download-btn {
-  position: fixed;
-  height: 70px;
-  width: 70px;
-  right: 10px;
-  bottom: 10px;
-}
-
-.edit-btn {
-  position: fixed;
-  height: 70px;
-  width: 70px;
-  right: 10px;
-  bottom: 85px;
 }

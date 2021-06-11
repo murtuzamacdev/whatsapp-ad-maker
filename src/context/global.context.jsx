@@ -5,7 +5,8 @@ export const GlobalContext = React.createContext();
 
 export class GlobalContextProvider1 extends Component {
     state = {
-        productData: null
+        productData: null,
+        selectedTemplate: 'template2'
     }
 
     setProductData = (productData) => {
@@ -14,12 +15,19 @@ export class GlobalContextProvider1 extends Component {
         })
     }
 
+    setSelectedTemplate = (template) => {
+        this.setState({
+            selectedTemplate: template
+        })
+    }
+
     render() {
         return (
             <GlobalContext.Provider
                 value={{
                     state: this.state,
-                    setProductData: this.setProductData
+                    setProductData: this.setProductData,
+                    setSelectedTemplate: this.setSelectedTemplate
                 }}
             >
                 {this.props.children}

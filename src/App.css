@@ -62,13 +62,16 @@ select{
 
 button,
 .upload-button {
-  background-image: linear-gradient(93.73deg, #3282fb 10.22%, #bd0202 103.22%);
   border-radius: 100px;
   border: 0;
   color: #ffffff;
   font-weight: bold;
   padding: 0.9rem;
   width: 100%;
+}
+
+button.close{
+  width: auto;
 }
 
 .reset-button {
