@@ -17,7 +17,7 @@ const TemplateSelectionModal = () => {
         globalContext.setSelectedTemplate(templateId)
     }
 
-    return (<div class="modal fade template-selection-modal-ctrn" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    return (<div class="modal fade template-selection-modal-ctrn" id="templateSelectionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div style={{ height: '100%' }} className="d-flex flex-column justify-content-end m-0">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

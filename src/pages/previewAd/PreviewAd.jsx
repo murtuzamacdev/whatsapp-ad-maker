@@ -27,6 +27,17 @@ const PreviewAd = () => {
     const productDescDivHeight = window.innerHeight * (122 / 812);
 
     useEffect(() => {
+
+        // Closing Modal when back button is clicked instead of routing to back page
+        window.onpopstate = e => {
+            e.preventDefault();
+            if (window.$('#templateSelectionModal').hasClass('show')) {
+                window.$('#templateSelectionModal').modal('hide');
+                history.goForward();
+            }
+        }
+
+        // Set initial data
         let data = globalContext.state.productData;
         if (data) {
             setProductData(data);
@@ -70,9 +81,8 @@ const PreviewAd = () => {
     }
 
     const getSelectedTemplateComponent = () => {
-        let X = TEMPLATES[globalContext.state.selectedTemplate].component;
-        console.log('x :>> ', X);
-        return <X/>
+        let SelectedTemplate = TEMPLATES[globalContext.state.selectedTemplate].component;
+        return <SelectedTemplate />
     }
 
     return (
@@ -80,7 +90,7 @@ const PreviewAd = () => {
             {loading && <Loading></Loading>}
             {productData && <>
                 <div className="d-flex flex-column previewAd" id="html-content-holder" style={{ backgroundColor: productData.selectedBackgroundColor }}>
-                {getSelectedTemplateComponent()}
+                    {getSelectedTemplateComponent()}
                 </div>
 
                 <input type="image" class="edit-btn" alt="Edit Button"
@@ -91,7 +101,7 @@ const PreviewAd = () => {
                 <TemplateSelectionModal />
             </>}
             <input type="image" class="change-temp-btn" alt="Change Template Button"
-                src={changeTemplateBtn} data-toggle="modal" data-target="#exampleModal"></input>
+                src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>
         </div>);
 }
 
