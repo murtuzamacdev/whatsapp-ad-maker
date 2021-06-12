@@ -30,8 +30,9 @@ const TemplateSelectionModal = ({productData}) => {
                     <div class="modal-body">
                         <Carousel showThumbs={false} autoFocus={false} showArrows={false} centerMode={true} showStatus={false} infiniteLoop={true} autoPlay={false} showIndicators={false}>
                             {templatesArr.map((item) => (
-                                <div className="d-flex flex-column justify-content-between align-items-center component-ctnr" >
-                                    {<item.component productData={productData}/>}
+                                <div className="d-flex flex-column justify-content-between align-items-center" >
+                                    {/* {<item.component productData={productData}/>} */}
+                                    <img src={item.demoImage} alt="Demo img" />
                                     <button onClick={() => { handleSelect(item.id) }} className="small-select-btn mt-3 mb-3" data-dismiss="modal"><span>Select</span></button>
                                 </div>
                             ))}
