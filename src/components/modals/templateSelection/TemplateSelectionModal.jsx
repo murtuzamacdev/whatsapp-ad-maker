@@ -6,7 +6,7 @@ import { GlobalContext } from '../../../context/global.context';
 import { TEMPLATES } from '../../../templates/TemplateController';
 
 
-const TemplateSelectionModal = () => {
+const TemplateSelectionModal = ({productData}) => {
     const globalContext = useContext(GlobalContext);
     let templatesArr = [];
     Object.keys(TEMPLATES).forEach(function (key) {
@@ -30,8 +30,8 @@ const TemplateSelectionModal = () => {
                     <div class="modal-body">
                         <Carousel showThumbs={false} autoFocus={false} showArrows={false} centerMode={true} showStatus={false} infiniteLoop={true} autoPlay={false} showIndicators={false}>
                             {templatesArr.map((item) => (
-                                <div>
-                                    <img src={item.demoImage} alt="Template 1" />
+                                <div className="d-flex flex-column justify-content-between align-items-center component-ctnr" >
+                                    {<item.component productData={productData}/>}
                                     <button onClick={() => { handleSelect(item.id) }} className="small-select-btn mt-3 mb-3" data-dismiss="modal"><span>Select</span></button>
                                 </div>
                             ))}

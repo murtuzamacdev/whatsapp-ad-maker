@@ -85,7 +85,7 @@ const PreviewAd = () => {
         <div className="preview-ad-ctnr">
             {loading && <Loading></Loading>}
             {productData && <>
-                <div className="d-flex flex-column previewAd" id="html-content-holder" style={{ backgroundColor: productData.selectedBackgroundColor }}>
+                <div className="d-flex flex-column previewAd" id="html-content-holder">
                     {getSelectedTemplateComponent()}
                 </div>
 
@@ -94,7 +94,7 @@ const PreviewAd = () => {
                 <input type="image" class="download-btn" alt="Download Button"
                     src={downloadBtn} onClick={downloadScreenshot}></input>
 
-                <TemplateSelectionModal />
+                <TemplateSelectionModal productData={productData}/>
             </>}
             <input type="image" class="change-temp-btn" alt="Change Template Button"
                 src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>

@@ -36,17 +36,27 @@
     padding-left: 15px;
   }
 
-  .card {
-    border-radius: 0;
-  }
+  // .card {
+  //   border-radius: 0;
+  // }
 
-  .carousel .slide img {
-    width: 85%;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-  }
+  // .carousel .slide img {
+  //   width: 85%;
+  //   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+  // }
 
   h5 {
     color: rgba(0, 0, 0, 0.7);
     font-family: "Roboto";
+  }
+
+  .component-ctnr{
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+    // background-color: #97c7fe;
+    // padding: 2.5rem;
+    // background-image: linear-gradient(#d4e8ff, rgb(157, 211, 184));
+    background-repeat: no-repeat;
   }
 }

@@ -13,6 +13,7 @@ html{
   /* padding-right: 1.3rem; */
   border: 1px solid rgb(211, 209, 209);
   background-clip: unset;
+  overflow: hidden;
 }
 
 .card input, .card select, .card textarea {
