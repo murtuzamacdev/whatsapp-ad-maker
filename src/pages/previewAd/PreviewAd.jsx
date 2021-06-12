@@ -3,13 +3,10 @@ import { useHistory } from "react-router-dom";
 import './PreviewAd.scss';
 import domtoimage from 'dom-to-image';
 import { GlobalContext } from '../../context/global.context';
-import currencies from '../../configs/currencies.json';
 
 //assets
-import whatsappLogo from '../../assets/images/logos_whatsapp.png';
 import downloadBtn from '../../assets/images/downloadBtn.png';
 import editBtn from '../../assets/images/editBtn.png';
-import backdrop from '../../assets/images/backdrop.png';
 import changeTemplateBtn from '../../assets/images/changeTempBtn.png';
 
 // Templates
@@ -24,7 +21,6 @@ const PreviewAd = () => {
     const [productData, setProductData] = useState(null);
     const [loading, setLoading] = useState(false);
     let history = useHistory();
-    const productDescDivHeight = window.innerHeight * (122 / 812);
 
     useEffect(() => {
 
@@ -82,7 +78,7 @@ const PreviewAd = () => {
 
     const getSelectedTemplateComponent = () => {
         let SelectedTemplate = TEMPLATES[globalContext.state.selectedTemplate].component;
-        return <SelectedTemplate />
+        return <SelectedTemplate productData={productData} />
     }
 
     return (

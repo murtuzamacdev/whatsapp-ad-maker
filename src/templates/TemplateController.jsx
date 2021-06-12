@@ -3,12 +3,14 @@ import Template1 from '../templates/template1/Template1';
 import Template2 from '../templates/template2/Template2';
 import Template3 from '../templates/template3/Template3';
 import Template4 from '../templates/template4/Template4';
+import Template5 from '../templates/template5/Template5';
 
 // Assets
 import template1Img from '../assets/images/templates/demo/1.png';
 import template2Img from '../assets/images/templates/demo/2.png';
 import template3Img from '../assets/images/templates/demo/3.png';
 import template4Img from '../assets/images/templates/demo/4.png';
+import template5Img from '../assets/images/templates/demo/5.png';
 
 export const TEMPLATES = {
     template1: {
@@ -30,5 +32,10 @@ export const TEMPLATES = {
         id: 'template4',
         component: Template4,
         demoImage: template4Img
+    },
+    template5: {
+        id: 'template5',
+        component: Template5,
+        demoImage: template5Img
     },
 }
