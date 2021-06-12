@@ -6,7 +6,7 @@ export const GlobalContext = React.createContext();
 export class GlobalContextProvider1 extends Component {
     state = {
         productData: null,
-        selectedTemplate: 'template2'
+        selectedTemplate: 'template1'
     }
 
     setProductData = (productData) => {
