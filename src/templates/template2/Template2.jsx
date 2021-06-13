@@ -12,10 +12,10 @@ const Template2 = ({ productData }) => {
         <div className="top-part d-flex flex-column justify-content-between">
             <div className="product-name mt-4">{productData.productName}</div>
             {productData.productDescription !== '' && <div className="product-description p-3" style={{ maxHeight: `${productDescDivHeight}px` }}>{productData.productDescription}</div>}
-            {productData.productPrice !== '' && <div class="img-box-ctrn mt-4">
-                <img src={productData.productImage} alt={'product'} className="p-1"/>
-                <div className="product-price p-2 pl-3 pr-3"><small>{currencies.find((item) => item.code === productData.currencyCode).symbol}</small> {productData.productPrice}<small>.00</small></div>
-            </div>}
+            <div class="img-box-ctrn mt-4">
+                <img src={productData.productImage} alt={'product'} className="p-1" />
+                {productData.productPrice !== '' && <div className="product-price p-2 pl-3 pr-3"><small>{currencies.find((item) => item.code === productData.currencyCode).symbol}</small> {productData.productPrice}<small>.00</small></div>}
+            </div>
         </div>
 
         <div class="bottom-part p-4 pb-0">

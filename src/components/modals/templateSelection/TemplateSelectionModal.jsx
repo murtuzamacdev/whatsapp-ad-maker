@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import './TemplateSelectionModal.scss';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -12,17 +12,7 @@ const TemplateSelectionModal = ({ productData }) => {
     Object.keys(TEMPLATES).forEach(function (key) {
         templatesArr.push(TEMPLATES[key]);
     });
-    const [selectedTemplateIndex, setSelectedTemplateIndex] = useState(templatesArr.findIndex((item) => item.id === globalContext.state.selectedTemplate));
-
-    // useEffect(() => {
-    //     let _selectedTemplate = localStorage.getItem('selectedTemplate');
-    //     if (_selectedTemplate) {
-    //         let index = templatesArr.findIndex((item) => item.id === _selectedTemplate);
-    //         setSelectedTemplateIndex(index);
-    //     } else{
-    //         setSelectedTemplateIndex(0);
-    //     }
-    // }, [])
+    const selectedTemplateIndex = templatesArr.findIndex((item) => item.id === globalContext.state.selectedTemplate)
 
     const handleSelect = (templateId) => {
         globalContext.setSelectedTemplate(templateId)
