@@ -9,15 +9,25 @@ export class GlobalContextProvider1 extends Component {
         selectedTemplate: 'template1'
     }
 
+    componentDidMount() {
+        let _selectedTemplate = localStorage.getItem('selectedTemplate');
+        if (_selectedTemplate) {
+            this.setState({
+                selectedTemplate: _selectedTemplate
+            });
+        }
+    }
+
     setProductData = (productData) => {
         this.setState({
             productData: productData
         })
     }
 
-    setSelectedTemplate = (template) => {
+    setSelectedTemplate = (templateId) => {
+        localStorage.setItem('selectedTemplate', templateId);
         this.setState({
-            selectedTemplate: template
+            selectedTemplate: templateId
         })
     }
 

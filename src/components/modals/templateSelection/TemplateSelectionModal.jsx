@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './TemplateSelectionModal.scss';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -6,12 +6,23 @@ import { GlobalContext } from '../../../context/global.context';
 import { TEMPLATES } from '../../../templates/TemplateController';
 
 
-const TemplateSelectionModal = ({productData}) => {
+const TemplateSelectionModal = ({ productData }) => {
     const globalContext = useContext(GlobalContext);
     let templatesArr = [];
     Object.keys(TEMPLATES).forEach(function (key) {
         templatesArr.push(TEMPLATES[key]);
     });
+    const [selectedTemplateIndex, setSelectedTemplateIndex] = useState(templatesArr.findIndex((item) => item.id === globalContext.state.selectedTemplate));
+
+    // useEffect(() => {
+    //     let _selectedTemplate = localStorage.getItem('selectedTemplate');
+    //     if (_selectedTemplate) {
+    //         let index = templatesArr.findIndex((item) => item.id === _selectedTemplate);
+    //         setSelectedTemplateIndex(index);
+    //     } else{
+    //         setSelectedTemplateIndex(0);
+    //     }
+    // }, [])
 
     const handleSelect = (templateId) => {
         globalContext.setSelectedTemplate(templateId)
@@ -28,9 +39,9 @@ const TemplateSelectionModal = ({productData}) => {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <Carousel showThumbs={false} autoFocus={false} showArrows={false} centerMode={true} showStatus={false} infiniteLoop={true} autoPlay={false} showIndicators={false}>
+                        <Carousel selectedItem={selectedTemplateIndex} showThumbs={false} autoFocus={false} showArrows={false} centerMode={true} showStatus={false} infiniteLoop={true} autoPlay={false} showIndicators={false}>
                             {templatesArr.map((item) => (
-                                <div className="d-flex flex-column justify-content-between align-items-center" >
+                                <div key={item.id} className="d-flex flex-column justify-content-between align-items-center" >
                                     {/* {<item.component productData={productData}/>} */}
                                     <img src={item.demoImage} alt="Demo img" />
                                     <button onClick={() => { handleSelect(item.id) }} className="small-select-btn mt-3 mb-3" data-dismiss="modal"><span>Select</span></button>
