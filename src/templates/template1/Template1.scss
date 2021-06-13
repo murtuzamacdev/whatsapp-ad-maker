@@ -1,93 +1,97 @@
-.temp1-ctnr{
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: '50%';
+.temp1-ctnr {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
 
-    .product-price{
-        font-family: Oswald;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 1.7rem;
-        // line-height: 47px;
-        color: #FFFFFF;
-        background-color: #5A5A5A;
-        // display: inline-block;
-    }
+  .product-price {
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.7rem;
+    // line-height: 47px;
+    color: #ffffff;
+    background-color: #5a5a5a;
+    display: inline-block;
+  }
 
-    .product-name{
-        font-family: Oswald;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 1.7rem;
-        line-height: 47px;
-        background-color: #5A5A5A;
-        text-align: center;
-        color: #FFFFFF;
-        // display: inline-block; 
-        position: absolute;
-        top: -15%;
-        // right: 0;
-        left: 15%;
-        width: 70%;
-       
-    }
+  .product-name {
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.7rem;
+    line-height: 47px;
+    background-color: #5a5a5a;
+    text-align: center;
+    color: #ffffff;
+    // display: inline-block;
+    position: absolute;
+    // top: -15%;
+    bottom: 82%;
+    // right: 0;
+    left: 15%;
+    width: 70%;
+  }
 
+  .product-desc {
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2rem;
+    line-height: 31px;
+    white-space: break-spaces;
+    color: #ffffff;
+    overflow: hidden;
+  }
 
-    .product-desc{
-        font-family: Oswald;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1.2rem;
-        line-height: 31px;
-        
-        color: #FFFFFF;
-    }
+  .order-now {
+    font-family: Oswald;
+    font-weight: bold;
+    font-size: 100%;
+    // line-height: 30px;
+    background-color: #ffffff;
+    color: rgba(6, 6, 6, 0.6);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 40%;
+  }
 
-    .order-now{
-        font-family: Oswald;
-        font-weight: bold;
-        font-size: 100%;
-        // line-height: 30px;
-        background-color: #FFFFFF;
-        color: rgba(6, 6, 6, 0.6);
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  .seller-name {
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.9rem;
+    line-height: 22px;
+    width: 100%;
+    color: #ffffff;
+  }
 
-    .seller-name{
-        font-family: Oswald;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 0.9rem;
-        line-height: 22px;
-        
-        color: #FFFFFF;
-    }
+  .whatsapp-number {
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 31px;
 
-    .whatsapp-number{
-        font-family: Oswald;
-        font-style: normal;
-        font-weight: 300;
-        font-size: 1.2rem;
-        line-height: 31px;
-        
-        color: #FFFFFF;
-    }
+    color: #ffffff;
+  }
 
-    .purple-ctnr{
-        background: #3F5CA9;
-        width: 80%;
+  .purple-ctnr {
+    background: #3f5ca9;
+    width: 80%;
     margin: auto;
-    }
+  }
 
-    .bottom-ctrn{
-        width: 100%;
-        position: relative;
-    }
+  .bottom-ctrn {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .seller-info-ctrn{
+      max-width: 50%;
+  }
 }

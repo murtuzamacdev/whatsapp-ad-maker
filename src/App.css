@@ -115,3 +115,9 @@ button.close{
 
   color: rgba(0, 0, 0, 1);
 }
+
+.single-line{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
