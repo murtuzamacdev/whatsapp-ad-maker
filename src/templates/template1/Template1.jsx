@@ -19,7 +19,7 @@ const Template1 = ({ productData }) => {
                         <div className="order-now pl-2 pr-2">Order Now</div>
                         <div className="seller-info-ctrn">
                             {productData.sellerName !== '' && <div className='seller-name single-line'>{productData.sellerName}</div>}
-                            {productData.whatsappNumber !== '' && <div className="d-flex mt-1">
+                            {productData.whatsappNumber !== '' && <div className="d-flex mt-1 align-items-center">
                                 <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
                                 <p className="whatsapp-number m-0 ml-2">{productData.whatsappNumber}</p>
                             </div>}

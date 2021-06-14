@@ -29,7 +29,7 @@ const Template5 = ({ productData }) => {
 
                 {/* Business name */}
                 {(productData.sellerName !== '' || productData.whatsappNumber !== '') && <div style={{ flex: 1 }} className=" business-name-card justify-content-center align-items-start">
-                    {productData.sellerName !== '' && <p className="store-name m-0"><small style={{ fontSize: '11px' }}>Order now at: </small><br />{productData.sellerName}</p>}
+                    {productData.sellerName !== '' && <p className="store-name m-0"><small style={{ fontSize: '11px' }}>Order Now </small><br />{productData.sellerName}</p>}
                     {productData.whatsappNumber !== '' && <div className="d-flex mt-1">
                         <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
                         <p className="whatsapp-number m-0 ml-2">{productData.whatsappNumber}</p>
