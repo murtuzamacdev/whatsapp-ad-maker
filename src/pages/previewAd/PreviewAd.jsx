@@ -20,6 +20,7 @@ const PreviewAd = () => {
     const globalContext = useContext(GlobalContext);
     const [productData, setProductData] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [showControls, setShowControls] = useState(true);
     let history = useHistory();
 
     useEffect(() => {
@@ -40,6 +41,11 @@ const PreviewAd = () => {
         } else {
             history.push('createAd');
         }
+
+        setTimeout(() => {
+            setShowControls(false);
+        }, 3000);
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -81,23 +87,27 @@ const PreviewAd = () => {
         return <SelectedTemplate productData={productData} />
     }
 
+    const toggleControls = () => {
+        setShowControls(!showControls);
+    }
+
     return (
-        <div className="preview-ad-ctnr">
+        <div onClick={toggleControls} className="preview-ad-ctnr">
             {loading && <Loading></Loading>}
             {productData && <>
                 <div className="d-flex flex-column previewAd" id="html-content-holder">
                     {getSelectedTemplateComponent()}
                 </div>
 
-                <input type="image" class="edit-btn" alt="Edit Button"
+                {showControls && <><input type="image" class="edit-btn" alt="Edit Button"
                     src={editBtn} onClick={goToCreateAd}></input>
-                <input type="image" class="download-btn" alt="Download Button"
-                    src={downloadBtn} onClick={downloadScreenshot}></input>
+                    <input type="image" class="download-btn" alt="Download Button"
+                        src={downloadBtn} onClick={downloadScreenshot}></input></>}
 
-                <TemplateSelectionModal productData={productData}/>
+                <TemplateSelectionModal productData={productData} />
             </>}
-            <input type="image" class="change-temp-btn" alt="Change Template Button"
-                src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>
+            {showControls && <input type="image" class="change-temp-btn" alt="Change Template Button"
+                src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>}
         </div>);
 }
 
