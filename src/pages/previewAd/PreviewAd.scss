@@ -7,7 +7,7 @@
     // padding: 2.5rem;
     // background-image: linear-gradient(#d4e8ff, rgb(157, 211, 184));
     background-repeat: no-repeat;
-    user-select:none;
+    user-select: none;
   }
 
   .download-btn {
@@ -24,19 +24,16 @@
     height: 70px;
     width: 70px;
     right: 10px;
-    bottom: 85px;
+    bottom: 170px;
     z-index: 2;
   }
 
   .change-temp-btn {
-    width: 12rem;
     position: fixed;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    bottom: 0;
+    height: 70px;
+    width: 70px;
+    right: 10px;
+    bottom: 90px;
     z-index: 2;
   }
 }

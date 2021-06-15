@@ -102,12 +102,13 @@ const PreviewAd = () => {
                 {showControls && <><input type="image" class="edit-btn" alt="Edit Button"
                     src={editBtn} onClick={goToCreateAd}></input>
                     <input type="image" class="download-btn" alt="Download Button"
-                        src={downloadBtn} onClick={downloadScreenshot}></input></>}
+                        src={downloadBtn} onClick={downloadScreenshot}></input>
+                    <input type="image" class="change-temp-btn" alt="Change Template Button"
+                        src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>
+                </>}
 
                 <TemplateSelectionModal productData={productData} />
             </>}
-            {showControls && <input type="image" class="change-temp-btn" alt="Change Template Button"
-                src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>}
         </div>);
 }
 
