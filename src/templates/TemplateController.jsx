@@ -16,26 +16,31 @@ export const TEMPLATES = {
     template1: {
         id: 'template1',
         component: Template1,
-        demoImage: template1Img
+        demoImage: template1Img,
+        status: 'ACTIVE'
     },
     template2: {
         id: 'template2',
         component: Template2,
-        demoImage: template2Img
+        demoImage: template2Img,
+        status: 'ACTIVE'
     },
     template3: {
         id: 'template3',
         component: Template3,
-        demoImage: template3Img
+        demoImage: template3Img,
+        status: 'ACTIVE'
     },
     template4: {
         id: 'template4',
         component: Template4,
-        demoImage: template4Img
+        demoImage: template4Img,
+        status: 'COMING_SOON'
     },
     template5: {
         id: 'template5',
         component: Template5,
-        demoImage: template5Img
+        demoImage: template5Img,
+        status: 'ACTIVE'
     },
 }

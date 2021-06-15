@@ -106,17 +106,16 @@
   }
 
   .product-name {
-    font-family: Oswald;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1.7rem;
-    line-height: 47px;
-    background-color: white;
-    text-align: left;
-    color: #333232;
-    // position: absolute;
-    // bottom: 0;
-    // left: 0;
+    .child1 {
+      background-color: white;
+      text-align: left;
+      font-family: Oswald;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 1.7rem;
+      line-height: 47px;
+      color: #333232;
+    }
   }
 
   .product-desc {

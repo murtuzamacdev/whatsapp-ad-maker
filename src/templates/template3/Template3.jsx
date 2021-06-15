@@ -15,7 +15,7 @@ const Template3 = ({ productData }) => {
             <img src={topRightLines} alt="lines" class="bottom-left-lines"/>
             <div className="child1" style={{ backgroundImage: "url(" + productData.productImage + ")" }}>
                 {productData.productPrice !== '' && <div className="mt-2 d-flex justify-content-end single-line mr-2"><div className="product-price pt-1 pb-1 pl-3 pr-3" style={{ backgroundColor: productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === productData.currencyCode).symbol}</small> {productData.productPrice}<small>.00</small></div></div>}
-                <div className="product-name m-2 pl-2">{productData.productName}</div>
+                <div className="product-name d-flex pl-2 pr-2 mb-2"><div className="child1 pl-2 pr-2">{productData.productName}</div></div>
             </div>
 
         </div>

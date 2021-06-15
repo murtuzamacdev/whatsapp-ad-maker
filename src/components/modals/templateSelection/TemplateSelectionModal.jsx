@@ -34,17 +34,19 @@ const TemplateSelectionModal = ({ productData }) => {
                                 <div key={item.id} className="d-flex flex-column justify-content-between align-items-center" >
                                     {/* {<item.component productData={productData}/>} */}
                                     <img src={item.demoImage} alt="Demo img" />
-                                    <button onClick={() => { handleSelect(item.id) }} className="small-select-btn mt-3 mb-3" data-dismiss="modal"><span>Select</span></button>
+                                    {item.status === 'ACTIVE' && <button onClick={() => { handleSelect(item.id) }} className="small-select-btn mt-3 mb-3" data-dismiss="modal"><span>Select</span></button>}
+                                    {item.status === 'COMING_SOON' && <button className="coming-soon-btn mt-3 mb-3" ><span>Coming soon</span></button>}
+                                    
                                 </div>
                             ))}
                         </Carousel>
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
-    </div>);
+    </div >);
 }
 
 export default TemplateSelectionModal;
