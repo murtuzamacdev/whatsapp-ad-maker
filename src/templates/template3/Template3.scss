@@ -96,10 +96,10 @@
   }
 
   .product-price {
-    font-family: Oswald;
+    font-family: Rock Salt;
     font-style: normal;
-    font-weight: bold;
-    font-size: 1.4rem;
+    // font-weight: bold;
+    font-size: 1.1rem;
     color: #ffffff;
     background-color: #5a5a5a;
     display: inline-block;
@@ -109,9 +109,9 @@
     .child1 {
       background-color: white;
       text-align: left;
-      font-family: Oswald;
+      font-family: Rock Salt;
       font-style: normal;
-      font-weight: bold;
+      // font-weight: bold;
       font-size: 1.7rem;
       line-height: 47px;
       color: #333232;
@@ -121,7 +121,7 @@
   .product-desc {
     font-family: Oswald;
     font-style: normal;
-    font-weight: normal;
+    font-weight: lighter;
     font-size: 1.2rem;
     line-height: 31px;
     white-space: break-spaces;
@@ -141,13 +141,14 @@
     align-items: center;
     max-width: 40%;
     white-space: nowrap;
+    text-transform: uppercase;
   }
 
   .seller-name {
-    font-family: Oswald;
+    font-family:  Rock Salt;
     font-style: normal;
     font-weight: normal;
-    font-size: 0.9rem;
+    font-size: 0.6rem;
     line-height: 22px;
     width: 100%;
     color: #ffffff;
