@@ -16,7 +16,7 @@ html{
   overflow: hidden;
 }
 
-.card input, .card select, .card textarea {
+.card input, .card select, .card select, .card textarea, input.search-input {
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   width: 100%;
@@ -48,7 +48,7 @@ html{
   color: rgba(0, 0, 0, 0.22);
 }
 
-.card input:focus-visible, .card select:focus-visible, .card textarea:focus-visible {
+input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: none;
 }
 

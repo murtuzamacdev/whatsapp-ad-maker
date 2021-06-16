@@ -16,7 +16,7 @@ const Template5 = ({ productData }) => {
                 <img className="product-image-backdrop" src={backdrop} alt="productBackdrop" />
                 <div className="d-flex name-price-ctnr product-name-card justify-content-between align-items-center flex-column">
                     <p style={{ flexGrow: 0.7 }} className="m-0 product-name">{productData.productName}</p>
-                    {productData.productPrice !== '' && <p className="m-0 mt-3 product-price pt-2 pb-2 pl-4 pr-4" style={{ backgroundColor: productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === productData.currencyCode).symbol}</small> {productData.productPrice}<small>.00</small></p>}
+                    {productData.productPrice !== '' && <p className="m-0 mt-3 product-price pt-3 pb-2 pl-4 pr-4" style={{ backgroundColor: productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === productData.currencyCode).symbol}</small> {productData.productPrice}<small>.00</small></p>}
                 </div>
 
             </div>

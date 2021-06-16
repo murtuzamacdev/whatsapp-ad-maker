@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { GlobalContext } from '../../context/global.context';
 import currencies from '../../configs/currencies.json';
 import { CirclePicker } from 'react-color';
+import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
 
 const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
@@ -35,12 +36,17 @@ const CreateAd = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const updatePicture = (file, setFieldValue) => {
-        var reader = new FileReader();
-        reader.onload = function (event) {
-            setFieldValue('productImage', event.target.result);
-        };
-        reader.readAsDataURL(file);
+    const updatePicture = (file, setFieldValue, source) => {
+        if (source !== 'FROM_INTERNET') {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                setFieldValue('productImage', event.target.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            setFieldValue('productImage', file);
+        }
+
     };
 
     const resetFormCustom = (setFieldValue) => {
@@ -88,7 +94,7 @@ const CreateAd = () => {
                 localStorage.setItem('productData', JSON.stringify(jsonWithoutImage));
                 history.push('previewAd');
             }}
-            // enableReinitialize
+        // enableReinitialize
         >{({ errors, touched, setFieldValue, values, resetForm, handleChange }) => (
             <Form>
                 <div className="card pb-4">
@@ -97,10 +103,10 @@ const CreateAd = () => {
                         {(values.productImage === '' || values.productImage === undefined) ?
                             <div className="d-flex justify-content-center">
                                 <label class="btn btn-default buttons-ctrns p-0 w-auto">
-                                    <div style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button ">Select Product Image *</div>
-                                    <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
+                                    <button type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button ">Select Product Image *</button>
+                                    {/* <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
                                         updatePicture(data.target.files[0], setFieldValue);
-                                    }} />
+                                    }} /> */}
                                 </label>
                             </div>
                             :
@@ -108,10 +114,10 @@ const CreateAd = () => {
                                 <img src={values.productImage} alt="productImage" />
                                 <div className="d-flex justify-content-center change-image">
                                     <label class="btn btn-default buttons-ctrns p-0 w-auto">
-                                        <div style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button">Change Product Image</div>
-                                        <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
+                                        <div type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button">Change Product Image</div>
+                                        {/* <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
                                             updatePicture(data.target.files[0], setFieldValue);
-                                        }} />
+                                        }} /> */}
                                     </label>
                                 </div>
                             </>
@@ -207,25 +213,18 @@ const CreateAd = () => {
                         />
                     </div>
 
-
-
                     <p className="form-disclaimer fields-ctnr mt-4 ">Fields marked with * are required. Rest of the fields are optional.</p>
 
                     <div className="d-flex justify-content-around btns-ctnr pb-3 mt-3">
                         <div className="buttons-ctrns mr-1"> <button type="button" style={{ backgroundColor: productData.selectedBackgroundColor }} className="reset-button " onClick={() => { resetFormCustom(setFieldValue) }}>Reset</button></div>
                         <div className="buttons-ctrns ml-1"> <button type="submit" style={{ backgroundColor: productData.selectedBackgroundColor }} className="preview-button " onClick={() => { window.scrollTo(0, 0); }} >Preview</button></div>
                     </div>
-
                 </div>
-
-
+                <SelectImageModal updatePicture={updatePicture} setFieldValue={setFieldValue} />
             </Form>
         )}
-
         </Formik>}
-
         <a href="mailto:murtuza.mac.dev@gmail.com" className="contact-link mt-3">Contact developer</a>
-
     </div>);
 }
 
