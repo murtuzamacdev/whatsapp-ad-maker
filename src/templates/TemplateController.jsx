@@ -35,7 +35,7 @@ export const TEMPLATES = {
         id: 'template4',
         component: Template4,
         demoImage: template4Img,
-        status: 'COMING_SOON'
+        status: 'ACTIVE'
     },
     template5: {
         id: 'template5',

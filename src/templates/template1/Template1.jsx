@@ -28,11 +28,7 @@ const Template1 = ({ productData }) => {
 
                 </div>
             </div>
-
         </div>
-
-
-
     </div>);
 }
 
