@@ -1,3 +1,4 @@
+import 'react-tabs/style/react-tabs.css';
 import './App.css';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import CreateAd from './pages/createAd/CreateAd';

@@ -33,6 +33,15 @@ const CreateAd = () => {
             _data && setProductData({ ...productData, ..._data });
         }
         setSafeToShowForm(true);
+
+        // Closing Modal when back button is clicked instead of routing to back page
+        window.onpopstate = e => {
+            e.preventDefault();
+            if (window.$('#selectImageModal').hasClass('show')) {
+                window.$('#selectImageModal').modal('hide');
+                history.goForward();
+            }
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

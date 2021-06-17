@@ -121,3 +121,25 @@ button.close{
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.react-tabs__tab{
+  width: 50%;
+  border: 0;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.react-tabs__tab--selected{
+  background-color: transparent;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.react-tabs__tab-list{
+  border: 0;
+}
+
+.react-tabs__tab:focus{
+  box-shadow: none;
+  border-color: transparent;
+}

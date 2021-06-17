@@ -93,7 +93,7 @@ const PreviewAd = () => {
 
     return (
         <div onClick={toggleControls} className="preview-ad-ctnr">
-            {loading && <Loading></Loading>}
+            {loading && <Loading fullScreen={true}></Loading>}
             {productData && <>
                 <div className="d-flex flex-column previewAd" id="html-content-holder">
                     {getSelectedTemplateComponent()}
