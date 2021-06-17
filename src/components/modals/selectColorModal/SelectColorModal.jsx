@@ -1,7 +1,11 @@
+import React, { useContext } from "react";
 import './SelectColorModal.scss';
-import { CirclePicker, CompactPicker, SwatchesPicker } from 'react-color';
+import { SwatchesPicker } from 'react-color';
+import { GlobalContext } from '../../../context/global.context';
 
-const SelectColorModal = ({ currentColor, handleColorChange }) => {
+const SelectColorModal = ({ handleColorChange }) => {
+    const globalContext = useContext(GlobalContext);
+
     return (<div class="modal fade select-color-modal-ctrn" id="selectColorModal" tabindex="-1" role="dialog" aria-labelledby="SelectImageModal" aria-hidden="true">
         <div style={{ height: '100%' }} className="d-flex flex-column justify-content-end m-0">
             <div class="modal-dialog" role="document">
@@ -13,7 +17,7 @@ const SelectColorModal = ({ currentColor, handleColorChange }) => {
                     </div>
                     <div class="modal-body">
                         <SwatchesPicker
-                            color={currentColor}
+                            color={globalContext.state.productData.selectedBackgroundColor}
                             onChangeComplete={(color) => { handleColorChange(color) }} />
                     </div>
                 </div>

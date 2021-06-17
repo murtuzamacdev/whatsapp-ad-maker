@@ -6,7 +6,7 @@ import { GlobalContext } from '../../../context/global.context';
 import { TEMPLATES } from '../../../templates/TemplateController';
 
 
-const TemplateSelectionModal = ({ productData }) => {
+const TemplateSelectionModal = () => {
     const globalContext = useContext(GlobalContext);
     let templatesArr = [];
     Object.keys(TEMPLATES).forEach(function (key) {

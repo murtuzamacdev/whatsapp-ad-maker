@@ -5,7 +5,6 @@ import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
 import { GlobalContext } from '../../context/global.context';
 import currencies from '../../configs/currencies.json';
-import { CirclePicker } from 'react-color';
 import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
 
 const CreateAd = () => {

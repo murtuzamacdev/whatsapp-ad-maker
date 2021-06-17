@@ -21,7 +21,6 @@ import SelectColorModal from '../../components/modals/selectColorModal/SelectCol
 
 const PreviewAd = () => {
     const globalContext = useContext(GlobalContext);
-    const [productData, setProductData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [showControls, setShowControls] = useState(true);
     let history = useHistory();
@@ -38,12 +37,9 @@ const PreviewAd = () => {
         }
 
         // Set initial data
-        let data = globalContext.state.productData;
-        if (data) {
-            setProductData(data);
-        } else {
+        if (!globalContext.state.productData) {
             history.push('createAd');
-        }
+        } 
 
         setTimeout(() => {
             setShowControls(false);
@@ -87,7 +83,7 @@ const PreviewAd = () => {
 
     const getSelectedTemplateComponent = () => {
         let SelectedTemplate = TEMPLATES[globalContext.state.selectedTemplate].component;
-        return <SelectedTemplate productData={productData} />
+        return <SelectedTemplate />
     }
 
     const toggleControls = () => {
@@ -96,14 +92,13 @@ const PreviewAd = () => {
 
     const handleColorChange = (newColor) => {
         window.$('#selectColorModal').modal('hide');
-        globalContext.setProductData({ ...productData, selectedBackgroundColor: newColor.hex });
-        setProductData({ ...productData, selectedBackgroundColor: newColor.hex });
+        globalContext.setProductData({ ...globalContext.state.productData, selectedBackgroundColor: newColor.hex });  
     }
 
     return (
         <div onClick={toggleControls} className="preview-ad-ctnr">
             {loading && <Loading fullScreen={true}></Loading>}
-            {productData && <>
+            {globalContext.state.productData && <>
                 <div className="d-flex flex-column previewAd" id="html-content-holder">
                     {getSelectedTemplateComponent()}
                 </div>
@@ -119,8 +114,8 @@ const PreviewAd = () => {
                         src={changeColor} data-toggle="modal" data-target="#selectColorModal" data-backdrop="false"></input>
                 </>}
 
-                <TemplateSelectionModal productData={productData} />
-                <SelectColorModal currentColor={productData.selectedBackgroundColor} handleColorChange={handleColorChange} />
+                <TemplateSelectionModal />
+                <SelectColorModal handleColorChange={handleColorChange} />
             </>}
         </div>);
 }
