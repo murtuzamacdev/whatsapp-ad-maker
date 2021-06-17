@@ -69,11 +69,6 @@ const CreateAd = () => {
         setProductData({ ...productData, selectedBackgroundColor: '#7986cb' })
     }
 
-    // const handleChangeComplete = (color, setFieldValue) => {
-    //     setFieldValue('selectedBackgroundColor', color.hex);
-    //     setProductData({ ...productData, selectedBackgroundColor: ref.current.values.selectedBackgroundColor })
-    // }
-
     return (<div className="createAd p-3" style={{ backgroundColor: productData.selectedBackgroundColor }}>
         {safeToShowForm && <Formik
             innerRef={ref}
@@ -112,9 +107,6 @@ const CreateAd = () => {
                             <div className="d-flex justify-content-center">
                                 <label class="btn btn-default buttons-ctrns p-0 w-auto">
                                     <button type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button ">Select Product Image *</button>
-                                    {/* <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
-                                        updatePicture(data.target.files[0], setFieldValue);
-                                    }} /> */}
                                 </label>
                             </div>
                             :
@@ -123,9 +115,6 @@ const CreateAd = () => {
                                 <div className="d-flex justify-content-center change-image">
                                     <label class="btn btn-default buttons-ctrns p-0 w-auto">
                                         <div type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button">Change Product Image</div>
-                                        {/* <input type="file" accept="image/png, image/gif, image/jpeg" hidden onChange={(data) => {
-                                            updatePicture(data.target.files[0], setFieldValue);
-                                        }} /> */}
                                     </label>
                                 </div>
                             </>
@@ -212,15 +201,6 @@ const CreateAd = () => {
                         </div>
                     )}
 
-                    {/* Color theme */}
-                    {/* <div className="  mt-4 fields-ctnr">
-                        <label className="pb-2">Select a color theme?</label>
-                        <CirclePicker
-                            color={values.selectedBackgroundColor}
-                            onChangeComplete={(color) => { handleChangeComplete(color, setFieldValue) }}
-                        />
-                    </div> */}
-
                     <p className="form-disclaimer fields-ctnr mt-4 ">Fields marked with * are required. Rest of the fields are optional.</p>
 
                     <div className="d-flex justify-content-around btns-ctnr pb-3 mt-3">
@@ -229,10 +209,11 @@ const CreateAd = () => {
                     </div>
                 </div>
                 <SelectImageModal updatePicture={updatePicture} setFieldValue={setFieldValue} />
+                <a href="mailto:murtuza.mac.dev@gmail.com" className="contact-link mt-3">Contact developer</a>
             </Form>
         )}
         </Formik>}
-        <a href="mailto:murtuza.mac.dev@gmail.com" className="contact-link mt-3">Contact developer</a>
+        
     </div>);
 }
 

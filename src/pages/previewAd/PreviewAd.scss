@@ -12,7 +12,6 @@
   }
 
   .download-btn {
-   
     height: 70px;
     width: 70px;
     right: 10px;
@@ -21,7 +20,6 @@
   }
 
   .edit-btn {
-    
     height: 70px;
     width: 70px;
     right: 10px;
@@ -30,7 +28,6 @@
   }
 
   .change-temp-btn {
-    
     height: 70px;
     width: 70px;
     right: 10px;
@@ -39,7 +36,6 @@
   }
 
   .change-color-btn {
-    
     height: 70px;
     width: 70px;
     right: 10px;
@@ -47,14 +43,26 @@
     z-index: 2;
   }
 
-  input{
+  input {
     position: absolute;
+    transition: visibility 0s linear 0s, opacity 300ms;
+  }
+
+  .fadeOut {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+  }
+  .fadeIn {
+    opacity: 1;
+    transition: width 0.5s, height 0.5s, opacity 0.5s 0s;
   }
 }
 
 @media (max-width: 476px) {
-  .preview-ad-ctnr  {
-    input{
+  .preview-ad-ctnr {
+    input {
       position: fixed;
     }
   }

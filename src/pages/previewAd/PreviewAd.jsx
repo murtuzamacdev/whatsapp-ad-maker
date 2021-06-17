@@ -22,7 +22,7 @@ import SelectColorModal from '../../components/modals/selectColorModal/SelectCol
 const PreviewAd = () => {
     const globalContext = useContext(GlobalContext);
     const [loading, setLoading] = useState(false);
-    const [showControls, setShowControls] = useState(true);
+    const [showControls, setShowControls] = useState(false);
     let history = useHistory();
 
     useEffect(() => {
@@ -39,11 +39,13 @@ const PreviewAd = () => {
         // Set initial data
         if (!globalContext.state.productData) {
             history.push('createAd');
-        } 
+        }
 
         setTimeout(() => {
             setShowControls(false);
-        }, 3000);
+        }, 5000);
+
+        setShowControls(true);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -92,7 +94,7 @@ const PreviewAd = () => {
 
     const handleColorChange = (newColor) => {
         window.$('#selectColorModal').modal('hide');
-        globalContext.setProductData({ ...globalContext.state.productData, selectedBackgroundColor: newColor.hex });  
+        globalContext.setProductData({ ...globalContext.state.productData, selectedBackgroundColor: newColor.hex });
     }
 
     return (
@@ -103,16 +105,14 @@ const PreviewAd = () => {
                     {getSelectedTemplateComponent()}
                 </div>
 
-                {showControls && <>
-                    <input type="image" class="edit-btn" alt="Edit Button"
-                        src={editBtn} onClick={goToCreateAd}></input>
-                    <input type="image" class="download-btn" alt="Download Button"
-                        src={downloadBtn} onClick={downloadScreenshot}></input>
-                    <input type="image" class="change-temp-btn" alt="Change Template Button"
-                        src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>
-                    <input type="image" class="change-color-btn" alt="Change Color Button"
-                        src={changeColor} data-toggle="modal" data-target="#selectColorModal" data-backdrop="false"></input>
-                </>}
+                <input type="image" className={"edit-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Edit Button"
+                    src={editBtn} onClick={goToCreateAd}></input>
+                <input type="image" className={"download-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Download Button"
+                    src={downloadBtn} onClick={downloadScreenshot}></input>
+                <input type="image" className={"change-temp-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Change Template Button"
+                    src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>
+                <input type="image" className={"change-color-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Change Color Button"
+                    src={changeColor} data-toggle="modal" data-target="#selectColorModal" data-backdrop="false"></input>
 
                 <TemplateSelectionModal />
                 <SelectColorModal handleColorChange={handleColorChange} />
