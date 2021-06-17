@@ -18,7 +18,7 @@ const CreateAd = () => {
         productDescription: "",
         sellerName: "",
         whatsappNumber: "",
-        selectedBackgroundColor: "#607d8b"
+        selectedBackgroundColor: "rgb(121, 134, 203)"
     });
     let history = useHistory();
     const ref = useRef(null);
@@ -65,8 +65,8 @@ const CreateAd = () => {
         setFieldValue('productDescription', '');
         setFieldValue('sellerName', '');
         setFieldValue('whatsappNumber', '');
-        setFieldValue('selectedBackgroundColor', '#607d8b');
-        setProductData({ ...productData, selectedBackgroundColor: '#607d8b' })
+        setFieldValue('selectedBackgroundColor', 'rgb(121, 134, 203)');
+        setProductData({ ...productData, selectedBackgroundColor: 'rgb(121, 134, 203)' })
     }
 
     // const handleChangeComplete = (color, setFieldValue) => {
