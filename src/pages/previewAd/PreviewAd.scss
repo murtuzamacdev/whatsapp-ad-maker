@@ -1,4 +1,5 @@
 .preview-ad-ctnr {
+  position: relative;
   .previewAd {
     height: 100vh;
     overflow: hidden;
@@ -11,7 +12,7 @@
   }
 
   .download-btn {
-    position: fixed;
+   
     height: 70px;
     width: 70px;
     right: 10px;
@@ -20,7 +21,7 @@
   }
 
   .edit-btn {
-    position: fixed;
+    
     height: 70px;
     width: 70px;
     right: 10px;
@@ -29,7 +30,7 @@
   }
 
   .change-temp-btn {
-    position: fixed;
+    
     height: 70px;
     width: 70px;
     right: 10px;
@@ -38,11 +39,23 @@
   }
 
   .change-color-btn {
-    position: fixed;
+    
     height: 70px;
     width: 70px;
     right: 10px;
     bottom: 150px;
     z-index: 2;
+  }
+
+  input{
+    position: absolute;
+  }
+}
+
+@media (max-width: 476px) {
+  .preview-ad-ctnr  {
+    input{
+      position: fixed;
+    }
   }
 }

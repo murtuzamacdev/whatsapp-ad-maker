@@ -11,7 +11,21 @@ const Template5 = () => {
     const globalContext = useContext(GlobalContext);
     const productDescDivHeight = window.innerHeight * (122 / 812);
 
-    return (<div class="template5-cntr" style={{ backgroundColor: globalContext.state.productData.selectedBackgroundColor }}>
+    function hexToRgbA() {
+        var c;
+        let hex = globalContext.state.productData.selectedBackgroundColor
+        if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+            c = hex.substring(1).split('');
+            if (c.length == 3) {
+                c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+            }
+            c = '0x' + c.join('');
+            return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',0.7)';
+        }
+        throw new Error('Bad Hex');
+    }
+
+    return (<div class="template5-cntr" style={{ background: 'linear-gradient( 0.74deg , ' +  hexToRgbA() + ' 0.59%, ' + globalContext.state.productData.selectedBackgroundColor + ' 99.01%)' }}>
         <div className="card p-0 main-card">
             {/* Main Image */}
             <div style={{ minHeight: '60%', flexGrow: 1 }} className="d-flex product-image-card justify-content-center p-0">
