@@ -70,10 +70,10 @@ const CreateAd = () => {
         setProductData({ ...productData, selectedBackgroundColor: '#607d8b' })
     }
 
-    const handleChangeComplete = (color, setFieldValue) => {
-        setFieldValue('selectedBackgroundColor', color.hex);
-        setProductData({ ...productData, selectedBackgroundColor: ref.current.values.selectedBackgroundColor })
-    }
+    // const handleChangeComplete = (color, setFieldValue) => {
+    //     setFieldValue('selectedBackgroundColor', color.hex);
+    //     setProductData({ ...productData, selectedBackgroundColor: ref.current.values.selectedBackgroundColor })
+    // }
 
     return (<div className="createAd p-3" style={{ backgroundColor: productData.selectedBackgroundColor }}>
         {safeToShowForm && <Formik
@@ -214,13 +214,13 @@ const CreateAd = () => {
                     )}
 
                     {/* Color theme */}
-                    <div className="  mt-4 fields-ctnr">
+                    {/* <div className="  mt-4 fields-ctnr">
                         <label className="pb-2">Select a color theme?</label>
                         <CirclePicker
                             color={values.selectedBackgroundColor}
                             onChangeComplete={(color) => { handleChangeComplete(color, setFieldValue) }}
                         />
-                    </div>
+                    </div> */}
 
                     <p className="form-disclaimer fields-ctnr mt-4 ">Fields marked with * are required. Rest of the fields are optional.</p>
 

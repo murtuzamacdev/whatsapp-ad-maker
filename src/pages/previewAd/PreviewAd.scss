@@ -24,7 +24,7 @@
     height: 70px;
     width: 70px;
     right: 10px;
-    bottom: 170px;
+    bottom: 80px;
     z-index: 2;
   }
 
@@ -33,7 +33,16 @@
     height: 70px;
     width: 70px;
     right: 10px;
-    bottom: 90px;
+    bottom: 220px;
+    z-index: 2;
+  }
+
+  .change-color-btn {
+    position: fixed;
+    height: 70px;
+    width: 70px;
+    right: 10px;
+    bottom: 150px;
     z-index: 2;
   }
 }

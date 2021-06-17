@@ -8,6 +8,8 @@ import { GlobalContext } from '../../context/global.context';
 import downloadBtn from '../../assets/images/downloadBtn.png';
 import editBtn from '../../assets/images/editBtn.png';
 import changeTemplateBtn from '../../assets/images/changeTempBtn.png';
+import changeColor from '../../assets/images/changeColor.png';
+
 
 // Templates
 import { TEMPLATES } from '../../templates/TemplateController';
@@ -15,6 +17,7 @@ import { TEMPLATES } from '../../templates/TemplateController';
 // Components
 import Loading from '../../components/loading/Loading';
 import TemplateSelectionModal from '../../components/modals/templateSelection/TemplateSelectionModal';
+import SelectColorModal from '../../components/modals/selectColorModal/SelectColorModal';
 
 const PreviewAd = () => {
     const globalContext = useContext(GlobalContext);
@@ -91,6 +94,12 @@ const PreviewAd = () => {
         setShowControls(!showControls);
     }
 
+    const handleColorChange = (newColor) => {
+        window.$('#selectColorModal').modal('hide');
+        globalContext.setProductData({ ...productData, selectedBackgroundColor: newColor.hex });
+        setProductData({ ...productData, selectedBackgroundColor: newColor.hex });
+    }
+
     return (
         <div onClick={toggleControls} className="preview-ad-ctnr">
             {loading && <Loading fullScreen={true}></Loading>}
@@ -99,15 +108,19 @@ const PreviewAd = () => {
                     {getSelectedTemplateComponent()}
                 </div>
 
-                {showControls && <><input type="image" class="edit-btn" alt="Edit Button"
-                    src={editBtn} onClick={goToCreateAd}></input>
+                {showControls && <>
+                    <input type="image" class="edit-btn" alt="Edit Button"
+                        src={editBtn} onClick={goToCreateAd}></input>
                     <input type="image" class="download-btn" alt="Download Button"
                         src={downloadBtn} onClick={downloadScreenshot}></input>
                     <input type="image" class="change-temp-btn" alt="Change Template Button"
                         src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>
+                    <input type="image" class="change-color-btn" alt="Change Color Button"
+                        src={changeColor} data-toggle="modal" data-target="#selectColorModal" data-backdrop="false"></input>
                 </>}
 
                 <TemplateSelectionModal productData={productData} />
+                <SelectColorModal currentColor={productData.selectedBackgroundColor} handleColorChange={handleColorChange} />
             </>}
         </div>);
 }

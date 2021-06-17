@@ -10,8 +10,12 @@ const Template4 = ({ productData }) => {
     const [secondaryBgForGradient, setSecondaryBgForGradient] = useState('#ffffff');
 
     useEffect(() => {
-        setSecondaryBgForGradient(generateColorHex());;
+        setSecondaryBgForGradient(generateColorHex());
     }, [])
+
+    useEffect(() => {
+        setSecondaryBgForGradient(generateColorHex());
+    }, productData.selectedBackgroundColor)
 
     const generateColorHex = () => {
         const randomColor = Math.floor(Math.random() * 16777215).toString(16);

@@ -32,7 +32,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
     }, []);
 
     const fetchImages = (_currentPage) => {
-        let _query = /\S/.test(searchTxt) ? searchTxt : 'shoes, fruits, mobiles, cakes, clothing, chocolates, watches';
+        let _query = /\S/.test(searchTxt) ? searchTxt : 'shoes, fruits, clothing, chocolates, watches';
 
         client.photos.search({ query: _query, per_page: 60, page: _currentPage }).then(photos => {
             let _images = [];
@@ -66,7 +66,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
     }
 
     const onImageSelect = (imgUrl, type) => {
-        window.$('#selectImageModal').modal('hide')
+        window.$('#selectImageModal').modal('hide');
         updatePicture(imgUrl, setFieldValue, type)
     }
 
@@ -89,7 +89,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
 
                                 {/* From Internet */}
                                 <TabPanel>
-                                    <div className="p-3 mb-2 d-flex justify-content-center align-items-center">
+                                    <div className="p-3 d-flex justify-content-center align-items-center">
                                         <input type="text" placeholder="Search millions of photos" value={searchTxt} onChange={(e) => { setSearchTxt(e.target.value) }} className="search-input mr-2" />
                                         {!showSearchBtnLoading && <input type="button" class="search-btn" alt="Search Button" onClick={() => { handleSearch() }}></input>}
                                         {showSearchBtnLoading && <div style={{ position: 'relative', height: '50px', width: '50px' }}><Loading fullScreen={false} /></div>}
