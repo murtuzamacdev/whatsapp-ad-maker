@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { GlobalContext } from '../../context/global.context';
 import currencies from '../../configs/currencies.json';
 import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
+import SelectCurrency from 'react-select-currency';
 
 const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
@@ -14,7 +15,7 @@ const CreateAd = () => {
         productImage: "",
         productName: "",
         productPrice: "",
-        currencyCode: "INR",
+        currencyCode: "",
         productDescription: "",
         sellerName: "",
         whatsappNumber: "",
@@ -61,12 +62,16 @@ const CreateAd = () => {
         setFieldValue('productImage', '');
         setFieldValue('productName', '');
         setFieldValue('productPrice', '');
-        setFieldValue('currencyCode', 'INR');
+        setFieldValue('currencyCode', '');
         setFieldValue('productDescription', '');
         setFieldValue('sellerName', '');
         setFieldValue('whatsappNumber', '');
         setFieldValue('selectedBackgroundColor', '#7986cb');
         setProductData({ ...productData, selectedBackgroundColor: '#7986cb' })
+    }
+
+    const onSelectedCurrency = currencyAbbrev => {
+        console.log('object :>> ', currencyAbbrev);
     }
 
     return (<div className="createAd p-3" style={{ backgroundColor: productData.selectedBackgroundColor }}>
@@ -147,14 +152,10 @@ const CreateAd = () => {
                     <div className=" mt-4 fields-ctnr">
                         <label>What’s the price of this product?</label>
                         <div className="d-flex">
-                            <Field as="select" name="currencyCode" className="currency-select mr-3">
-                                {currencies.map((currency) => {
-                                    return (<option key={currency.code} value={currency.code}>{currency.code}</option>)
-                                })}
-                            </Field>
+                        <SelectCurrency value={values.currencyCode} onChange={(event)=> {setFieldValue('currencyCode', event.target.value)}}/>
                             <Field
                                 type="number"
-                                placeholder="Example: 5000"
+                                placeholder="5000"
                                 className="ml-2"
                                 class="product-price"
                                 name="productPrice"

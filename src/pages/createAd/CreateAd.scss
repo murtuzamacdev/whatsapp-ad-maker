@@ -16,7 +16,6 @@
   }
 
   .product-name-card {
-    
     .product-name {
       flex: 0.7;
     }
@@ -50,11 +49,13 @@
     color: rgba(0, 0, 0, 0.45);
   }
 
-  .fields-ctnr{
+  .fields-ctnr {
     padding: 0 0.8rem;
   }
 
-  .currency-select{
-    width: 50%;
+  .react-autosuggest__container {
+    input {
+      width: 100%;
+    }
   }
 }

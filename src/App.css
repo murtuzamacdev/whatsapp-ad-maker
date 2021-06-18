@@ -26,6 +26,9 @@ html{
   padding: 16px 20px;
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.65);
+  height: auto;
+  font-family: Roboto;
+  font-weight: normal;
 }
 
 .card textarea{
@@ -143,4 +146,9 @@ button.close{
 .react-tabs__tab:focus{
   box-shadow: none;
   border-color: transparent;
+}
+
+.react-autosuggest__suggestions-container--open{
+  border:0 !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
 }
