@@ -52,11 +52,10 @@
   }
 
   .store-name {
-    font-family: Condiment;
-    font-style: normal;
+    font-family: Montserrat;
+    font-style: italic;
     font-weight: bold;
     font-size: 0.85rem;
-    line-height: 18px;
     color: rgba(0, 0, 0, 0.6);
     white-space: nowrap;
     overflow: hidden;
@@ -70,7 +69,6 @@
     font-style: italic;
     font-weight: bold;
     font-size: 1.1rem;
-    line-height: 25px;
     color: rgba(0, 0, 0, 0.7);
     width: 100%;
     text-align: left;
@@ -96,4 +94,9 @@
     overflow: hidden;
     border: 0;
   }
+
+  .order-now{
+    font-size: 0.8rem;
+    font-family: Montserrat;
+  } 
 }

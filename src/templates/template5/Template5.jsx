@@ -46,7 +46,7 @@ const Template5 = () => {
 
                 {/* Business name */}
                 {(globalContext.state.productData.sellerName !== '' || globalContext.state.productData.whatsappNumber !== '') && <div style={{ flex: 1 }} className=" business-name-card justify-content-center align-items-start">
-                    {globalContext.state.productData.sellerName !== '' && <p className="store-name m-0"><small style={{ fontSize: '11px' }}>Order Now </small><br />{globalContext.state.productData.sellerName}</p>}
+                    {globalContext.state.productData.sellerName !== '' && <p className="store-name m-0"><small className='order-now'>Order Now </small><br />{globalContext.state.productData.sellerName}</p>}
                     {globalContext.state.productData.whatsappNumber !== '' && <div className="d-flex mt-1">
                         <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
                         <p className="whatsapp-number m-0 ml-2">{globalContext.state.productData.whatsappNumber}</p>
