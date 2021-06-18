@@ -4,7 +4,6 @@ import './CreateAd.scss';
 import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
 import { GlobalContext } from '../../context/global.context';
-import currencies from '../../configs/currencies.json';
 import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
 import SelectCurrency from 'react-select-currency';
 
@@ -68,10 +67,6 @@ const CreateAd = () => {
         setFieldValue('whatsappNumber', '');
         setFieldValue('selectedBackgroundColor', '#7986cb');
         setProductData({ ...productData, selectedBackgroundColor: '#7986cb' })
-    }
-
-    const onSelectedCurrency = currencyAbbrev => {
-        console.log('object :>> ', currencyAbbrev);
     }
 
     return (<div className="createAd p-3" style={{ backgroundColor: productData.selectedBackgroundColor }}>
