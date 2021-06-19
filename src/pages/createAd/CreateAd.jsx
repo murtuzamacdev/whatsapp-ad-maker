@@ -217,7 +217,7 @@ const CreateAd = () => {
                             {errors.pitchText}
                         </div>
                     )}
-                    <div className="mt-2 fields-ctnr">
+                    <div className="mt-1 fields-ctnr">
                         {PITCH_DEFAULT.map((item) => <button onClick={()=> {setFieldValue('pitchText', item)}} className={'chips p-2 mr-2 mt-2 ' + (item === values.pitchText && 'selected')} type="button">{item}</button>)}
                     </div>
 
