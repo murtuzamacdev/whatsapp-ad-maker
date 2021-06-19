@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import './PreviewAd.scss';
 import domtoimage from 'dom-to-image';
 import { GlobalContext } from '../../context/global.context';
+import { UNSPLASH_APP_NAME, UNSPLASH_API_KEY} from '../../configs/constants';
+import { createApi } from 'unsplash-js';
 
 //assets
 import downloadBtn from '../../assets/images/downloadBtn.png';
@@ -24,6 +26,9 @@ const PreviewAd = () => {
     const [loading, setLoading] = useState(false);
     const [showControls, setShowControls] = useState(false);
     let history = useHistory();
+    const unsplash = createApi({
+        accessKey: UNSPLASH_API_KEY
+    });
 
     useEffect(() => {
 
@@ -56,6 +61,12 @@ const PreviewAd = () => {
     }, [])
 
     const downloadScreenshot = (params) => {
+
+        // To track unsplash image download as per their guidelines
+        globalContext.state.selectedUnsplashPhoto && unsplash.photos.trackDownload({
+            downloadLocation: globalContext.state.selectedUnsplashPhoto.links.download_location,
+        });
+
         setLoading(true);
         const scale = 3
         const node = document.getElementById("html-content-holder")
@@ -118,6 +129,10 @@ const PreviewAd = () => {
                     src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>
                 <input type="image" className={"change-color-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Change Color Button"
                     src={changeColor} data-toggle="modal" data-target="#selectColorModal" data-backdrop="false"></input>
+
+                {globalContext.state.selectedUnsplashPhoto && <div className={"unsplash-attr-ctrn " + (showControls ? 'fadeIn' : 'fadeOut')} >
+                    <div>Photo by <a rel="noreferrer" target="_blank" href={`https://unsplash.com/@${globalContext.state.selectedUnsplashPhoto.user.username}?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>{globalContext.state.selectedUnsplashPhoto.user.name}</a> on <a target="_blank" rel="noreferrer" href={`https://unsplash.com/?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>Unsplash</a></div>
+                </div>}
 
                 <TemplateSelectionModal />
                 <SelectColorModal handleColorChange={handleColorChange} />

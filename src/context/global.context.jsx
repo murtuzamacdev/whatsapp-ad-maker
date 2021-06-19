@@ -6,7 +6,8 @@ export const GlobalContext = React.createContext();
 export class GlobalContextProvider1 extends Component {
     state = {
         productData: null,
-        selectedTemplate: 'template1'
+        selectedTemplate: 'template1',
+        selectedUnsplashPhoto: null
     }
 
     componentDidMount() {
@@ -31,13 +32,18 @@ export class GlobalContextProvider1 extends Component {
         })
     }
 
+    setSelectedUnsplashPhoto = (_setSelectedUnsplashPhoto) => {
+        this.setState({selectedUnsplashPhoto: _setSelectedUnsplashPhoto});
+    }
+
     render() {
         return (
             <GlobalContext.Provider
                 value={{
                     state: this.state,
                     setProductData: this.setProductData,
-                    setSelectedTemplate: this.setSelectedTemplate
+                    setSelectedTemplate: this.setSelectedTemplate,
+                    setSelectedUnsplashPhoto: this.setSelectedUnsplashPhoto
                 }}
             >
                 {this.props.children}

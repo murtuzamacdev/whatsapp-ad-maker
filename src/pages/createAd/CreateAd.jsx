@@ -51,10 +51,12 @@ const CreateAd = () => {
             var reader = new FileReader();
             reader.onload = function (event) {
                 setFieldValue('productImage', event.target.result);
+                globalContext.setSelectedUnsplashPhoto(null);
             };
             reader.readAsDataURL(file);
         } else {
-            setFieldValue('productImage', file);
+            setFieldValue('productImage', file.urls.regular);
+            globalContext.setSelectedUnsplashPhoto(file);
         }
 
     };

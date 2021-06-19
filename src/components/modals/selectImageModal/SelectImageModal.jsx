@@ -66,9 +66,9 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
         }
     }
 
-    const onImageSelect = (imgUrl, type) => {
+    const onImageSelect = (unsplashPhoto, type) => {
         window.$('#selectImageModal').modal('hide');
-        updatePicture(imgUrl, setFieldValue, type)
+        updatePicture(unsplashPhoto, setFieldValue, type)
     }
 
     return (
@@ -97,7 +97,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                                     </div>
 
                                     {images.length !== 0 && <>
-                                        <a href="https://www.pexels.com" rel="noreferrer" target="_blank"> <img src="https://images.pexels.com/lib/api/pexels.png" width="60px" className="mb-1 pl-1" alt="Pexels" /> </a>
+                                        {/* <a href="https://www.pexels.com" rel="noreferrer" target="_blank"> <img src="https://images.pexels.com/lib/api/pexels.png" width="60px" className="mb-1 pl-1" alt="Pexels" /> </a> */}
                                         <ImageGrid images={images} onImageSelect={onImageSelect} />
                                         <div className="btn-ctrn mt-3 mb-3"><button type="button" onClick={() => { fetchImages() }} className="load-more-btn ">Load More</button></div>
                                     </>}

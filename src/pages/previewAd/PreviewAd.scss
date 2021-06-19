@@ -59,6 +59,36 @@
     opacity: 1;
     transition: width 0.5s, height 0.5s, opacity 0.5s 0s;
   }
+
+  .unsplash-attr-ctrn.fadeOut {
+    opacity: 0;
+    // width: 0;
+    // height: 0;
+    transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+  }
+
+  .unsplash-attr-ctrn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    color: white;
+    width: 100%;
+    display: flex;
+    font-family: Roboto;
+
+    div{
+      background-color: #3E3D3D;
+      display: inline-block;
+      font-size: 0.8rem;
+    }
+
+    a{
+      color: white;
+      text-decoration: underline;
+    }
+    
+  }
 }
 
 @media (max-width: 476px) {
