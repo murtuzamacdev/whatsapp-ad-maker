@@ -34,6 +34,11 @@ const PreviewAd = () => {
                 window.$('#templateSelectionModal').modal('hide');
                 history.goForward();
             }
+
+            if (window.$('#selectColorModal').hasClass('show')) {
+                window.$('#selectColorModal').modal('hide');
+                history.goForward();
+            }
         }
 
         // Set initial data
