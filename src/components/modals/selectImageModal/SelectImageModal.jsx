@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './SelectImageModal.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { createClient } from 'pexels';
-import { PEXEL_API_KEY } from '../../../configs/constants';
+import { UNSPLASH_API_KEY } from '../../../configs/constants';
+import { createApi } from 'unsplash-js';
 
 // Components
 import ImageGrid from '../imageGrid/ImageGrid';
@@ -13,16 +13,19 @@ import Loading from '../../loading/Loading';
 import fromInternet from '../../../assets/images/fromInternet.png';
 import fromDevice from '../../../assets/images/fromDevice.png';
 
+var currentPage = 1;
+
 const SelectImageModal = ({ updatePicture, setFieldValue }) => {
     const [images, setImages] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
     const [searchTxt, setSearchTxt] = useState('');
     const [showSearchBtnLoading, setShowSearchBtnLoading] = useState(false);
-    const client = createClient(PEXEL_API_KEY);
+    const unsplash = createApi({
+        accessKey: UNSPLASH_API_KEY
+    });
 
     useEffect(() => {
         window.$('#selectImageModal').on('show.bs.modal', function (e) {
-            fetchImages(currentPage);
+            fetchImages();
         })
 
         window.$('#selectImageModal').on('show.bs.modal', function (e) {
@@ -31,37 +34,35 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const fetchImages = (_currentPage) => {
-        let _query = /\S/.test(searchTxt) ? searchTxt : 'shoes, fruits, clothing, chocolates, watches';
+    const fetchImages = () => {
+        
+        let _query = /\S/.test(searchTxt) ? searchTxt : 'cat';
+       
+        unsplash.search
+            .getPhotos({ query: _query, per_page: 60, page: currentPage, orientation: 'portrait' })
+            .then(result => {
+                let _images = result.response.results;
 
-        client.photos.search({ query: _query, per_page: 60, page: _currentPage }).then(photos => {
-            let _images = [];
-            photos.photos.forEach(element => {
-                _images.push({
-                    medium: element.src.medium,
-                    portrait: element.src.portrait
-                });
+                //     // Differentiate between search and load more
+                if (currentPage === 1) { // Search
+                    setShowSearchBtnLoading(false);
+                    setImages(_images);
+                } else { // Load More
+                    setImages([...images, ..._images]);
+                }
+
+                currentPage = currentPage + 1;
+            })
+            .catch((error) => {
+                console.log('Unsplash Error', error);
             });
-
-            setCurrentPage(photos.page);
-
-            // Differentiate between search and load more
-            if (_currentPage === 1) { // Search
-                setShowSearchBtnLoading(false);
-                setImages(_images);
-            } else { // Load More
-                setImages([...images, ..._images]);
-            }
-
-        }).catch((error) => {
-            alert(error);
-        })
     }
 
     const handleSearch = (params) => {
         if (/\S/.test(searchTxt)) {
             setShowSearchBtnLoading(true);
-            fetchImages(1);
+            currentPage = 1;
+            fetchImages();
         }
     }
 
@@ -98,7 +99,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                                     {images.length !== 0 && <>
                                         <a href="https://www.pexels.com" rel="noreferrer" target="_blank"> <img src="https://images.pexels.com/lib/api/pexels.png" width="60px" className="mb-1 pl-1" alt="Pexels" /> </a>
                                         <ImageGrid images={images} onImageSelect={onImageSelect} />
-                                        <div className="btn-ctrn mt-3 mb-3"><button type="button" onClick={() => { fetchImages(currentPage + 1) }} className="load-more-btn ">Load More</button></div>
+                                        <div className="btn-ctrn mt-3 mb-3"><button type="button" onClick={() => { fetchImages() }} className="load-more-btn ">Load More</button></div>
                                     </>}
 
                                     {images.length === 0 && <>

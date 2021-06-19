@@ -2,7 +2,7 @@ import './ImageGrid.scss';
 
 const ImageGrid = ({ images, onImageSelect }) => {
     return (<div className="image-grid-ctnr">
-        {images.map((item) => (<img key={item.medium} onClick={() => { onImageSelect(item.portrait, 'FROM_INTERNET') }} src={item.medium} alt="product"></img>))}
+        {images.map((photo) => (<img key={photo.id} onClick={() => { onImageSelect(photo.urls.regular, 'FROM_INTERNET') }} src={photo.urls.small} alt="product"></img>))}
     </div>);
 }
 
