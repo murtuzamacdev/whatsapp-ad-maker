@@ -22,8 +22,9 @@ const Template2 = () => {
         </div>
 
         <div class="bottom-part p-4 pb-0">
+            {globalContext.state.productData.pitchText !== '' && <div className="order-now mb-2">{globalContext.state.productData.pitchText}</div>}
             {(globalContext.state.productData.sellerName !== '' || globalContext.state.productData.whatsappNumber !== '') && <>
-                <div class="order-now mb-2">Order Now</div>
+
                 <div className="seller-info-ctrn p-3">
                     {globalContext.state.productData.sellerName !== '' && <div className='seller-name single-line'>{globalContext.state.productData.sellerName}</div>}
                     {globalContext.state.productData.whatsappNumber !== '' && <div className="d-flex mt-1">

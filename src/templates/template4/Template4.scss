@@ -41,20 +41,23 @@
   }
 
   .order-now {
-    font-family: Parisienne;
+    font-family: Montserrat;
     font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
     font-size: 100%;
-    color: white;
+    color: rgba(256, 256, 256, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 40%;
     z-index: 1;
+    background: rgba(0, 0, 0, 0.2);
   }
 
   .seller-name {
-    font-family: Parisienne;
-    font-style: normal;
+    // font-family: Parisienne;
+    font-style: italic;
     font-weight: normal;
     font-size: 0.9rem;
     line-height: 22px;
@@ -111,6 +114,6 @@
     width: 300px;
     position: absolute;
     right: -33px;
-    top: -7px;
+    top: 10px;
   }
 }

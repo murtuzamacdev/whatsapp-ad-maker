@@ -18,7 +18,8 @@ const CreateAd = () => {
         productDescription: "",
         sellerName: "",
         whatsappNumber: "",
-        selectedBackgroundColor: "#7986cb"
+        selectedBackgroundColor: "#7986cb",
+        pitchText: ''
     });
     let history = useHistory();
     const ref = useRef(null);
@@ -65,6 +66,7 @@ const CreateAd = () => {
         setFieldValue('productDescription', '');
         setFieldValue('sellerName', '');
         setFieldValue('whatsappNumber', '');
+        setFieldValue('pitchText', '');
         setFieldValue('selectedBackgroundColor', '#7986cb');
         setProductData({ ...productData, selectedBackgroundColor: '#7986cb' })
     }
@@ -80,7 +82,8 @@ const CreateAd = () => {
                 productDescription: productData.productDescription,
                 sellerName: productData.sellerName,
                 whatsappNumber: productData.whatsappNumber,
-                selectedBackgroundColor: productData.selectedBackgroundColor
+                selectedBackgroundColor: productData.selectedBackgroundColor,
+                pitchText: productData.pitchText
             }}
             validationSchema={Yup.object().shape({
                 productImage: Yup.string().required("Please provide product image"),
@@ -88,7 +91,8 @@ const CreateAd = () => {
                 productPrice: Yup.string().trim(),
                 productDescription: Yup.string().trim(),
                 sellerName: Yup.string().trim(),
-                whatsappNumber: Yup.string().trim().max(10),
+                whatsappNumber: Yup.string().trim().max(10, 'Whatsapp number should be 10 digits').min(10, 'Whatsapp number should be 10 digits'),
+                pitchText: Yup.string().trim().max(10, 'Pitch should be of 10 characters max'),
             })}
             onSubmit={(values) => {
                 globalContext.setProductData(values);
@@ -121,7 +125,7 @@ const CreateAd = () => {
                         }
                     </div>
                     {errors.productImage && touched.productImage && (
-                        <div className="form-error d-block mt-1 ml-2">
+                        <div className="form-error d-block mt-1 ml-3">
                             {errors.productImage}
                         </div>
                     )}
@@ -138,7 +142,7 @@ const CreateAd = () => {
                         />
                     </div>
                     {errors.productName && touched.productName && (
-                        <div className="form-error d-block mt-1 ml-2">
+                        <div className="form-error d-block mt-1 ml-3">
                             {errors.productName}
                         </div>
                     )}
@@ -147,7 +151,7 @@ const CreateAd = () => {
                     <div className=" mt-4 fields-ctnr">
                         <label>What’s the price of this product?</label>
                         <div className="d-flex">
-                        <SelectCurrency value={values.currencyCode} onChange={(event)=> {setFieldValue('currencyCode', event.target.value)}}/>
+                            <SelectCurrency value={values.currencyCode} onChange={(event) => { setFieldValue('currencyCode', event.target.value) }} />
                             <Field
                                 type="number"
                                 placeholder="5000"
@@ -186,14 +190,30 @@ const CreateAd = () => {
                     <div className="  mt-4 fields-ctnr">
                         <label>What’s the seller’s Whatsapp number?</label>
                         <Field
-                            type="number"
+                            type="tel"
                             placeholder="10 digits phone number"
                             name="whatsappNumber"
+                            maxLength="10"
                         />
                     </div>
                     {errors.whatsappNumber && touched.whatsappNumber && (
-                        <div className="form-error d-block mt-1 ml-2">
+                        <div className="form-error d-block mt-1 ml-3">
                             {errors.whatsappNumber}
+                        </div>
+                    )}
+
+                    {/* Pitch text */}
+                    <div className="  mt-4 fields-ctnr">
+                        <label>Add some pitching words?</label>
+                        <Field
+                            type="text"
+                            placeholder="Example: HURRY UP!"
+                            name="pitchText"
+                        />
+                    </div>
+                    {errors.pitchText && touched.pitchText && (
+                        <div className="form-error d-block mt-1 ml-3">
+                            {errors.pitchText}
                         </div>
                     )}
 
@@ -209,7 +229,7 @@ const CreateAd = () => {
             </Form>
         )}
         </Formik>}
-        
+
     </div>);
 }
 
