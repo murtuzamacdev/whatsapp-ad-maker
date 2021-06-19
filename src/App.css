@@ -155,7 +155,7 @@ button.close{
 
 button.chips{
   background-color: white;
-  color: rgba(0, 0, 0, 0.45);
+  color: rgba(0, 0, 0, 0.40);
   border: 2px solid rgba(0, 0, 0, 0.20);
   width: auto;
   border-radius: 5px;
