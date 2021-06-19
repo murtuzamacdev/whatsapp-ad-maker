@@ -37,7 +37,7 @@ const Template4 = () => {
         <div className="bottom-ctrn pt-4 pb-4 pl-3 pr-3">
             <p className="product-name p-2 m-0">{globalContext.state.productData.productName}</p>
             {globalContext.state.productData.productDescription !== '' && <div className="product-desc mt-4 mb-3 pl-2" style={{ maxHeight: `${productDescDivHeight}px` }}>{globalContext.state.productData.productDescription}</div>}
-            <div className="d-flex justify-content-between align-items-center mt-3">
+            <div className={'d-flex align-items-center mt-3 ' + (globalContext.state.productData.pitchText ==='' ? 'justify-content-end' : 'justify-content-between')}>
                 {globalContext.state.productData.pitchText !== '' && <div className="order-now p-2">{globalContext.state.productData.pitchText}</div>}
                 {(globalContext.state.productData.sellerName !== '' || globalContext.state.productData.whatsappNumber !== '') && <>
                     <div className="seller-info-ctrn">
