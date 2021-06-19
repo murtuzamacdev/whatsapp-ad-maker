@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { GlobalContext } from '../../context/global.context';
 import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
 import SelectCurrency from 'react-select-currency';
+import { PITCH_DEFAULT } from '../../configs/constants';
 
 const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
@@ -216,6 +217,9 @@ const CreateAd = () => {
                             {errors.pitchText}
                         </div>
                     )}
+                    <div className="mt-2 fields-ctnr">
+                        {PITCH_DEFAULT.map((item) => <button onClick={()=> {setFieldValue('pitchText', item)}} className={'chips p-2 mr-2 mt-2 ' + (item === values.pitchText && 'selected')} type="button">{item}</button>)}
+                    </div>
 
                     <p className="form-disclaimer fields-ctnr mt-4 ">Fields marked with * are required. Rest of the fields are optional.</p>
 
