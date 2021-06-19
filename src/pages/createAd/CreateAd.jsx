@@ -15,7 +15,7 @@ const CreateAd = () => {
         productImage: "",
         productName: "",
         productPrice: "",
-        currencyCode: "",
+        currencyCode: "INR",
         productDescription: "",
         sellerName: "",
         whatsappNumber: "",
@@ -63,7 +63,7 @@ const CreateAd = () => {
         setFieldValue('productImage', '');
         setFieldValue('productName', '');
         setFieldValue('productPrice', '');
-        setFieldValue('currencyCode', '');
+        setFieldValue('currencyCode', 'INR');
         setFieldValue('productDescription', '');
         setFieldValue('sellerName', '');
         setFieldValue('whatsappNumber', '');
