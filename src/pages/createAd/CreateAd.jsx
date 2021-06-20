@@ -15,7 +15,7 @@ import resetBtn from '../../assets/images/resetBtn.png';
 const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
     const [safeToShowForm, setSafeToShowForm] = useState(false);
-    const [showControls, setShowControls] = useState(true);
+    const [showControls, setShowControls] = useState(false);
     const [productData, setProductData] = useState({
         productImage: "",
         productName: "",
@@ -48,6 +48,10 @@ const CreateAd = () => {
                 history.goForward();
             }
         }
+
+        setTimeout(() => {
+            setShowControls(true);
+        }, 200);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
