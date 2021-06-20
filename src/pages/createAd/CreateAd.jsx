@@ -237,7 +237,6 @@ const CreateAd = () => {
 
                     <p className="form-disclaimer fields-ctnr mt-5 ">Fields marked with * are required. Rest of the fields are optional.</p>
 
-
                     <div class="btns-ctnr">
                         <button type="button" className={"reset-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Reset Button"
                             src={resetBtn} onClick={() => { resetFormCustom(setFieldValue) }}></button>
