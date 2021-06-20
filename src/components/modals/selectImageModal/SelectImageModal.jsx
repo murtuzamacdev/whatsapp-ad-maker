@@ -14,22 +14,25 @@ import fromInternet from '../../../assets/images/fromInternet.png';
 import fromDevice from '../../../assets/images/fromDevice.png';
 
 var currentPage = 1;
+var firstTimeImagesLoaded = false;
 
 const SelectImageModal = ({ updatePicture, setFieldValue }) => {
     const [images, setImages] = useState([]);
     const [searchTxt, setSearchTxt] = useState('');
+    const [searchResultTotalPages, setSearchResultTotalPages] = useState(1);
     const [showSearchBtnLoading, setShowSearchBtnLoading] = useState(false);
+    const [showLoadMoreLoading, setShowLoadMoreLoading] = useState(false);
     const unsplash = createApi({
         accessKey: UNSPLASH_API_KEY
     });
 
     useEffect(() => {
         window.$('#selectImageModal').on('show.bs.modal', function (e) {
-            fetchImages();
+            firstTimeImagesLoaded === false && fetchImages();
         })
 
-        window.$('#selectImageModal').on('show.bs.modal', function (e) {
-            setSearchTxt('');
+        return (() => {
+            firstTimeImagesLoaded = false;
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -48,10 +51,13 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                     setShowSearchBtnLoading(false);
                     setImages(_images);
                 } else { // Load More
+                    setShowLoadMoreLoading(false);
                     setImages([...images, ..._images]);
                 }
 
+                firstTimeImagesLoaded = true;
                 currentPage = currentPage + 1;
+                setSearchResultTotalPages(result.response.total_pages);
             })
             .catch((error) => {
                 console.log('Unsplash Error', error);
@@ -99,7 +105,11 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                                     {images.length !== 0 && <>
                                         {/* <a href="https://www.pexels.com" rel="noreferrer" target="_blank"> <img src="https://images.pexels.com/lib/api/pexels.png" width="60px" className="mb-1 pl-1" alt="Pexels" /> </a> */}
                                         <ImageGrid images={images} onImageSelect={onImageSelect} />
-                                        <div className="btn-ctrn mt-3 mb-3"><button type="button" onClick={() => { fetchImages() }} className="load-more-btn ">Load More</button></div>
+                                        {currentPage < searchResultTotalPages && <div className="btn-ctrn">
+                                            {!showLoadMoreLoading && <button type="button" onClick={() => { setShowLoadMoreLoading(true); fetchImages() }} className="load-more-btn ">Load More</button>}
+                                            {showLoadMoreLoading && <Loading fullScreen={false} />}
+                                            
+                                            </div>}
                                     </>}
 
                                     {images.length === 0 && <>
