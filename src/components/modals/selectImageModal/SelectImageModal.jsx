@@ -39,14 +39,20 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
 
     const fetchImages = () => {
         
-        let _query = /\S/.test(searchTxt) ? searchTxt : 'cat';
-       
+        let _query;
+        if(/\S/.test(searchTxt)){
+            _query = searchTxt;
+        }else {
+            let randomSearchQueriesArr = ['cake', 'clothes', 'watches', 'shoes', 'grocery', 'furniture', 'indian dress', 'sandals', 'indian food', 'food', 'household product', 'mobile'];
+            _query = randomSearchQueriesArr[Math.floor(Math.random()*randomSearchQueriesArr.length)];
+        }
+
         unsplash.search
             .getPhotos({ query: _query, per_page: 60, page: currentPage, orientation: 'portrait' })
             .then(result => {
                 let _images = result.response.results;
 
-                //     // Differentiate between search and load more
+                // Differentiate between search and load more
                 if (currentPage === 1) { // Search
                     setShowSearchBtnLoading(false);
                     setImages(_images);
