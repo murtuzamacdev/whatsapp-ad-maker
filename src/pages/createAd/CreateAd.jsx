@@ -11,6 +11,7 @@ import { PITCH_DEFAULT } from '../../configs/constants';
 // Assets
 import nextBtn from '../../assets/images/nextBtn.png';
 import resetBtn from '../../assets/images/resetBtn.png';
+import logo from '../../assets/images/logo.png';
 
 const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
@@ -84,6 +85,7 @@ const CreateAd = () => {
     }
 
     return (<div className="createAd p-3" style={{ backgroundColor: productData.selectedBackgroundColor }}>
+        {/* <div style={{background: 'radial-gradient(50% 50% at 50% 50%, #FAD7A1 0%, rgba(233, 109, 113, 0.21) 100%)', display: 'inline-block', padding: '0 10px'}}></div> */}
         {safeToShowForm && <Formik
             innerRef={ref}
             initialValues={{
@@ -117,6 +119,7 @@ const CreateAd = () => {
         >{({ errors, touched, setFieldValue, values, resetForm, handleChange, isValid, dirty, isInitialValid }) => (
             <Form>
                 <div className="card pb-4">
+                    <img src={logo} alt="Create Awesome Ads Logo" width="170px" />
                     {/* Main Image */}
                     <div className=" product-image-card justify-content-center p-0 d-flex flex-column">
                         {(values.productImage === '' || values.productImage === undefined) ?
@@ -232,21 +235,14 @@ const CreateAd = () => {
                         {PITCH_DEFAULT.map((item) => <button onClick={() => { setFieldValue('pitchText', item) }} className={'chips p-2 mr-2 mt-2 ' + (item === values.pitchText && 'selected')} type="button">{item}</button>)}
                     </div>
 
-                    <p className="form-disclaimer fields-ctnr mt-4 ">Fields marked with * are required. Rest of the fields are optional.</p>
+                    <p className="form-disclaimer fields-ctnr mt-5 ">Fields marked with * are required. Rest of the fields are optional.</p>
 
 
                     <div class="btns-ctnr">
-                    <button type="button" className={"reset-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Reset Button"
-                        src={resetBtn} onClick={() => { resetFormCustom(setFieldValue) }}></button>
-                    <button type="submit" className={"next-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Next Button"
-                        src={nextBtn} onClick={() => { window.scrollTo(0, 0); }}></button>
-
-                    </div>
-                    
-
-                    <div className="d-flex justify-content-around btns-ctnr pb-3 mt-3">
-                        {/* <div className="buttons-ctrns mr-1"> <button type="button" style={{ backgroundColor: productData.selectedBackgroundColor }} className="reset-button " onClick={() => { resetFormCustom(setFieldValue) }}>Reset</button></div>
-                        <div className="buttons-ctrns ml-1"> <button type="submit" style={{ backgroundColor: productData.selectedBackgroundColor }} className="preview-button " onClick={() => { window.scrollTo(0, 0); }} >Preview</button></div> */}
+                        <button type="button" className={"reset-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Reset Button"
+                            src={resetBtn} onClick={() => { resetFormCustom(setFieldValue) }}></button>
+                        <button type="submit" className={"next-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Next Button"
+                            src={nextBtn} onClick={() => { window.scrollTo(0, 0); }}></button>
                     </div>
                 </div>
                 <SelectImageModal updatePicture={updatePicture} setFieldValue={setFieldValue} />

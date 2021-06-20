@@ -13,10 +13,10 @@ import template4Img from '../assets/images/templates/demo/4.png';
 import template5Img from '../assets/images/templates/demo/5.png';
 
 export const TEMPLATES = {
-    template1: {
-        id: 'template1',
-        component: Template1,
-        demoImage: template1Img,
+    template4: {
+        id: 'template4',
+        component: Template4,
+        demoImage: template4Img,
         status: 'ACTIVE'
     },
     template2: {
@@ -31,10 +31,10 @@ export const TEMPLATES = {
         demoImage: template3Img,
         status: 'ACTIVE'
     },
-    template4: {
-        id: 'template4',
-        component: Template4,
-        demoImage: template4Img,
+    template1: {
+        id: 'template1',
+        component: Template1,
+        demoImage: template1Img,
         status: 'ACTIVE'
     },
     template5: {
