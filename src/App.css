@@ -78,18 +78,6 @@ button.close{
   width: auto;
 }
 
-.reset-button {
-  background: url(assets/images/reset.png) 25px;
-  background-repeat: no-repeat;
-  background-size: 20px;
-}
-
-.preview-button {
-  background: url(assets/images/play.png) 25px;
-  background-repeat: no-repeat;
-  background-size: 20px;
-}
-
 .image-select-button {
   background: url(assets/images/gallery.png) 25px;
   background-repeat: no-repeat;

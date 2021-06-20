@@ -8,9 +8,14 @@ import SelectImageModal from '../../components/modals/selectImageModal/SelectIma
 import SelectCurrency from 'react-select-currency';
 import { PITCH_DEFAULT } from '../../configs/constants';
 
+// Assets
+import nextBtn from '../../assets/images/nextBtn.png';
+import resetBtn from '../../assets/images/resetBtn.png';
+
 const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
     const [safeToShowForm, setSafeToShowForm] = useState(false);
+    const [showControls, setShowControls] = useState(true);
     const [productData, setProductData] = useState({
         productImage: "",
         productName: "",
@@ -105,7 +110,7 @@ const CreateAd = () => {
                 history.push('previewAd');
             }}
         // enableReinitialize
-        >{({ errors, touched, setFieldValue, values, resetForm, handleChange }) => (
+        >{({ errors, touched, setFieldValue, values, resetForm, handleChange, isValid, dirty, isInitialValid }) => (
             <Form>
                 <div className="card pb-4">
                     {/* Main Image */}
@@ -220,14 +225,24 @@ const CreateAd = () => {
                         </div>
                     )}
                     <div className="mt-1 fields-ctnr">
-                        {PITCH_DEFAULT.map((item) => <button onClick={()=> {setFieldValue('pitchText', item)}} className={'chips p-2 mr-2 mt-2 ' + (item === values.pitchText && 'selected')} type="button">{item}</button>)}
+                        {PITCH_DEFAULT.map((item) => <button onClick={() => { setFieldValue('pitchText', item) }} className={'chips p-2 mr-2 mt-2 ' + (item === values.pitchText && 'selected')} type="button">{item}</button>)}
                     </div>
 
                     <p className="form-disclaimer fields-ctnr mt-4 ">Fields marked with * are required. Rest of the fields are optional.</p>
 
+
+                    <div class="btns-ctnr">
+                    <button type="button" className={"reset-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Reset Button"
+                        src={resetBtn} onClick={() => { resetFormCustom(setFieldValue) }}></button>
+                    <button type="submit" className={"next-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Next Button"
+                        src={nextBtn} onClick={() => { window.scrollTo(0, 0); }}></button>
+
+                    </div>
+                    
+
                     <div className="d-flex justify-content-around btns-ctnr pb-3 mt-3">
-                        <div className="buttons-ctrns mr-1"> <button type="button" style={{ backgroundColor: productData.selectedBackgroundColor }} className="reset-button " onClick={() => { resetFormCustom(setFieldValue) }}>Reset</button></div>
-                        <div className="buttons-ctrns ml-1"> <button type="submit" style={{ backgroundColor: productData.selectedBackgroundColor }} className="preview-button " onClick={() => { window.scrollTo(0, 0); }} >Preview</button></div>
+                        {/* <div className="buttons-ctrns mr-1"> <button type="button" style={{ backgroundColor: productData.selectedBackgroundColor }} className="reset-button " onClick={() => { resetFormCustom(setFieldValue) }}>Reset</button></div>
+                        <div className="buttons-ctrns ml-1"> <button type="submit" style={{ backgroundColor: productData.selectedBackgroundColor }} className="preview-button " onClick={() => { window.scrollTo(0, 0); }} >Preview</button></div> */}
                     </div>
                 </div>
                 <SelectImageModal updatePicture={updatePicture} setFieldValue={setFieldValue} />

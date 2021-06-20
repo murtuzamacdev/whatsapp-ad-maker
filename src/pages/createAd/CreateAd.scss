@@ -59,4 +59,49 @@
       width: 100%;
     }
   }
+
+  .next-btn {
+    height: 70px;
+    width: 70px;
+    
+    background: url('/assets/images/nextBtn.png') 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 0;
+    
+  }
+
+  .reset-btn {
+    height: 70px;
+    width: 70px;
+    right: 10px;
+    bottom: 80px;
+    z-index: 2;
+    background: url('/assets/images/resetBtn.png') 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 0;
+   
+  }
+
+  .fadeOut {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+  }
+  .fadeIn {
+    opacity: 1;
+    transition: width 0.5s, height 0.5s, opacity 0.5s 0s;
+  }
+
+  .btns-ctnr{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 2;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+  }
 }
