@@ -12,7 +12,7 @@
   }
 
   .modal-content {
-    background-color: #e2e2e2;
+    background-color: white;
   }
 
   .modal-body {
@@ -20,27 +20,25 @@
   }
 
   .small-select-btn {
-    background: #3bc038 url("../../../assets//images/selectCheck.png") 32px 14px;
-    color: white;
+    color: rgba(0, 0, 0, 0.6);
     max-width: 50%;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 14px;
-    line-height: 14px;
-    background-repeat: no-repeat;
-    background-size: 15px;
+    font-size: 0.7rem;
+    height: 40px;
+    padding: 0;
+    background-color: rgba(196, 196, 196, 0.5);
   }
 
   .coming-soon-btn{
-    max-width: 50%;
+    max-width: 60%;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 13px;
-    line-height: 14px;
-    background-repeat: no-repeat;
-    background-size: 15px;
+    font-size: 0.7rem;
+    height: 40px;
+    padding: 0;
     color: #a5a4a4
   }
 
@@ -48,7 +46,7 @@
     padding-left: 15px;
   }
   .carousel .slide img {
-    width: 85%;
+    width: 75%;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
   }
 
