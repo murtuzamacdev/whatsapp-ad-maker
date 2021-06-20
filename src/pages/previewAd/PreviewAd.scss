@@ -60,11 +60,11 @@
     transition: width 0.5s, height 0.5s, opacity 0.5s 0s;
   }
 
-  .unsplash-attr-ctrn.fadeOut {
+  .unsplash-attr-ctrn-fadeOut {
     opacity: 0;
     // width: 0;
     // height: 0;
-    transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+    transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s 0s;
   }
 
   .unsplash-attr-ctrn {
@@ -78,7 +78,7 @@
     font-family: Roboto;
 
     div{
-      background-color: #3E3D3D;
+      // background-color: #3E3D3D;
       display: inline-block;
       font-size: 0.8rem;
     }

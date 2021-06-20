@@ -130,7 +130,7 @@ const PreviewAd = () => {
                 <input type="image" className={"change-color-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Change Color Button"
                     src={changeColor} data-toggle="modal" data-target="#selectColorModal" data-backdrop="false"></input>
 
-                {globalContext.state.selectedUnsplashPhoto && <div className={"unsplash-attr-ctrn " + (showControls ? 'fadeIn' : 'fadeOut')} >
+                {globalContext.state.selectedUnsplashPhoto && <div className={"unsplash-attr-ctrn " + (showControls ? 'fadeIn' : 'unsplash-attr-ctrn-fadeOut')} >
                     <div>Photo by <a rel="noreferrer" target="_blank" href={`https://unsplash.com/@${globalContext.state.selectedUnsplashPhoto.user.username}?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>{globalContext.state.selectedUnsplashPhoto.user.name}</a> on <a target="_blank" rel="noreferrer" href={`https://unsplash.com/?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>Unsplash</a></div>
                 </div>}
 
