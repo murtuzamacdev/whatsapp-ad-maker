@@ -11,7 +11,7 @@ import downloadBtn from '../../assets/images/downloadBtn.png';
 import editBtn from '../../assets/images/editBtn.png';
 import changeTemplateBtn from '../../assets/images/changeTempBtn.png';
 import changeColor from '../../assets/images/changeColor.png';
-
+import logoWatermark from '../../assets/images/logoWatermark.png';
 
 // Templates
 import { TEMPLATES } from '../../templates/TemplateController';
@@ -118,6 +118,7 @@ const PreviewAd = () => {
             {loading && <Loading fullScreen={true}></Loading>}
             {globalContext.state.productData && <>
                 <div className="d-flex flex-column previewAd" id="html-content-holder">
+                    <img src={logoWatermark} alt="Create Awesome Ads" width="100px" className='logo-badge' />
                     {getSelectedTemplateComponent()}
                 </div>
 
