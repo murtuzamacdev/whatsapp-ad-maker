@@ -27,8 +27,8 @@ const Template4 = () => {
     return (<div style={{ backgroundImage: "url(" + globalContext.state.productData.productImage + ")" }} className="temp4-ctnr">
 
         {/* Shapes */}
-        <div className="price-ctrn" style={{ background: 'linear-gradient(233.12deg, ' + globalContext.state.productData.selectedBackgroundColor + ' 33.2%, ' + secondaryBgForGradient + ' 75.65%)', opacity: '0.7' }}> </div>
-        <div className='content-ctrn' style={{ background: 'linear-gradient(233.12deg, ' + globalContext.state.productData.selectedBackgroundColor + ' 33.2%, ' + secondaryBgForGradient + ' 75.65%)', opacity: '0.7' }}></div>
+        <div className="price-ctrn" style={{ background: 'linear-gradient(233.12deg, ' + globalContext.state.productData.selectedBackgroundColor + ' 33.2%, ' + secondaryBgForGradient + ' 75.65%)', opacity: '0.75' }}> </div>
+        <div className='content-ctrn' style={{ background: 'linear-gradient(233.12deg, ' + globalContext.state.productData.selectedBackgroundColor + ' 33.2%, ' + secondaryBgForGradient + ' 75.65%)', opacity: '0.75' }}></div>
 
         <div className="mt-3 d-flex justify-content-center single-line flex-column top-part align-items-center price-order">
             {globalContext.state.productData.pitchText !== '' && <div className="order-now p-2">{globalContext.state.productData.pitchText}</div>}
