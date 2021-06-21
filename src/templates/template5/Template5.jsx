@@ -46,9 +46,10 @@ const Template5 = () => {
                 </div>}
 
                 {/* Business name */}
-                {(globalContext.state.productData.sellerName !== '' || globalContext.state.productData.whatsappNumber !== '') && <div style={{ flex: 1 }} className=" business-name-card justify-content-center align-items-start">
-                    {globalContext.state.productData.sellerName !== '' && <p className="store-name m-0">{globalContext.state.productData.pitchText !== '' && <><small className='order-now'>{globalContext.state.productData.pitchText} </small><br /></>} {globalContext.state.productData.sellerName}</p>}
-                    {globalContext.state.productData.whatsappNumber !== '' && <div className="d-flex mt-1">
+                {globalContext.state.productData.pitchText !== '' && <p className='order-now m-0'>{globalContext.state.productData.pitchText} </p>}
+                {(globalContext.state.productData.sellerName !== '' || globalContext.state.productData.whatsappNumber !== '') && <div style={{ flex: 1 }} className=" business-name-card justify-content-center align-items-start mt-1">
+                    {globalContext.state.productData.sellerName !== '' && <p className="store-name m-0"> {globalContext.state.productData.sellerName}</p>}
+                    {globalContext.state.productData.whatsappNumber !== '' && <div className="d-flex">
                         <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
                         <p className="whatsapp-number m-0 ml-2">{globalContext.state.productData.whatsappNumber}</p>
                     </div>}
