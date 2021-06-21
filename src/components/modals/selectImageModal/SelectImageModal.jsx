@@ -48,7 +48,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
         }
 
         unsplash.search
-            .getPhotos({ query: _query, per_page: 60, page: currentPage, orientation: 'portrait' })
+            .getPhotos({ query: _query, per_page: 60, page: currentPage})
             .then(result => {
                 let _images = result.response.results;
 

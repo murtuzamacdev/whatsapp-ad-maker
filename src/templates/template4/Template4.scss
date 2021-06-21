@@ -2,18 +2,18 @@
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 50%;
+  background-position:50%;
 
   .product-price {
     font-family: Parisienne;
     font-style: normal;
     font-weight: normal;
     font-size: 1.5rem;
-    // line-height: 47px;
+    max-width: 50%;
     color: #ffffff;
     display: inline-block;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.15);
   }
 
   .product-name {
@@ -24,7 +24,7 @@
     line-height: 47px;
     text-align: left;
     color: #ffffff;
-    background: rgba(0, 0, 0, 0.2);
+    
     display: inline-block;
     // background: radial-gradient(63.71% 45.45% at 50.13% 54.55%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.252) 54.69%, rgba(0, 0, 0, 0) 100%);
   }
@@ -32,12 +32,13 @@
   .product-desc {
     // font-family: Parisienne;
     font-style: italic;
-    font-weight: lighter;
+    font-weight: 300;
     font-size: 1.2rem;
     line-height: 31px;
     white-space: break-spaces;
     color: #ffffff;
     overflow: hidden;
+    display: inline-block;
   }
 
   .order-now {
@@ -50,7 +51,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 50%;
+    
     z-index: 1;
     background: rgba(0, 0, 0, 0.2);
   }
@@ -72,7 +73,7 @@
     font-size: 1.2rem;
     line-height: 31px;
     color: #ffffff;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
   }
 
   .content-ctrn {

@@ -17,7 +17,7 @@ const Template2 = () => {
             {globalContext.state.productData.productDescription !== '' && <div className="product-description p-3" style={{ maxHeight: `${productDescDivHeight}px` }}>{globalContext.state.productData.productDescription}</div>}
             <div class="img-box-ctrn mt-4">
                 <div className="product-image" style={{ backgroundImage: "url(" + globalContext.state.productData.productImage + ")" }}> </div>
-                {globalContext.state.productData.productPrice !== '' && <div className="product-price p-2 pl-3 pr-3"><small>{currencies.find((item) => item.code === globalContext.state.productData.currencyCode).symbol}</small> {globalContext.state.productData.productPrice}<small>.00</small></div>}
+                {globalContext.state.productData.productPrice !== '' && <div className="product-price p-2 pl-3 pr-3"><small>{currencies.find((item) => item.code === globalContext.state.productData.currencyCode).symbol}</small> {globalContext.state.productData.productPrice}</div>}
             </div>
         </div>
 
