@@ -229,7 +229,7 @@ const CreateAd = () => {
                         </div>
                     )}
                     <div className="mt-1 fields-ctnr">
-                        {PITCH_DEFAULT.map((item) => <button onClick={() => { setFieldValue('pitchText', item) }} className={'chips p-2 mr-2 mt-2 ' + (item === values.pitchText && 'selected')} type="button">{item}</button>)}
+                        {PITCH_DEFAULT.map((item) => <button key={item} onClick={() => { setFieldValue('pitchText', item) }} className={'chips p-2 mr-2 mt-2 ' + (item === values.pitchText ? 'selected' : '')} type="button">{item}</button>)}
                     </div>
 
                     <p className="form-disclaimer fields-ctnr mt-5 ">Fields marked with * are required. Rest of the fields are optional.</p>

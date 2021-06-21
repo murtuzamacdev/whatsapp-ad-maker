@@ -49,7 +49,7 @@ const PreviewAd = () => {
 
         // Set initial data
         if (!globalContext.state.productData) {
-            history.push('createAd');
+            history.push('/');
         }
 
         setTimeout(() => {
@@ -103,7 +103,7 @@ const PreviewAd = () => {
     }
 
     const goToCreateAd = () => {
-        history.push('createAd')
+        history.push('/')
     }
 
     const getSelectedTemplateComponent = () => {
