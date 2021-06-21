@@ -17,7 +17,7 @@
   }
 
   .product-name {
-    font-family: Condiment;
+    font-family: Pacifico;
     font-style: normal;
     // font-weight: bold;
     font-size: 1.9rem;
@@ -26,11 +26,11 @@
   }
 
   .product-price {
-    font-family: Condiment;
+    font-family: Pacifico;
     font-style: normal;
     font-weight: bold;
     font-size: 1.1rem;
-    line-height: 19px;
+    
     // background: linear-gradient(90deg, #88ee57 0%, #35a600 113.52%);
     border-radius: 25px;
     color: #ffffff;
@@ -41,7 +41,7 @@
 
   .product-desc {
     font-family: Montserrat;
-    font-style: italic;
+    // font-style: italic;
     font-weight: normal;
     font-size: 0.85rem;
     line-height: 19px;
@@ -53,7 +53,7 @@
 
   .store-name {
     font-family: Montserrat;
-    font-style: italic;
+    // font-style: italic;
     font-weight: bold;
     font-size: 0.85rem;
     color: rgba(0, 0, 0, 0.6);
@@ -66,7 +66,7 @@
 
   .whatsapp-number {
     font-family: Montserrat;
-    font-style: italic;
+    // font-style: italic;
     font-weight: bold;
     font-size: 1.1rem;
     color: rgba(0, 0, 0, 0.7);
@@ -96,10 +96,11 @@
   }
 
   .order-now{
-    font-size: 0.8rem;
-    font-family: Condiment;
+    font-size: 1rem;
+    font-family: Pacifico;
     text-transform: lowercase;
     font-weight: bold;
     font-style: normal;
+    color: rgb(126, 124, 124);
   } 
 }
