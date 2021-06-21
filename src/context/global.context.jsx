@@ -22,6 +22,10 @@ export class GlobalContextProvider1 extends Component {
     setProductData = (productData) => {
         this.setState({
             productData: productData
+        }, () => {
+            let jsonWithoutImage = JSON.parse(JSON.stringify(productData)); // Because large images cannot be stored in local storage. So images will stay only in global context variable
+            delete jsonWithoutImage.productImage;
+            localStorage.setItem('productData', JSON.stringify(jsonWithoutImage));
         })
     }
 
@@ -33,7 +37,7 @@ export class GlobalContextProvider1 extends Component {
     }
 
     setSelectedUnsplashPhoto = (_setSelectedUnsplashPhoto) => {
-        this.setState({selectedUnsplashPhoto: _setSelectedUnsplashPhoto});
+        this.setState({ selectedUnsplashPhoto: _setSelectedUnsplashPhoto });
     }
 
     render() {

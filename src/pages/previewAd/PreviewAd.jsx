@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import './PreviewAd.scss';
 import domtoimage from 'dom-to-image';
 import { GlobalContext } from '../../context/global.context';
-import { UNSPLASH_APP_NAME, UNSPLASH_API_KEY} from '../../configs/constants';
+import { UNSPLASH_APP_NAME, UNSPLASH_API_KEY } from '../../configs/constants';
 import { createApi } from 'unsplash-js';
 
 //assets
@@ -24,6 +24,7 @@ import SelectColorModal from '../../components/modals/selectColorModal/SelectCol
 const PreviewAd = () => {
     const globalContext = useContext(GlobalContext);
     const [loading, setLoading] = useState(false);
+    const [showWatermark, setShowWatermark] = useState(false);
     const [showControls, setShowControls] = useState(false);
     let history = useHistory();
     const unsplash = createApi({
@@ -61,38 +62,44 @@ const PreviewAd = () => {
     }, [])
 
     const downloadScreenshot = (params) => {
-
-        // To track unsplash image download as per their guidelines
-        globalContext.state.selectedUnsplashPhoto && unsplash.photos.trackDownload({
-            downloadLocation: globalContext.state.selectedUnsplashPhoto.links.download_location,
-        });
-
+        setShowWatermark(true);
         setLoading(true);
-        const scale = 3
-        const node = document.getElementById("html-content-holder")
 
-        const style = {
-            transform: 'scale(' + scale + ')',
-            transformOrigin: 'top left',
-            width: node.offsetWidth + "px",
-            height: node.offsetHeight + "px"
-        }
-
-        const param = {
-            height: node.offsetHeight * scale,
-            width: node.offsetWidth * scale,
-            quality: 1,
-            style
-        }
-
-        domtoimage.toJpeg(node, param)
-            .then(function (dataUrl) {
-                var link = document.createElement('a');
-                link.download = new Date().getTime() + '.jpeg';
-                link.href = dataUrl;
-                link.click();
-                setLoading(false);
+        setTimeout(() => {
+            // To track unsplash image download as per their guidelines
+            globalContext.state.selectedUnsplashPhoto && unsplash.photos.trackDownload({
+                downloadLocation: globalContext.state.selectedUnsplashPhoto.links.download_location,
             });
+
+
+            const scale = 3
+            const node = document.getElementById("html-content-holder")
+
+            const style = {
+                transform: 'scale(' + scale + ')',
+                transformOrigin: 'top left',
+                width: node.offsetWidth + "px",
+                height: node.offsetHeight + "px"
+            }
+
+            const param = {
+                height: node.offsetHeight * scale,
+                width: node.offsetWidth * scale,
+                quality: 1,
+                style
+            }
+
+            domtoimage.toJpeg(node, param)
+                .then(function (dataUrl) {
+                    var link = document.createElement('a');
+                    link.download = new Date().getTime() + '.jpeg';
+                    link.href = dataUrl;
+                    link.click();
+                    setLoading(false);
+                    setShowWatermark(false);
+                });
+        }, 400);
+
     }
 
     const goToCreateAd = () => {
@@ -118,7 +125,7 @@ const PreviewAd = () => {
             {loading && <Loading fullScreen={true}></Loading>}
             {globalContext.state.productData && <>
                 <div className="d-flex flex-column previewAd" id="html-content-holder">
-                    <img src={logoWatermark} alt="Create Awesome Ads" width="100px" className='logo-badge' />
+                    {showWatermark && <img src={logoWatermark} alt="Create Awesome Ads" width="100px" className='logo-badge' />}
                     {getSelectedTemplateComponent()}
                 </div>
 

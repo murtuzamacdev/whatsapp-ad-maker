@@ -110,9 +110,6 @@ const CreateAd = () => {
             })}
             onSubmit={(values) => {
                 globalContext.setProductData(values);
-                let jsonWithoutImage = JSON.parse(JSON.stringify(values)); // Because large images cannot be stored in local storage. So images will stay only in global context variable
-                delete jsonWithoutImage.productImage;
-                localStorage.setItem('productData', JSON.stringify(jsonWithoutImage));
                 history.push('previewAd');
             }}
         // enableReinitialize
