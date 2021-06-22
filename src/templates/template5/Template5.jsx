@@ -26,7 +26,7 @@ const Template5 = () => {
     //     throw new Error('Bad Hex');
     // }
 
-    return (<div class="template5-cntr" style={{ background: 'linear-gradient( 0.74deg , ' + globalContext.state.productData.selectedBackgroundColor  + ' 0.59%, ' + hexToRgbA(globalContext.state.productData.selectedBackgroundColor, 0.7)  + ' 99.01%)' }}>
+    return (<div className="template5-cntr" style={{ background: 'linear-gradient( 0.74deg , ' + globalContext.state.productData.selectedBackgroundColor  + ' 0.59%, ' + hexToRgbA(globalContext.state.productData.selectedBackgroundColor, 0.7)  + ' 99.01%)' }}>
         <div className="card p-0 main-card">
             {/* Main Image */}
             <div style={{ minHeight: '60%', flexGrow: 1 }} className="d-flex product-image-card justify-content-center p-0">

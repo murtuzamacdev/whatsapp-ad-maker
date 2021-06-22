@@ -18,17 +18,17 @@ const TemplateSelectionModal = () => {
         globalContext.setSelectedTemplate(templateId)
     }
 
-    return (<div class="modal fade template-selection-modal-ctrn" id="templateSelectionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    return (<div className="modal fade template-selection-modal-ctrn" id="templateSelectionModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div style={{ height: '100%' }} className="d-flex flex-column justify-content-end m-0">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
                         <h5>Choose a Template</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                         <Carousel centerSlidePercentage={60} selectedItem={selectedTemplateIndex} showThumbs={false} autoFocus={false} showArrows={false} centerMode={true} showStatus={false} infiniteLoop={true} autoPlay={false} showIndicators={false}>
                             {templatesArr.map((item) => (
                                 <div key={item.id} className="d-flex flex-column justify-content-between align-items-center" >

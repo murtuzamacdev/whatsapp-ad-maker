@@ -15,13 +15,13 @@ const Template2 = () => {
         <div className="top-part d-flex flex-column justify-content-between">
             <div className="product-name mt-4">{globalContext.state.productData.productName}</div>
             {globalContext.state.productData.productDescription !== '' && <div className="product-description p-3" style={{ maxHeight: `${productDescDivHeight}px` }}>{globalContext.state.productData.productDescription}</div>}
-            <div class="img-box-ctrn mt-4">
+            <div className="img-box-ctrn mt-4">
                 <div className="product-image" style={{ backgroundImage: "url(" + globalContext.state.productData.productImage + ")" }}> </div>
                 {globalContext.state.productData.productPrice !== '' && <div className="product-price p-2 pl-3 pr-3"><small>{currencies.find((item) => item.code === globalContext.state.productData.currencyCode).symbol}</small> {globalContext.state.productData.productPrice}</div>}
             </div>
         </div>
 
-        <div class="bottom-part p-4 pb-0">
+        <div className="bottom-part p-4 pb-0">
             {globalContext.state.productData.pitchText !== '' && <div className="order-now mb-2">{globalContext.state.productData.pitchText}</div>}
             {(globalContext.state.productData.sellerName !== '' || globalContext.state.productData.whatsappNumber !== '') && <>
 

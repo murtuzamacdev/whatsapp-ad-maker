@@ -14,8 +14,8 @@ const Template3 = () => {
     return (<div className="template3-ctrn d-flex flex-column pt-4 pb-4">
 
         <div className="product-image-ctrn">
-            <img src={topRightLines} alt="lines" class="top-right-lines"/>
-            <img src={topRightLines} alt="lines" class="bottom-left-lines"/>
+            <img src={topRightLines} alt="lines" className="top-right-lines"/>
+            <img src={topRightLines} alt="lines" className="bottom-left-lines"/>
             <div className="child1" style={{ backgroundImage: "url(" + globalContext.state.productData.productImage + ")" }}>
                 {globalContext.state.productData.productPrice !== '' && <div className="mt-2 d-flex justify-content-end single-line mr-2"><div className="product-price pt-1 pb-1 pl-3 pr-3" style={{ backgroundColor: globalContext.state.productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === globalContext.state.productData.currencyCode).symbol}</small> {globalContext.state.productData.productPrice}</div></div>}
                 <div className="product-name d-flex pl-2 pr-2 mb-2"><div className="child1 pl-2 pr-2">{globalContext.state.productData.productName}</div></div>

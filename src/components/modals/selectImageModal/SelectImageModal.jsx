@@ -84,16 +84,16 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
     }
 
     return (
-        <div class="modal fade select-image-modal-ctrn" id="selectImageModal" tabindex="-1" role="dialog" aria-labelledby="SelectImageModal" aria-hidden="true">
+        <div className="modal fade select-image-modal-ctrn" id="selectImageModal" tabIndex="-1" role="dialog" aria-labelledby="SelectImageModal" aria-hidden="true">
             <div style={{ height: '100%' }} className="d-flex flex-column justify-content-end m-0">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header pb-1 pt-2">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header pb-1 pt-2">
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <Tabs>
                                 <TabList>
                                     <Tab><div className="d-flex justify-content-center align-items-center "><img src={fromInternet} alt="From Internet" width="20px" /><p className='m-0 ml-2'>From Internet</p></div></Tab>
@@ -104,7 +104,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                                 <TabPanel>
                                     <div className="p-3 d-flex justify-content-center align-items-center">
                                         <input type="text" placeholder="Search millions of photos" value={searchTxt} onChange={(e) => { setSearchTxt(e.target.value) }} className="search-input mr-2" />
-                                        {!showSearchBtnLoading && <input type="button" class="search-btn" alt="Search Button" onClick={() => { handleSearch() }}></input>}
+                                        {!showSearchBtnLoading && <input type="button" className="search-btn" alt="Search Button" onClick={() => { handleSearch() }}></input>}
                                         {showSearchBtnLoading && <div style={{ position: 'relative', height: '50px', width: '50px' }}><Loading fullScreen={false} /></div>}
                                     </div>
 

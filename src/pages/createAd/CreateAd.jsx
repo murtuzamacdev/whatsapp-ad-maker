@@ -121,7 +121,7 @@ const CreateAd = () => {
                     <div className=" product-image-card justify-content-center p-0 d-flex flex-column">
                         {(values.productImage === '' || values.productImage === undefined) ?
                             <div className="d-flex justify-content-center">
-                                <label class="btn btn-default buttons-ctrns p-0 w-auto">
+                                <label className="btn btn-default buttons-ctrns p-0 w-auto">
                                     <button type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button ">Select Product Image *</button>
                                 </label>
                             </div>
@@ -129,7 +129,7 @@ const CreateAd = () => {
                             <>
                                 <img src={values.productImage} alt="productImage" />
                                 <div className="d-flex justify-content-center change-image">
-                                    <label class="btn btn-default buttons-ctrns p-0 w-auto">
+                                    <label className="btn btn-default buttons-ctrns p-0 w-auto">
                                         <div type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button">Change Product Image</div>
                                     </label>
                                 </div>
@@ -148,8 +148,7 @@ const CreateAd = () => {
                         <Field
                             type="text"
                             placeholder="Example: Nike Shoes"
-                            className="ml-2"
-                            class="product-name"
+                            className="product-name ml-2"
                             name="productName"
                         />
                     </div>
@@ -167,8 +166,7 @@ const CreateAd = () => {
                             <Field
                                 type="number"
                                 placeholder="5000"
-                                className="ml-2"
-                                class="product-price"
+                                className="product-price ml-2"
                                 name="productPrice"
                             />
                         </div>
@@ -234,7 +232,7 @@ const CreateAd = () => {
 
                     <p className="form-disclaimer fields-ctnr mt-5 ">Fields marked with * are required. Rest of the fields are optional.</p>
 
-                    <div class="btns-ctnr">
+                    <div className="btns-ctnr">
                         <button type="button" className={"reset-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Reset Button"
                             src={resetBtn} onClick={() => { resetFormCustom(setFieldValue) }}></button>
                         <button type="submit" className={"next-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Next Button"
