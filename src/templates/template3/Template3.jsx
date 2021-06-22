@@ -15,24 +15,24 @@ const Template3 = () => {
         <div className="product-image-ctrn">
             <img src={topRightLines} alt="lines" className="top-right-lines"/>
             <img src={topRightLines} alt="lines" className="bottom-left-lines"/>
-            <div className="child1" style={{ backgroundImage: "url(" + globalContext.state.productData.productImage + ")" }}>
-                {globalContext.state.productData.productPrice !== '' && <div className="mt-2 d-flex justify-content-end single-line mr-2"><div className="product-price pt-1 pb-1 pl-3 pr-3" style={{ backgroundColor: globalContext.state.productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === globalContext.state.productData.currencyCode).symbol}</small> {globalContext.state.productData.productPrice}</div></div>}
-                <div className="product-name d-flex pl-2 pr-2 mb-2"><div className="child1 pl-2 pr-2">{globalContext.state.productData.productName}</div></div>
+            <div className="child1" style={{ backgroundImage: "url(" + globalContext.productData.productImage + ")" }}>
+                {globalContext.productData.productPrice !== '' && <div className="mt-2 d-flex justify-content-end single-line mr-2"><div className="product-price pt-1 pb-1 pl-3 pr-3" style={{ backgroundColor: globalContext.productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</small> {globalContext.productData.productPrice}</div></div>}
+                <div className="product-name d-flex pl-2 pr-2 mb-2"><div className="child1 pl-2 pr-2">{globalContext.productData.productName}</div></div>
             </div>
 
         </div>
 
         <div className="bottom-ctrn d-flex">
             <div className="purple-ctnr">
-                {globalContext.state.productData.productDescription !== '' && <div className="product-desc pl-2 mt-2 mb-1">{globalContext.state.productData.productDescription}</div>}
-                <div className={'d-flex align-items-center ' + (globalContext.state.productData.pitchText ==='' ? 'justify-content-end' : 'justify-content-between')}>
-                {globalContext.state.productData.pitchText !== '' && <div className="order-now pl-2 pr-2">{globalContext.state.productData.pitchText}</div>}
-                    {(globalContext.state.productData.sellerName !== '' || globalContext.state.productData.whatsappNumber !== '') && <>
+                {globalContext.productData.productDescription !== '' && <div className="product-desc pl-2 mt-2 mb-1">{globalContext.productData.productDescription}</div>}
+                <div className={'d-flex align-items-center ' + (globalContext.productData.pitchText ==='' ? 'justify-content-end' : 'justify-content-between')}>
+                {globalContext.productData.pitchText !== '' && <div className="order-now pl-2 pr-2">{globalContext.productData.pitchText}</div>}
+                    {(globalContext.productData.sellerName !== '' || globalContext.productData.whatsappNumber !== '') && <>
                         <div className="seller-info-ctrn">
-                            {globalContext.state.productData.sellerName !== '' && <div className='seller-name single-line'>{globalContext.state.productData.sellerName}</div>}
-                            {globalContext.state.productData.whatsappNumber !== '' && <div className="d-flex mt-1 align-items-center">
+                            {globalContext.productData.sellerName !== '' && <div className='seller-name single-line'>{globalContext.productData.sellerName}</div>}
+                            {globalContext.productData.whatsappNumber !== '' && <div className="d-flex mt-1 align-items-center">
                                 <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
-                                <p className="whatsapp-number m-0 ml-2">{globalContext.state.productData.whatsappNumber}</p>
+                                <p className="whatsapp-number m-0 ml-2">{globalContext.productData.whatsappNumber}</p>
                             </div>}
                         </div></>}
 
@@ -40,10 +40,10 @@ const Template3 = () => {
             </div>
         </div>
 
-        <div id="tri-top-right" style={{ borderTopColor: globalContext.state.productData.selectedBackgroundColor }}></div>
+        <div id="tri-top-right" style={{ borderTopColor: globalContext.productData.selectedBackgroundColor }}></div>
         <div className='child-ctnr'> <div id="tri-middle-black"></div> </div>
-        <div id="tri-bottom-left" style={{ borderBottomColor: globalContext.state.productData.selectedBackgroundColor }}></div>
-        <div id="tri-bottom-right" style={{ borderBottomColor: globalContext.state.productData.selectedBackgroundColor }}></div>
+        <div id="tri-bottom-left" style={{ borderBottomColor: globalContext.productData.selectedBackgroundColor }}></div>
+        <div id="tri-bottom-right" style={{ borderBottomColor: globalContext.productData.selectedBackgroundColor }}></div>
     </div>);
 }
 

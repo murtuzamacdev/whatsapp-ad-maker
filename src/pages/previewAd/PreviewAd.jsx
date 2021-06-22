@@ -48,7 +48,7 @@ const PreviewAd = () => {
         }
 
         // Set initial data
-        if (!globalContext.state.productData) {
+        if (!globalContext.productData) {
             history.push('/');
         }
 
@@ -68,8 +68,8 @@ const PreviewAd = () => {
         setLoading(true);
 
         // To track unsplash image download as per their guidelines
-        globalContext.state.selectedUnsplashPhoto && unsplash.photos.trackDownload({
-            downloadLocation: globalContext.state.selectedUnsplashPhoto.links.download_location,
+        globalContext.selectedUnsplashPhoto && unsplash.photos.trackDownload({
+            downloadLocation: globalContext.selectedUnsplashPhoto.links.download_location,
         });
 
 
@@ -107,7 +107,7 @@ const PreviewAd = () => {
     }
 
     const getSelectedTemplateComponent = () => {
-        let SelectedTemplate = TEMPLATES[globalContext.state.selectedTemplate].component;
+        let SelectedTemplate = TEMPLATES[globalContext.selectedTemplate].component;
         return <SelectedTemplate />
     }
 
@@ -117,13 +117,13 @@ const PreviewAd = () => {
 
     const handleColorChange = (newColor) => {
         window.$('#selectColorModal').modal('hide');
-        globalContext.setProductData({ ...globalContext.state.productData, selectedBackgroundColor: newColor.hex });
+        globalContext.setProductData({ ...globalContext.productData, selectedBackgroundColor: newColor.hex });
     }
 
     return (
         <div onClick={toggleControls} className="preview-ad-ctnr">
             {loading && <Loading fullScreen={true}></Loading>}
-            {globalContext.state.productData && <>
+            {globalContext.productData && <>
                 <div className="d-flex flex-column previewAd" id="html-content-holder">
                     <img src={logoWatermark} alt="Create Awesome Ads" width="100px" className={'logo-badge ' + (showWatermark ? 'd-block' : 'd-none')} />
                     {getSelectedTemplateComponent()}
@@ -138,8 +138,8 @@ const PreviewAd = () => {
                 <input type="image" className={"change-color-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Change Color Button"
                     src={changeColor} data-toggle="modal" data-target="#selectColorModal" data-backdrop="false"></input>
 
-                {globalContext.state.selectedUnsplashPhoto && <div className={"unsplash-attr-ctrn " + (showControls ? 'fadeIn' : 'unsplash-attr-ctrn-fadeOut')} >
-                    <div>Photo by <a rel="noreferrer" target="_blank" href={`https://unsplash.com/@${globalContext.state.selectedUnsplashPhoto.user.username}?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>{globalContext.state.selectedUnsplashPhoto.user.name}</a> on <a target="_blank" rel="noreferrer" href={`https://unsplash.com/?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>Unsplash</a></div>
+                {globalContext.selectedUnsplashPhoto && <div className={"unsplash-attr-ctrn " + (showControls ? 'fadeIn' : 'unsplash-attr-ctrn-fadeOut')} >
+                    <div>Photo by <a rel="noreferrer" target="_blank" href={`https://unsplash.com/@${globalContext.selectedUnsplashPhoto.user.username}?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>{globalContext.selectedUnsplashPhoto.user.name}</a> on <a target="_blank" rel="noreferrer" href={`https://unsplash.com/?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>Unsplash</a></div>
                 </div>}
 
                 <TemplateSelectionModal />

@@ -8,8 +8,9 @@ import { GlobalContext, GlobalContextProvider } from './context/global.context.j
 function App() {
   return (
     <div className="container p-0">
-      <Router>
-        <GlobalContextProvider>
+
+      <GlobalContextProvider>
+        <Router>
           <GlobalContext.Consumer>
             {globalContext => (
               <Switch>
@@ -19,12 +20,13 @@ function App() {
                 <Route path="/previewAd">
                   <PreviewAd />
                 </Route>
-                <Route><CreateAd/></Route>
+                <Route><CreateAd /></Route>
               </Switch>
             )}
           </GlobalContext.Consumer>
-        </GlobalContextProvider>
-      </Router>
+        </Router>
+      </GlobalContextProvider>
+
     </div>
 
   );

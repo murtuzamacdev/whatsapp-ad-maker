@@ -30,7 +30,7 @@ const CreateAd = () => {
     const ref = useRef(null);
 
     useEffect(() => {
-        let data = globalContext.state.productData;
+        let data = globalContext.productData;
         if (data) {
             setProductData(data);
         } else {

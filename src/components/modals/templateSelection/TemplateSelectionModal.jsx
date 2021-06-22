@@ -12,7 +12,7 @@ const TemplateSelectionModal = () => {
     Object.keys(TEMPLATES).forEach(function (key) {
         templatesArr.push(TEMPLATES[key]);
     });
-    const selectedTemplateIndex = templatesArr.findIndex((item) => item.id === globalContext.state.selectedTemplate)
+    const selectedTemplateIndex = templatesArr.findIndex((item) => item.id === globalContext.selectedTemplate)
 
     const handleSelect = (templateId) => {
         globalContext.setSelectedTemplate(templateId)

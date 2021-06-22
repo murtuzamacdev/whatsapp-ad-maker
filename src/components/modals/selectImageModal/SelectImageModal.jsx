@@ -33,7 +33,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
     });
 
     useEffect(() => {
-        globalContext.state.unsplashCachedSearchResult.length === 0 && fetchImages();
+        globalContext.unsplashCachedSearchResult.length === 0 && fetchImages();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -59,7 +59,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                     globalContext.setUnsplashCachedSearchResult(_images);
                 } else { // Load More
                     setShowLoadMoreLoading(false);
-                    globalContext.setUnsplashCachedSearchResult([...globalContext.state.unsplashCachedSearchResult, ..._images]);
+                    globalContext.setUnsplashCachedSearchResult([...globalContext.unsplashCachedSearchResult, ..._images]);
                 }
 
                 currentPage = currentPage + 1;
@@ -108,9 +108,9 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                                         {showSearchBtnLoading && <div style={{ position: 'relative', height: '50px', width: '50px' }}><Loading fullScreen={false} /></div>}
                                     </div>
 
-                                    {globalContext.state.unsplashCachedSearchResult.length !== 0 && <>
+                                    {globalContext.unsplashCachedSearchResult.length !== 0 && <>
                                         {/* <a href="https://www.pexels.com" rel="noreferrer" target="_blank"> <img src="https://images.pexels.com/lib/api/pexels.png" width="60px" className="mb-1 pl-1" alt="Pexels" /> </a> */}
-                                        <ImageGrid images={globalContext.state.unsplashCachedSearchResult} onImageSelect={onImageSelect} />
+                                        <ImageGrid images={globalContext.unsplashCachedSearchResult} onImageSelect={onImageSelect} />
                                         {currentPage < searchResultTotalPages && <div className="btn-ctrn">
                                             {!showLoadMoreLoading && <button type="button" onClick={() => { setShowLoadMoreLoading(true); fetchImages() }} className="load-more-btn ">Load More</button>}
                                             {showLoadMoreLoading && <Loading fullScreen={false} />}
@@ -118,7 +118,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                                         </div>}
                                     </>}
 
-                                    {globalContext.state.unsplashCachedSearchResult.length === 0 && <>
+                                    {globalContext.unsplashCachedSearchResult.length === 0 && <>
                                         {showNoResultFound && <div className="d-flex flex-column justify-content-center align-items-center">
                                             <img src={noSearchResult} alt='No results found' width="50%" className="mt-5 pt-5" />
                                             <p style={{color: 'rgba(0, 0, 0, 0.5)'}} className="mt-4">No records found</p>
