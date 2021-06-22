@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './SelectImageModal.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { UNSPLASH_API_KEY } from '../../../configs/constants';
 import { createApi } from 'unsplash-js';
+import { GlobalContext } from '../../../context/global.context';
 
 // Components
 import ImageGrid from '../imageGrid/ImageGrid';
@@ -14,10 +15,10 @@ import fromInternet from '../../../assets/images/fromInternet.png';
 import fromDevice from '../../../assets/images/fromDevice.png';
 
 var currentPage = 1;
-var firstTimeImagesLoaded = false;
 
 const SelectImageModal = ({ updatePicture, setFieldValue }) => {
-    const [images, setImages] = useState([]);
+    const globalContext = useContext(GlobalContext)
+    // const [images, setImages] = useState([]);
     const [searchTxt, setSearchTxt] = useState('');
     const [searchResultTotalPages, setSearchResultTotalPages] = useState(1);
     const [showSearchBtnLoading, setShowSearchBtnLoading] = useState(false);
@@ -27,41 +28,34 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
     });
 
     useEffect(() => {
-        window.$('#selectImageModal').on('show.bs.modal', function (e) {
-            firstTimeImagesLoaded === false && fetchImages();
-        })
-
-        return (() => {
-            firstTimeImagesLoaded = false;
-        })
+        globalContext.state.unsplashCachedSearchResult.length === 0 && fetchImages();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const fetchImages = () => {
-        
+
         let _query;
-        if(/\S/.test(searchTxt)){
+        if (/\S/.test(searchTxt)) {
             _query = searchTxt;
-        }else {
+        } else {
             let randomSearchQueriesArr = ['cake', 'clothes', 'watches', 'shoes', 'grocery', 'furniture', 'indian dress', 'sandals', 'indian food', 'food', 'household product', 'mobile'];
-            _query = randomSearchQueriesArr[Math.floor(Math.random()*randomSearchQueriesArr.length)];
+            _query = randomSearchQueriesArr[Math.floor(Math.random() * randomSearchQueriesArr.length)];
         }
 
         unsplash.search
-            .getPhotos({ query: _query, per_page: 60, page: currentPage})
+            .getPhotos({ query: _query, per_page: 60, page: currentPage })
             .then(result => {
                 let _images = result.response.results;
 
                 // Differentiate between search and load more
                 if (currentPage === 1) { // Search
                     setShowSearchBtnLoading(false);
-                    setImages(_images);
+                    globalContext.setUnsplashCachedSearchResult(_images);
                 } else { // Load More
                     setShowLoadMoreLoading(false);
-                    setImages([...images, ..._images]);
+                    globalContext.setUnsplashCachedSearchResult([...globalContext.state.unsplashCachedSearchResult, ..._images]);
                 }
 
-                firstTimeImagesLoaded = true;
                 currentPage = currentPage + 1;
                 setSearchResultTotalPages(result.response.total_pages);
             })
@@ -108,17 +102,17 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                                         {showSearchBtnLoading && <div style={{ position: 'relative', height: '50px', width: '50px' }}><Loading fullScreen={false} /></div>}
                                     </div>
 
-                                    {images.length !== 0 && <>
+                                    {globalContext.state.unsplashCachedSearchResult.length !== 0 && <>
                                         {/* <a href="https://www.pexels.com" rel="noreferrer" target="_blank"> <img src="https://images.pexels.com/lib/api/pexels.png" width="60px" className="mb-1 pl-1" alt="Pexels" /> </a> */}
-                                        <ImageGrid images={images} onImageSelect={onImageSelect} />
+                                        <ImageGrid images={globalContext.state.unsplashCachedSearchResult} onImageSelect={onImageSelect} />
                                         {currentPage < searchResultTotalPages && <div className="btn-ctrn">
                                             {!showLoadMoreLoading && <button type="button" onClick={() => { setShowLoadMoreLoading(true); fetchImages() }} className="load-more-btn ">Load More</button>}
                                             {showLoadMoreLoading && <Loading fullScreen={false} />}
-                                            
-                                            </div>}
+
+                                        </div>}
                                     </>}
 
-                                    {images.length === 0 && <>
+                                    {globalContext.state.unsplashCachedSearchResult.length === 0 && <>
                                         <Loading fullScreen={false} />
                                     </>}
 

@@ -7,7 +7,8 @@ export class GlobalContextProvider1 extends Component {
     state = {
         productData: null,
         selectedTemplate: 'template4',
-        selectedUnsplashPhoto: null
+        selectedUnsplashPhoto: null,
+        unsplashCachedSearchResult: []
     }
 
     componentDidMount() {
@@ -40,6 +41,10 @@ export class GlobalContextProvider1 extends Component {
         this.setState({ selectedUnsplashPhoto: _setSelectedUnsplashPhoto });
     }
 
+    setUnsplashCachedSearchResult = (searchResultArr) => {
+        this.setState({ unsplashCachedSearchResult: searchResultArr });
+    }
+
     render() {
         return (
             <GlobalContext.Provider
@@ -47,7 +52,8 @@ export class GlobalContextProvider1 extends Component {
                     state: this.state,
                     setProductData: this.setProductData,
                     setSelectedTemplate: this.setSelectedTemplate,
-                    setSelectedUnsplashPhoto: this.setSelectedUnsplashPhoto
+                    setSelectedUnsplashPhoto: this.setSelectedUnsplashPhoto,
+                    setUnsplashCachedSearchResult: this.setUnsplashCachedSearchResult
                 }}
             >
                 {this.props.children}
