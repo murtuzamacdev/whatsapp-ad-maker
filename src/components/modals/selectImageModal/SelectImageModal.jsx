@@ -13,6 +13,7 @@ import Loading from '../../loading/Loading';
 // Assets
 import fromInternet from '../../../assets/images/fromInternet.png';
 import fromDevice from '../../../assets/images/fromDevice.png';
+import noSearchResult from '../../../assets/images/noRecordsFound.png';
 
 var currentPage = 1;
 
@@ -21,8 +22,12 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
     // const [images, setImages] = useState([]);
     const [searchTxt, setSearchTxt] = useState('');
     const [searchResultTotalPages, setSearchResultTotalPages] = useState(1);
+
+    // Loadings
     const [showSearchBtnLoading, setShowSearchBtnLoading] = useState(false);
     const [showLoadMoreLoading, setShowLoadMoreLoading] = useState(false);
+    const [showNoResultFound, setShowNoResultFound] = useState(false);
+
     const unsplash = createApi({
         accessKey: UNSPLASH_API_KEY
     });
@@ -50,6 +55,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                 // Differentiate between search and load more
                 if (currentPage === 1) { // Search
                     setShowSearchBtnLoading(false);
+                    setShowNoResultFound(true);
                     globalContext.setUnsplashCachedSearchResult(_images);
                 } else { // Load More
                     setShowLoadMoreLoading(false);
@@ -113,7 +119,11 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                                     </>}
 
                                     {globalContext.state.unsplashCachedSearchResult.length === 0 && <>
-                                        <Loading fullScreen={false} />
+                                        {showNoResultFound && <div className="d-flex flex-column justify-content-center align-items-center">
+                                            <img src={noSearchResult} alt='No results found' width="50%" className="mt-5 pt-5" />
+                                            <p style={{color: 'rgba(0, 0, 0, 0.5)'}} className="mt-4">No records found</p>
+                                        </div>}
+                                        {!showNoResultFound && <Loading fullScreen={false} />}
                                     </>}
 
                                 </TabPanel>
