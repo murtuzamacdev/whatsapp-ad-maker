@@ -8,13 +8,12 @@ import whatsappLogo from '../../assets/images/logos_whatsapp.png';
 
 const Template2 = () => {
     const globalContext = useContext(GlobalContext);
-    const productDescDivHeight = window.innerHeight * (122 / 812);
 
     return (<div className="d-flex flex-column template2-ctrn pt-4 pb-2 pl-3 pr-3 text-center">
 
         <div className="top-part d-flex flex-column justify-content-between">
             <div className="product-name mt-4">{globalContext.state.productData.productName}</div>
-            {globalContext.state.productData.productDescription !== '' && <div className="product-description p-3" style={{ maxHeight: `${productDescDivHeight}px` }}>{globalContext.state.productData.productDescription}</div>}
+            {globalContext.state.productData.productDescription !== '' && <div className="product-description p-3">{globalContext.state.productData.productDescription}</div>}
             <div className="img-box-ctrn mt-4">
                 <div className="product-image" style={{ backgroundImage: "url(" + globalContext.state.productData.productImage + ")" }}> </div>
                 {globalContext.state.productData.productPrice !== '' && <div className="product-price p-2 pl-3 pr-3"><small>{currencies.find((item) => item.code === globalContext.state.productData.currencyCode).symbol}</small> {globalContext.state.productData.productPrice}</div>}

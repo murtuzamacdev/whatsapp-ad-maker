@@ -10,21 +10,6 @@ import whatsappLogo from '../../assets/images/logos_whatsapp.png';
 
 const Template5 = () => {
     const globalContext = useContext(GlobalContext);
-    const productDescDivHeight = window.innerHeight * (122 / 812);
-
-    // function hexToRgbA() {
-    //     var c;
-    //     let hex = globalContext.state.productData.selectedBackgroundColor
-    //     if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
-    //         c = hex.substring(1).split('');
-    //         if (c.length === 3) {
-    //             c = [c[0], c[0], c[1], c[1], c[2], c[2]];
-    //         }
-    //         c = '0x' + c.join('');
-    //         return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',0.65)';
-    //     }
-    //     throw new Error('Bad Hex');
-    // }
 
     return (<div className="template5-cntr" style={{ background: 'linear-gradient( 0.74deg , ' + globalContext.state.productData.selectedBackgroundColor  + ' 0.59%, ' + hexToRgbA(globalContext.state.productData.selectedBackgroundColor, 0.7)  + ' 99.01%)' }}>
         <div className="card p-0 main-card">
@@ -41,8 +26,8 @@ const Template5 = () => {
 
             <div style={{ maxHeight: '40%' }} className="p-4">
                 {/* Product descrption */}
-                {globalContext.state.productData.productDescription !== '' && <div style={{ flex: 1 }} className=" product-desc-card justify-content-center mb-3">
-                    <p className="m-0 product-desc" style={{ maxHeight: `${productDescDivHeight}px` }}>{globalContext.state.productData.productDescription}</p>
+                {globalContext.state.productData.productDescription !== '' && <div style={{ flex: 1 }} className=" product-desc-card justify-content-center mb-1">
+                    <p className="m-0 product-desc">{globalContext.state.productData.productDescription}</p>
                 </div>}
 
                 {/* Business name */}

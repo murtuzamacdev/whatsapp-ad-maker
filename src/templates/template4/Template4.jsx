@@ -8,7 +8,6 @@ import whatsappLogo from '../../assets/images/logos_whatsapp.png';
 
 const Template4 = () => {
     const globalContext = useContext(GlobalContext);
-    const productDescDivHeight = window.innerHeight * (122 / 812);
     const [secondaryBgForGradient, setSecondaryBgForGradient] = useState('#ffffff');
 
     useEffect(() => {
@@ -31,13 +30,13 @@ const Template4 = () => {
         <div className='content-ctrn' style={{ background: 'linear-gradient(233.12deg, ' + globalContext.state.productData.selectedBackgroundColor + ' 33.2%, ' + secondaryBgForGradient + ' 75.65%)', opacity: '0.75' }}></div>
 
         <div className="mt-3 d-flex justify-content-center single-line flex-column top-part align-items-center price-order">
-            {globalContext.state.productData.pitchText !== '' && <div className="order-now p-2">{globalContext.state.productData.pitchText}</div>}
+            {globalContext.state.productData.pitchText !== '' && <div className="order-now p-2 ml-5">{globalContext.state.productData.pitchText}</div>}
         </div>
 
         <div className="bottom-ctrn pt-4 pb-4 pl-3 pr-3">
             <div style={{background: 'rgba(0, 0, 0, 0.4)'}}>
                 <p className="product-name p-2 m-0">{globalContext.state.productData.productName}</p>
-                {globalContext.state.productData.productDescription !== '' && <div className="product-desc mt-4 pl-2" style={{ maxHeight: `${productDescDivHeight}px` }}>{globalContext.state.productData.productDescription}</div>}
+                {globalContext.state.productData.productDescription !== '' && <div className="product-desc mt-1 pl-2">{globalContext.state.productData.productDescription}</div>}
             </div>
 
             <div className={'d-flex align-items-center mt-3 ' + (globalContext.state.productData.productPrice === '' ? 'justify-content-end' : 'justify-content-between')}>
