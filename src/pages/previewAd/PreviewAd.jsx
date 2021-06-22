@@ -54,9 +54,11 @@ const PreviewAd = () => {
 
         setTimeout(() => {
             setShowControls(false);
-        }, 5000);
+        }, 4000);
 
-        setShowControls(true);
+        setTimeout(() => {
+            setShowControls(true);
+        }, 500);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -65,40 +67,38 @@ const PreviewAd = () => {
         setShowWatermark(true);
         setLoading(true);
 
-        setTimeout(() => {
-            // To track unsplash image download as per their guidelines
-            globalContext.state.selectedUnsplashPhoto && unsplash.photos.trackDownload({
-                downloadLocation: globalContext.state.selectedUnsplashPhoto.links.download_location,
+        // To track unsplash image download as per their guidelines
+        globalContext.state.selectedUnsplashPhoto && unsplash.photos.trackDownload({
+            downloadLocation: globalContext.state.selectedUnsplashPhoto.links.download_location,
+        });
+
+
+        const scale = 3
+        const node = document.getElementById("html-content-holder")
+
+        const style = {
+            transform: 'scale(' + scale + ')',
+            transformOrigin: 'top left',
+            width: node.offsetWidth + "px",
+            height: node.offsetHeight + "px"
+        }
+
+        const param = {
+            height: node.offsetHeight * scale,
+            width: node.offsetWidth * scale,
+            quality: 1,
+            style
+        }
+
+        domtoimage.toJpeg(node, param)
+            .then(function (dataUrl) {
+                var link = document.createElement('a');
+                link.download = new Date().getTime() + '.jpeg';
+                link.href = dataUrl;
+                link.click();
+                setLoading(false);
+                setShowWatermark(false);
             });
-
-
-            const scale = 3
-            const node = document.getElementById("html-content-holder")
-
-            const style = {
-                transform: 'scale(' + scale + ')',
-                transformOrigin: 'top left',
-                width: node.offsetWidth + "px",
-                height: node.offsetHeight + "px"
-            }
-
-            const param = {
-                height: node.offsetHeight * scale,
-                width: node.offsetWidth * scale,
-                quality: 1,
-                style
-            }
-
-            domtoimage.toJpeg(node, param)
-                .then(function (dataUrl) {
-                    var link = document.createElement('a');
-                    link.download = new Date().getTime() + '.jpeg';
-                    link.href = dataUrl;
-                    link.click();
-                    setLoading(false);
-                    setShowWatermark(false);
-                });
-        }, 400);
 
     }
 
@@ -125,7 +125,7 @@ const PreviewAd = () => {
             {loading && <Loading fullScreen={true}></Loading>}
             {globalContext.state.productData && <>
                 <div className="d-flex flex-column previewAd" id="html-content-holder">
-                    {showWatermark && <img src={logoWatermark} alt="Create Awesome Ads" width="100px" className='logo-badge' />}
+                    <img src={logoWatermark} alt="Create Awesome Ads" width="100px" className={'logo-badge ' + (showWatermark ? 'd-block' : 'd-none')} />
                     {getSelectedTemplateComponent()}
                 </div>
 
