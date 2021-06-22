@@ -34,7 +34,7 @@ const Template4 = () => {
         </div>
 
         <div className="bottom-ctrn pt-4 pb-4 pl-3 pr-3">
-            <div style={{background: 'rgba(0, 0, 0, 0.4)'}}>
+            <div style={{background: 'rgba(0, 0, 0, 0.5)'}}>
                 <p className="product-name p-2 m-0">{globalContext.state.productData.productName}</p>
                 {globalContext.state.productData.productDescription !== '' && <div className="product-desc mt-1 pl-2">{globalContext.state.productData.productDescription}</div>}
             </div>
