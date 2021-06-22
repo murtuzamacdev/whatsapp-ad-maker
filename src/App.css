@@ -56,7 +56,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 }
 
 select{
-  background: url(assets/images/selectDown.png) 80%;
+  background: url(assets/images/selectDown.svg) 80%;
   background-repeat: no-repeat;
   background-size: 13px;
   -webkit-appearance: none;
@@ -79,7 +79,7 @@ button.close{
 }
 
 .image-select-button {
-  background: url(assets/images/gallery.png) 25px;
+  background: url(assets/images/gallery.svg) 25px;
   background-repeat: no-repeat;
   background-size: 16px;
 }

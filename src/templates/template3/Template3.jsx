@@ -4,8 +4,8 @@ import currencies from '../../configs/currencies.json';
 import { GlobalContext } from '../../context/global.context';
 
 // Assets
-import whatsappLogo from '../../assets/images/logos_whatsapp.png';
-import topRightLines from '../../assets/images/templates/template3/topRightLines.png'
+import whatsappLogo from '../../assets/images/logos_whatsapp.svg';
+import topRightLines from '../../assets/images/templates/template3/topRightLines.svg'
 
 const Template3 = () => {
     const globalContext = useContext(GlobalContext);

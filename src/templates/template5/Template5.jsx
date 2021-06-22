@@ -5,8 +5,8 @@ import { GlobalContext } from '../../context/global.context';
 import {hexToRgbA} from '../../utility';
 
 // Assets
-import backdrop from '../../assets/images/backdrop.png';
-import whatsappLogo from '../../assets/images/logos_whatsapp.png';
+import backdrop from '../../assets/images/backdrop.svg';
+import whatsappLogo from '../../assets/images/logos_whatsapp.svg';
 
 const Template5 = () => {
     const globalContext = useContext(GlobalContext);
@@ -18,7 +18,7 @@ const Template5 = () => {
                 <img className="product-image" src={globalContext.state.productData.productImage} alt="productImage" />
                 <img className="product-image-backdrop" src={backdrop} alt="productBackdrop" />
                 <div className="d-flex name-price-ctnr product-name-card justify-content-between align-items-center flex-column">
-                    <p style={{ flexGrow: 0.7 }} className="product-name">{globalContext.state.productData.productName}</p>
+                    <p style={{ flexGrow: 0.7 }} className="product-name mb-2">{globalContext.state.productData.productName}</p>
                     {globalContext.state.productData.productPrice !== '' && <p className="m-0 product-price pt-1 pb-2 pl-4 pr-4" style={{ backgroundColor: globalContext.state.productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === globalContext.state.productData.currencyCode).symbol}</small> {globalContext.state.productData.productPrice}</p>}
                 </div>
 

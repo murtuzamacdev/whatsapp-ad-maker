@@ -7,11 +7,11 @@ import { UNSPLASH_APP_NAME, UNSPLASH_API_KEY } from '../../configs/constants';
 import { createApi } from 'unsplash-js';
 
 //assets
-import downloadBtn from '../../assets/images/downloadBtn.png';
-import editBtn from '../../assets/images/editBtn.png';
-import changeTemplateBtn from '../../assets/images/changeTempBtn.png';
-import changeColor from '../../assets/images/changeColor.png';
-import logoWatermark from '../../assets/images/logoWatermark.png';
+import downloadBtn from '../../assets/images/downloadBtn.svg';
+import editBtn from '../../assets/images/editBtn.svg';
+import changeTemplateBtn from '../../assets/images/changeTempBtn.svg';
+import changeColor from '../../assets/images/changeColor.svg';
+import logoWatermark from '../../assets/images/logoWatermark.svg';
 
 // Templates
 import { TEMPLATES } from '../../templates/TemplateController';

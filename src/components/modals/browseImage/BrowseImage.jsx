@@ -1,7 +1,7 @@
 import './BrowseImage.scss';
 
 //assets
-import browseDevice from '../../../assets/images/browseDevice.png';
+import browseDevice from '../../../assets/images/browseDevice.svg';
 
 const BrowseImage = ({ onImageSelect }) => {
 

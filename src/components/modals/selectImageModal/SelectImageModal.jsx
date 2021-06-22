@@ -11,9 +11,9 @@ import BrowseImage from '../browseImage/BrowseImage';
 import Loading from '../../loading/Loading';
 
 // Assets
-import fromInternet from '../../../assets/images/fromInternet.png';
-import fromDevice from '../../../assets/images/fromDevice.png';
-import noSearchResult from '../../../assets/images/noRecordsFound.png';
+import fromInternet from '../../../assets/images/fromInternet.svg';
+import fromDevice from '../../../assets/images/fromDevice.svg';
+import noSearchResult from '../../../assets/images/noRecordsFound.svg';
 
 var currentPage = 1;
 

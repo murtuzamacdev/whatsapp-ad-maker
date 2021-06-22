@@ -5,7 +5,7 @@ import { GlobalContext } from '../../context/global.context';
 import {hexToRgbA} from '../../utility';
 
 // Assets
-import whatsappLogo from '../../assets/images/logos_whatsapp.png';
+import whatsappLogo from '../../assets/images/logos_whatsapp.svg';
 
 const Template1 = () => {
     const globalContext = useContext(GlobalContext);

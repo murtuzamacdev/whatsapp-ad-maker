@@ -9,9 +9,7 @@ import SelectCurrency from 'react-select-currency';
 import { PITCH_DEFAULT } from '../../configs/constants';
 
 // Assets
-import nextBtn from '../../assets/images/nextBtn.png';
-import resetBtn from '../../assets/images/resetBtn.png';
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/logo.svg';
 
 const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
@@ -234,9 +232,9 @@ const CreateAd = () => {
 
                     <div className="btns-ctnr">
                         <button type="button" className={"reset-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Reset Button"
-                            src={resetBtn} onClick={() => { resetFormCustom(setFieldValue) }}></button>
+                            onClick={() => { resetFormCustom(setFieldValue) }}></button>
                         <button type="submit" className={"next-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Next Button"
-                            src={nextBtn} onClick={() => { window.scrollTo(0, 0); }}></button>
+                            onClick={() => { window.scrollTo(0, 0); }}></button>
                     </div>
                 </div>
                 <SelectImageModal updatePicture={updatePicture} setFieldValue={setFieldValue} />
