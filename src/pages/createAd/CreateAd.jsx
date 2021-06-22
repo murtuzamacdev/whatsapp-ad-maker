@@ -15,6 +15,7 @@ const CreateAd = () => {
     const globalContext = useContext(GlobalContext);
     const [safeToShowForm, setSafeToShowForm] = useState(false);
     const [showControls, setShowControls] = useState(false);
+    const [shakeThat, setShakeThat] = useState(false);
     const [productData, setProductData] = useState({
         productImage: "",
         productName: "",
@@ -68,6 +69,15 @@ const CreateAd = () => {
         }
 
     };
+
+    const handleSubmitClick = (isValid) => {
+        if (!isValid) {
+            setShakeThat(true);
+            setTimeout(() => {
+                setShakeThat(false);
+            }, 1000);
+        }
+    }
 
     const resetFormCustom = (setFieldValue) => {
         setFieldValue('productImage', '');
@@ -233,8 +243,8 @@ const CreateAd = () => {
                     <div className="btns-ctnr">
                         <button type="button" className={"reset-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Reset Button"
                             onClick={() => { resetFormCustom(setFieldValue) }}></button>
-                        <button type="submit" className={"next-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Next Button"
-                            onClick={() => { window.scrollTo(0, 0); }}></button>
+                        <button type="submit" className={"next-btn " + (showControls ? 'fadeIn ' : 'fadeOut ') + (shakeThat ? 'shake-this' : undefined)} alt="Next Button"
+                            onClick={() => { handleSubmitClick(isValid) }}></button>
                     </div>
                 </div>
                 <SelectImageModal updatePicture={updatePicture} setFieldValue={setFieldValue} />
@@ -242,7 +252,6 @@ const CreateAd = () => {
             </Form>
         )}
         </Formik>}
-
     </div>);
 }
 
