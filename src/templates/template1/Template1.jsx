@@ -16,7 +16,7 @@ const Template1 = () => {
             <p className="product-name pt-2 pb-2 pl-1 pr-1 m-0">{globalContext.productData.productName}</p>
             <div className="purple-ctnr pt-4 pb-4 pl-3 pr-3" style={{ backgroundColor: hexToRgbA(globalContext.productData.selectedBackgroundColor, 0.75)  }}>
                 {globalContext.productData.productDescription !== '' && <div className="product-desc mt-4 mb-1 pl-2" >{globalContext.productData.productDescription}</div>}
-                <div className={'d-flex align-items-center ' + (globalContext.productData.pitchText === '' ? 'justify-content-end' : 'justify-content-between')}>
+                <div className={'d-flex align-items-center mt-3 ' + (globalContext.productData.pitchText === '' ? 'justify-content-end' : 'justify-content-between')}>
 
                     {globalContext.productData.pitchText !== '' && <div className="order-now pl-2 pr-2">{globalContext.productData.pitchText}</div>}
                     {(globalContext.productData.sellerName !== '' || globalContext.productData.whatsappNumber !== '') && <>
