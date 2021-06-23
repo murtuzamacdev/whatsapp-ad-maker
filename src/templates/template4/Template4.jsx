@@ -33,13 +33,13 @@ const Template4 = () => {
             {globalContext.productData.pitchText !== '' && <div className="order-now p-2 ml-5">{globalContext.productData.pitchText}</div>}
         </div>
 
-        <div className="bottom-ctrn pt-4 pb-4 pl-3 pr-3">
-            <div style={{background: 'rgba(0, 0, 0, 0.4)'}} className="d-flex flex-column">
+        <div className="bottom-ctrn pt-4 pb-4  pr-3">
+            <div style={{background: 'rgba(0, 0, 0, 0.4)'}} className="d-flex flex-column pl-3">
                 <p className="product-name p-2 m-0">{globalContext.productData.productName}</p>
                 {globalContext.productData.productDescription !== '' && <div className="product-desc mt-1 pl-2">{globalContext.productData.productDescription}</div>}
             </div>
 
-            <div className={'d-flex align-items-center mt-3 ' + (globalContext.productData.productPrice === '' ? 'justify-content-end' : 'justify-content-between')}>
+            <div className={'d-flex align-items-center mt-3 pl-3 ' + (globalContext.productData.productPrice === '' ? 'justify-content-end' : 'justify-content-between')}>
                 {globalContext.productData.productPrice !== '' && <div className="product-price pt-2 pb-2 pl-4 pr-4 single-line"><small>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</small> {globalContext.productData.productPrice}</div>}
 
                 {(globalContext.productData.sellerName !== '' || globalContext.productData.whatsappNumber !== '') && <>
