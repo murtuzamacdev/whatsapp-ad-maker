@@ -108,8 +108,8 @@ const CreateAd = () => {
                 pitchText: productData.pitchText
             }}
             validationSchema={Yup.object().shape({
-                productImage: Yup.string().required("Please provide product image"),
-                productName: Yup.string().trim().required("Please provide product name"),
+                productImage: Yup.string().required("Please provide an image"),
+                productName: Yup.string().trim().required("Please provide a name"),
                 productPrice: Yup.string().trim(),
                 productDescription: Yup.string().trim(),
                 sellerName: Yup.string().trim(),
@@ -130,7 +130,7 @@ const CreateAd = () => {
                         {(values.productImage === '' || values.productImage === undefined) ?
                             <div className="d-flex justify-content-center">
                                 <label className="btn btn-default buttons-ctrns p-0 w-auto">
-                                    <button type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button ">Select Product Image *</button>
+                                    <button type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button ">Select Image *</button>
                                 </label>
                             </div>
                             :
@@ -138,7 +138,7 @@ const CreateAd = () => {
                                 <img src={values.productImage} alt="productImage" />
                                 <div className="d-flex justify-content-center change-image">
                                     <label className="btn btn-default buttons-ctrns p-0 w-auto">
-                                        <div type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button">Change Product Image</div>
+                                        <div type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button">Change Image</div>
                                     </label>
                                 </div>
                             </>
@@ -152,7 +152,7 @@ const CreateAd = () => {
 
                     {/* Product name */}
                     <div className=" fields-ctnr mt-4 ">
-                        <label>What's your product name? *</label>
+                        <label>What's your product/service name? *</label>
                         <Field
                             type="text"
                             placeholder="Example: Nike Shoes"
@@ -168,12 +168,12 @@ const CreateAd = () => {
 
                     {/* Product price */}
                     <div className=" mt-4 fields-ctnr">
-                        <label>What’s the price of this product?</label>
+                        <label>What’s the price/fee?</label>
                         <div className="d-flex">
                             <SelectCurrency value={values.currencyCode} onChange={(event) => { setFieldValue('currencyCode', event.target.value) }} />
                             <Field
                                 type="number"
-                                placeholder="5000"
+                                placeholder="Eg. 5000"
                                 className="product-price ml-2"
                                 name="productPrice"
                             />
@@ -183,11 +183,11 @@ const CreateAd = () => {
 
                     {/* Product descrption */}
                     <div className=" mt-4 fields-ctnr">
-                        <label>Want to add any description or comment about the product?</label>
+                        <label>Want to add any description or comment?</label>
                         <textarea
                             type="textarea"
                             rows="3"
-                            placeholder="Example: It's a quality product..."
+                            placeholder="Example: Quality product with best service in town."
                             name="productDescription"
                             value={values.productDescription}
                             onChange={handleChange}
@@ -196,7 +196,7 @@ const CreateAd = () => {
 
                     {/* Business name */}
                     <div className="  mt-4 fields-ctnr">
-                        <label>Who is selling this product?</label>
+                        <label>Who is selling this product/service?</label>
                         <Field
                             type="text"
                             placeholder="Individual or Company name"
@@ -206,7 +206,7 @@ const CreateAd = () => {
 
                     {/* whatsapp number */}
                     <div className="  mt-4 fields-ctnr">
-                        <label>What’s the seller’s Whatsapp number?</label>
+                        <label>What’s the seller’s contact number?</label>
                         <Field
                             type="tel"
                             placeholder="10 digits phone number"
