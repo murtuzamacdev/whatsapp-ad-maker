@@ -11,6 +11,7 @@ import template2Img from '../assets/images/templates/demo/2.svg';
 import template3Img from '../assets/images/templates/demo/3.svg';
 import template4Img from '../assets/images/templates/demo/4.svg';
 import template5Img from '../assets/images/templates/demo/5.svg';
+import comingSoon from '../assets/images/templates/demo/comingSoon.svg';
 
 export const TEMPLATES = {
     template4: {
@@ -42,5 +43,11 @@ export const TEMPLATES = {
         component: Template5,
         demoImage: template5Img,
         status: 'ACTIVE'
+    },
+    comingSoon: {
+        id: 'comingSoon',
+        component: null,
+        demoImage: comingSoon,
+        status: 'COMING_SOON'
     },
 }
