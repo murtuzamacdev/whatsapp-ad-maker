@@ -31,6 +31,8 @@ const PreviewAd = () => {
         accessKey: UNSPLASH_API_KEY
     });
 
+    const containerHieght = window.innerHeight;
+
     useEffect(() => {
 
         // Closing Modal when back button is clicked instead of routing to back page
@@ -62,6 +64,17 @@ const PreviewAd = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    const calculateCanvasHieght = () => {
+        let deviceHeight = window.innerHeight;
+        let calculatedHeight = window.innerWidth * (1280/764);
+        if(calculatedHeight > deviceHeight){
+            return deviceHeight;
+        }else {
+            return calculatedHeight;
+        }
+        
+    }
 
     const downloadScreenshot = (params) => {
         setShowWatermark(true);
@@ -121,10 +134,10 @@ const PreviewAd = () => {
     }
 
     return (
-        <div onClick={toggleControls} className="preview-ad-ctnr">
+        <div onClick={toggleControls} className="preview-ad-ctnr d-flex align-items-center" style={{height: containerHieght}}>
             {loading && <Loading fullScreen={true}></Loading>}
             {globalContext.productData && <>
-                <div className="d-flex flex-column previewAd" id="html-content-holder">
+                <div style={{height: calculateCanvasHieght()}} className="d-flex flex-column previewAd" id="html-content-holder">
                     <img src={logoWatermark} alt="Create Awesome Ads" width="100px" className={'logo-badge ' + (showWatermark ? 'd-block' : 'd-none')} />
                     {getSelectedTemplateComponent()}
                 </div>

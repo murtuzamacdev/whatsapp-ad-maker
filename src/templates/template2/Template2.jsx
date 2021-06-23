@@ -12,7 +12,7 @@ const Template2 = () => {
     return (<div className="d-flex flex-column template2-ctrn pt-4 pb-2 pl-3 pr-3 text-center">
 
         <div className="top-part d-flex flex-column justify-content-between">
-            <div className="product-name mt-4">{globalContext.productData.productName}</div>
+            <div className="product-name mt-4 pl-3 pr-3">{globalContext.productData.productName}</div>
             {globalContext.productData.productDescription !== '' && <div className="product-description p-3">{globalContext.productData.productDescription}</div>}
             <div className="img-box-ctrn mt-4">
                 <div className="product-image" style={{ backgroundImage: "url(" + globalContext.productData.productImage + ")" }}> </div>
