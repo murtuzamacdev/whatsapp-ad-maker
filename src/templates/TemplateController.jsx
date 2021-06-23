@@ -6,11 +6,12 @@ import Template4 from '../templates/template4/Template4';
 import Template5 from '../templates/template5/Template5';
 
 // Assets
-import template1Img from '../assets/images/templates/demo/1.png';
-import template2Img from '../assets/images/templates/demo/2.png';
-import template3Img from '../assets/images/templates/demo/3.png';
-import template4Img from '../assets/images/templates/demo/4.png';
-import template5Img from '../assets/images/templates/demo/5.png';
+import template1Img from '../assets/images/templates/demo/1.svg';
+import template2Img from '../assets/images/templates/demo/2.svg';
+import template3Img from '../assets/images/templates/demo/3.svg';
+import template4Img from '../assets/images/templates/demo/4.svg';
+import template5Img from '../assets/images/templates/demo/5.svg';
+import comingSoon from '../assets/images/templates/demo/comingSoon.svg';
 
 export const TEMPLATES = {
     template4: {
@@ -42,5 +43,11 @@ export const TEMPLATES = {
         component: Template5,
         demoImage: template5Img,
         status: 'ACTIVE'
+    },
+    comingSoon: {
+        id: 'comingSoon',
+        component: null,
+        demoImage: comingSoon,
+        status: 'COMING_SOON'
     },
 }

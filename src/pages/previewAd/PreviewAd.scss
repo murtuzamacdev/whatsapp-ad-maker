@@ -1,13 +1,12 @@
 .preview-ad-ctnr {
   position: relative;
+  background-color: #222121;
   .previewAd {
-    height: 100vh;
     max-height: 926px;
     overflow: hidden;
     position: relative;
     background-color: white;
-    // padding: 2.5rem;
-    // background-image: linear-gradient(#d4e8ff, rgb(157, 211, 184));
+    width: 100%;
     background-repeat: no-repeat;
     user-select: none;
   }
@@ -81,6 +80,7 @@
       background-color: transparent;
       display: inline-block;
       font-size: 0.7rem;
+      background-color: #3E3D3D;
     }
 
     a{
