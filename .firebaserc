@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "dev-createawesomeads"
+    "default": "dev-createawesomeads",
+    "production": "createawesomeads-2288d"
   }
 }
