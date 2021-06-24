@@ -5,6 +5,9 @@ import domtoimage from 'dom-to-image';
 import { GlobalContext } from '../../context/global.context';
 import { UNSPLASH_APP_NAME, UNSPLASH_API_KEY } from '../../configs/constants';
 import { createApi } from 'unsplash-js';
+import firebase from "firebase/app";
+import "firebase/analytics";
+import GAEvents from '../../configs/GA_events.json';
 
 //assets
 import downloadBtn from '../../assets/images/downloadBtn.svg';
@@ -79,6 +82,12 @@ const PreviewAd = () => {
     const downloadScreenshot = (params) => {
         setShowWatermark(true);
         setLoading(true);
+
+        // Send data to google analytics
+        firebase.analytics().logEvent(GAEvents.template_downloaded.title, { 
+            [GAEvents.template_downloaded.params.template_id]: globalContext.selectedTemplate,
+            [GAEvents.template_downloaded.params.template_color]: globalContext.productData.selectedBackgroundColor
+         });
 
         // To track unsplash image download as per their guidelines
         globalContext.selectedUnsplashPhoto && unsplash.photos.trackDownload({

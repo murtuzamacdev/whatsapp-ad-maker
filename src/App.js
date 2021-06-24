@@ -1,16 +1,17 @@
 import 'react-tabs/style/react-tabs.css';
 import './App.css';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CreateAd from './pages/createAd/CreateAd';
 import PreviewAd from './pages/previewAd/PreviewAd.jsx';
-import { GlobalContext, GlobalContextProvider } from './context/global.context.jsx'
+import { GlobalContext, GlobalContextProvider } from './context/global.context.jsx';
+import InitialOperations from './components/initialOperations/InitialOperations'
 
 function App() {
   return (
     <div className="container p-0">
-
       <GlobalContextProvider>
         <Router>
+          <InitialOperations />
           <GlobalContext.Consumer>
             {globalContext => (
               <Switch>
@@ -26,9 +27,7 @@ function App() {
           </GlobalContext.Consumer>
         </Router>
       </GlobalContextProvider>
-
     </div>
-
   );
 }
 

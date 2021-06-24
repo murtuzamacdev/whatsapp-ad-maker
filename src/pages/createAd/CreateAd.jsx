@@ -7,6 +7,9 @@ import { GlobalContext } from '../../context/global.context';
 import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
 import SelectCurrency from 'react-select-currency';
 import { PITCH_DEFAULT } from '../../configs/constants';
+import firebase from "firebase/app";
+import "firebase/analytics";
+import GAEvents from '../../configs/GA_events.json';
 
 // Assets
 import logo from '../../assets/images/logo.svg';
@@ -117,6 +120,7 @@ const CreateAd = () => {
                 pitchText: Yup.string().trim().max(10, 'Pitch should be of 10 characters max'),
             })}
             onSubmit={(values) => {
+                firebase.analytics().logEvent(GAEvents.form_submit_successfully.title);
                 globalContext.setProductData(values);
                 history.push('previewAd');
             }}
