@@ -140,15 +140,17 @@ const CreateAd = () => {
                             className="product-name ml-2"
                             name="productName"
                         />
+                        {errors.productName && touched.productName && (
+                            <div className="form-error d-block mt-1 ml-3">
+                                {errors.productName}
+                            </div>
+                        )}
                     </div>
-                    {errors.productName && touched.productName && (
-                        <div className="form-error d-block mt-1 ml-3">
-                            {errors.productName}
-                        </div>
-                    )}
 
+
+                    {/* Product image */}
                     <label className="fields-ctnr mt-4">Add an image for your product/service.</label>
-                    <div className=" product-image-card justify-content-center d-flex flex-column fields-ctnr">
+                    <div className=" product-image-card justify-content-center d-flex flex-column fields-ctnr mb-4">
 
                         {(values.productImage === '' || values.productImage === undefined) ?
                             <>
@@ -166,17 +168,18 @@ const CreateAd = () => {
                                 </div>
                             </div>
                         }
+                        {errors.productImage && touched.productImage && (
+                            <div className="form-error d-block mt-1 ml-3">
+                                {errors.productImage}
+                            </div>
+                        )}
                     </div>
-                    {errors.productImage && touched.productImage && (
-                        <div className="form-error d-block mt-1 ml-3">
-                            {errors.productImage}
-                        </div>
-                    )}
 
 
+                    <p className="optional-text"><span>Optional</span></p>
 
                     {/* Product price */}
-                    <div className=" mt-4 fields-ctnr">
+                    <div className=" mt-2 fields-ctnr">
                         <label>What’s the price/fee?</label>
                         <div className="d-flex">
                             <SelectCurrency value={values.currencyCode} onChange={(event) => { setFieldValue('currencyCode', event.target.value) }} />
@@ -222,12 +225,13 @@ const CreateAd = () => {
                             name="whatsappNumber"
                             maxLength="10"
                         />
+                        {errors.whatsappNumber && touched.whatsappNumber && (
+                            <div className="form-error d-block mt-1 ml-3">
+                                {errors.whatsappNumber}
+                            </div>
+                        )}
                     </div>
-                    {errors.whatsappNumber && touched.whatsappNumber && (
-                        <div className="form-error d-block mt-1 ml-3">
-                            {errors.whatsappNumber}
-                        </div>
-                    )}
+
 
                     {/* Pitch text */}
                     <div className="  mt-4 fields-ctnr">
@@ -237,12 +241,13 @@ const CreateAd = () => {
                             placeholder="Example: HURRY UP!"
                             name="pitchText"
                         />
+                        {errors.pitchText && touched.pitchText && (
+                            <div className="form-error d-block mt-1 ml-3">
+                                {errors.pitchText}
+                            </div>
+                        )}
                     </div>
-                    {errors.pitchText && touched.pitchText && (
-                        <div className="form-error d-block mt-1 ml-3">
-                            {errors.pitchText}
-                        </div>
-                    )}
+
                     <div className="mt-1 fields-ctnr">
                         {PITCH_DEFAULT.map((item) => <button key={item} onClick={() => { setFieldValue('pitchText', item) }} className={'chips p-2 mr-2 mt-2 ' + (item === values.pitchText ? 'selected' : '')} type="button">{item}</button>)}
                     </div>

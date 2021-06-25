@@ -153,4 +153,18 @@
       transform: translate3d(4px, 0, 0);
     }
   }
+
+  .optional-text {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+ } 
+ 
+ .optional-text span { 
+     background:#fff; 
+     padding:0 10px; 
+     color: rgba(0, 0, 0, 0.4);
+ }
 }
