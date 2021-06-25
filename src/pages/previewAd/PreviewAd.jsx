@@ -14,7 +14,6 @@ import downloadBtn from '../../assets/images/downloadBtn.svg';
 import editBtn from '../../assets/images/editBtn.svg';
 import changeTemplateBtn from '../../assets/images/changeTempBtn.svg';
 import changeColor from '../../assets/images/changeColor.svg';
-import logoWatermark from '../../assets/images/logoWatermark.svg';
 
 // Templates
 import { TEMPLATES } from '../../templates/TemplateController';
@@ -70,13 +69,13 @@ const PreviewAd = () => {
 
     const calculateCanvasHieght = () => {
         let deviceHeight = window.innerHeight;
-        let calculatedHeight = window.innerWidth * (1280/764);
-        if(calculatedHeight > deviceHeight){
+        let calculatedHeight = window.innerWidth * (1280 / 764);
+        if (calculatedHeight > deviceHeight) {
             return deviceHeight;
-        }else {
+        } else {
             return calculatedHeight;
         }
-        
+
     }
 
     const downloadScreenshot = (params) => {
@@ -84,10 +83,10 @@ const PreviewAd = () => {
         setLoading(true);
 
         // Send data to google analytics
-        firebase.analytics().logEvent(GAEvents.template_downloaded.title, { 
+        firebase.analytics().logEvent(GAEvents.template_downloaded.title, {
             [GAEvents.template_downloaded.params.template_id]: globalContext.selectedTemplate,
             [GAEvents.template_downloaded.params.template_color]: globalContext.productData.selectedBackgroundColor
-         });
+        });
 
         // To track unsplash image download as per their guidelines
         globalContext.selectedUnsplashPhoto && unsplash.photos.trackDownload({
@@ -143,11 +142,11 @@ const PreviewAd = () => {
     }
 
     return (
-        <div onClick={toggleControls} className="preview-ad-ctnr d-flex align-items-center" style={{height: containerHieght}}>
+        <div onClick={toggleControls} className="preview-ad-ctnr d-flex align-items-center" style={{ height: containerHieght }}>
             {loading && <Loading fullScreen={true}></Loading>}
             {globalContext.productData && <>
-                <div style={{height: calculateCanvasHieght()}} className="d-flex flex-column previewAd" id="html-content-holder">
-                    <img src={logoWatermark} alt="Create Awesome Ads" width="100px" className={'logo-badge ' + (showWatermark ? 'd-block' : 'd-none')} />
+                <div style={{ height: calculateCanvasHieght() }} className="d-flex flex-column previewAd" id="html-content-holder">
+                    <small className={'logo-badge ' + (showWatermark ? 'd-block' : 'd-none')}>createAwesomeAds.com</small>
                     {getSelectedTemplateComponent()}
                 </div>
 
