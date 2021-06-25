@@ -3,10 +3,31 @@
 
   .product-image-card {
     position: relative;
-    border-radius: 25px;
-    height: 400px;
-    background: #e5e2e2;
+    
+
+    
     overflow: hidden;
+
+    .blank-image {
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f7f3f3;;
+      border-radius: 25px;
+
+      button{
+        width: 70%;
+      }
+    }
+
+    .selected-image {
+      height: 300px;
+      border-radius: 25px;
+      overflow: hidden;
+      position: relative;
+    }
 
     img {
       object-fit: cover;
@@ -63,19 +84,18 @@
   .next-btn {
     height: 70px;
     width: 70px;
-    
-    background: url('/assets/images/nextBtn.svg') 100%;
+
+    background: url("/assets/images/nextBtn.svg") 100%;
     background-repeat: no-repeat;
     background-size: 100%;
     padding: 0;
-    
   }
 
-  .next-btn.shake-this{
-    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
+  .next-btn.shake-this {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 
   .reset-btn {
@@ -84,11 +104,10 @@
     right: 10px;
     bottom: 80px;
     z-index: 2;
-    background: url('/assets/images/resetBtn.svg') 100%;
+    background: url("/assets/images/resetBtn.svg") 100%;
     background-repeat: no-repeat;
     background-size: 100%;
     padding: 0;
-   
   }
 
   .fadeOut {
@@ -102,7 +121,7 @@
     transition: width 0.5s, height 0.5s, opacity 0.5s 0s;
   }
 
-  .btns-ctnr{
+  .btns-ctnr {
     position: fixed;
     right: 10px;
     bottom: 10px;
@@ -113,19 +132,24 @@
   }
 
   @keyframes shake {
-    10%, 90% {
+    10%,
+    90% {
       transform: translate3d(-3px, 0, 0);
     }
-    
-    20%, 80% {
+
+    20%,
+    80% {
       transform: translate3d(4px, 0, 0);
     }
-  
-    30%, 50%, 70% {
+
+    30%,
+    50%,
+    70% {
       transform: translate3d(-6px, 0, 0);
     }
-  
-    40%, 60% {
+
+    40%,
+    60% {
       transform: translate3d(4px, 0, 0);
     }
   }

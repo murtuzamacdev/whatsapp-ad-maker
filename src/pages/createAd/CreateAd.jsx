@@ -128,38 +128,15 @@ const CreateAd = () => {
         >{({ errors, touched, setFieldValue, values, resetForm, handleChange, isValid, dirty, isInitialValid }) => (
             <Form>
                 <div className="card pb-4">
-                    <img src={logo} alt="Create Awesome Ads Logo" width="170px" />
                     {/* Main Image */}
-                    <div className=" product-image-card justify-content-center p-0 d-flex flex-column">
-                        {(values.productImage === '' || values.productImage === undefined) ?
-                            <div className="d-flex justify-content-center">
-                                <label className="btn btn-default buttons-ctrns p-0 w-auto">
-                                    <button type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button ">Select Image *</button>
-                                </label>
-                            </div>
-                            :
-                            <>
-                                <img src={values.productImage} alt="productImage" />
-                                <div className="d-flex justify-content-center change-image">
-                                    <label className="btn btn-default buttons-ctrns p-0 w-auto">
-                                        <div type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button">Change Image</div>
-                                    </label>
-                                </div>
-                            </>
-                        }
-                    </div>
-                    {errors.productImage && touched.productImage && (
-                        <div className="form-error d-block mt-1 ml-3">
-                            {errors.productImage}
-                        </div>
-                    )}
+                    <img src={logo} alt="Create Awesome Ads Logo" width="170px" className="align-self-center" />
 
                     {/* Product name */}
-                    <div className=" fields-ctnr mt-4 ">
+                    <div className=" fields-ctnr mt-2 ">
                         <label>What's your product/service name? *</label>
                         <Field
                             type="text"
-                            placeholder="Example: Nike Shoes"
+                            placeholder="Example: Polo T-shirts"
                             className="product-name ml-2"
                             name="productName"
                         />
@@ -170,6 +147,34 @@ const CreateAd = () => {
                         </div>
                     )}
 
+                    <label className="fields-ctnr mt-4">Add an image for your product/service.</label>
+                    <div className=" product-image-card justify-content-center d-flex flex-column fields-ctnr">
+
+                        {(values.productImage === '' || values.productImage === undefined) ?
+                            <>
+                                <label className="btn btn-default buttons-ctrns w-auto blank-image ml-2">
+                                    <button type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button ">Select Image</button>
+                                </label>
+                            </>
+                            :
+                            <div className="selected-image ml-2">
+                                <img src={values.productImage} alt="productImage" />
+                                <div className="d-flex justify-content-center change-image">
+                                    <label className="btn btn-default buttons-ctrns p-0 w-auto">
+                                        <div type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button">Change Image</div>
+                                    </label>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    {errors.productImage && touched.productImage && (
+                        <div className="form-error d-block mt-1 ml-3">
+                            {errors.productImage}
+                        </div>
+                    )}
+
+
+
                     {/* Product price */}
                     <div className=" mt-4 fields-ctnr">
                         <label>What’s the price/fee?</label>
@@ -177,7 +182,7 @@ const CreateAd = () => {
                             <SelectCurrency value={values.currencyCode} onChange={(event) => { setFieldValue('currencyCode', event.target.value) }} />
                             <Field
                                 type="number"
-                                placeholder="Eg. 5000"
+                                placeholder="Eg. 1000"
                                 className="product-price ml-2"
                                 name="productPrice"
                             />
@@ -191,7 +196,7 @@ const CreateAd = () => {
                         <textarea
                             type="textarea"
                             rows="3"
-                            placeholder="Example: Quality product with best service in town."
+                            placeholder="Example: Newly arrived. Best in quality. All sizes and colors available..."
                             name="productDescription"
                             value={values.productDescription}
                             onChange={handleChange}
@@ -203,7 +208,7 @@ const CreateAd = () => {
                         <label>Who is selling this product/service?</label>
                         <Field
                             type="text"
-                            placeholder="Individual or Company name"
+                            placeholder="Seller or Company name"
                             name="sellerName"
                         />
                     </div>
