@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import './Template1.scss';
 import currencies from '../../configs/currencies.json';
 import { GlobalContext } from '../../context/global.context';
-import {hexToRgbA} from '../../utility';
+import { hexToRgbA, } from '../../utility';
 
 // Assets
 import whatsappLogo from '../../assets/images/logos_whatsapp.svg';
@@ -10,17 +10,29 @@ import whatsappLogo from '../../assets/images/logos_whatsapp.svg';
 const Template1 = () => {
     const globalContext = useContext(GlobalContext);
 
+    const hideThisPart = (formData) => {
+        if (
+            formData.productDescription === '' &&
+            formData.sellerName === '' &&
+            formData.whatsappNumber === '' &&
+            formData.pitchText === ''
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     return (<div style={{ backgroundImage: "url(" + globalContext.productData.productImage + ")" }} className="temp1-ctnr">
         {globalContext.productData.productPrice !== '' && <div className="mt-3 d-flex justify-content-center single-line"><div className="product-price pt-2 pb-2 pl-4 pr-4"><small>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</small> {globalContext.productData.productPrice}</div></div>}
         <div className="mb-3 bottom-ctrn">
             <p className="product-name pt-2 pb-2 pl-1 pr-1 m-0">{globalContext.productData.productName}</p>
-            <div className="purple-ctnr pt-4 pb-4 pl-3 pr-3" style={{ backgroundColor: hexToRgbA(globalContext.productData.selectedBackgroundColor, 0.75)  }}>
+
+            {!hideThisPart(globalContext.productData) && <div className="purple-ctnr pt-4 pb-4 pl-3 pr-3" style={{ backgroundColor: hexToRgbA(globalContext.productData.selectedBackgroundColor, 0.75) }}>
                 {globalContext.productData.productDescription !== '' && <div className="product-desc mt-4 mb-1 pl-2" >{globalContext.productData.productDescription}</div>}
                 <div className={'d-flex align-items-center mt-3 ' + (globalContext.productData.pitchText === '' ? 'justify-content-end' : 'justify-content-between')}>
-
                     {globalContext.productData.pitchText !== '' && <div className="order-now pl-2 pr-2">{globalContext.productData.pitchText}</div>}
                     {(globalContext.productData.sellerName !== '' || globalContext.productData.whatsappNumber !== '') && <>
-
                         <div className="seller-info-ctrn">
                             {globalContext.productData.sellerName !== '' && <div className='seller-name single-line'>{globalContext.productData.sellerName}</div>}
                             {globalContext.productData.whatsappNumber !== '' && <div className="d-flex mt-1 align-items-center">
@@ -29,9 +41,8 @@ const Template1 = () => {
                             </div>}
                         </div>
                     </>}
-
                 </div>
-            </div>
+            </div>}
         </div>
     </div>);
 }

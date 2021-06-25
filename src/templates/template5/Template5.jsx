@@ -11,6 +11,19 @@ import whatsappLogo from '../../assets/images/logos_whatsapp.svg';
 const Template5 = () => {
     const globalContext = useContext(GlobalContext);
 
+    const hideThisPart = (formData) => {
+        if (
+            formData.productDescription === '' &&
+            formData.sellerName === '' &&
+            formData.whatsappNumber === '' &&
+            formData.pitchText === ''
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     return (<div className="template5-cntr" style={{ background: 'linear-gradient( 0.74deg , ' + globalContext.productData.selectedBackgroundColor  + ' 0.59%, ' + hexToRgbA(globalContext.productData.selectedBackgroundColor, 0.7)  + ' 99.01%)' }}>
         <div className="card p-0 main-card">
             {/* Main Image */}
@@ -24,7 +37,7 @@ const Template5 = () => {
 
             </div>
 
-            <div style={{ maxHeight: '40%' }} className="p-4">
+            {!hideThisPart(globalContext.productData) && <div style={{ maxHeight: '40%' }} className="pt-4 pb-4 pl-3 pr-3">
                 {/* Product descrption */}
                 {globalContext.productData.productDescription !== '' && <div style={{ flex: 1 }} className=" product-desc-card justify-content-center mb-1">
                     <p className="m-0 product-desc">{globalContext.productData.productDescription}</p>
@@ -40,7 +53,7 @@ const Template5 = () => {
                     </div>}
                 </div>}
 
-            </div>
+            </div>}
         </div>
     </div>);
 }

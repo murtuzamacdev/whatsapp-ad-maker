@@ -9,6 +9,18 @@ import whatsappLogo from '../../assets/images/logos_whatsapp.svg';
 const Template2 = () => {
     const globalContext = useContext(GlobalContext);
 
+    const hideThisPart = (formData) => {
+        if (
+            formData.sellerName === '' &&
+            formData.whatsappNumber === '' &&
+            formData.pitchText === ''
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     return (<div className="d-flex flex-column template2-ctrn pt-4 pb-2 pl-3 pr-3 text-center">
 
         <div className="top-part d-flex flex-column justify-content-between">
@@ -20,7 +32,7 @@ const Template2 = () => {
             </div>
         </div>
 
-        <div className="bottom-part p-4 pb-0">
+        {!hideThisPart(globalContext.productData) && <div className="bottom-part p-4 pb-0 ">
             {globalContext.productData.pitchText !== '' && <div className="order-now mb-2">{globalContext.productData.pitchText}</div>}
             {(globalContext.productData.sellerName !== '' || globalContext.productData.whatsappNumber !== '') && <>
 
@@ -31,7 +43,7 @@ const Template2 = () => {
                         <p className="whatsapp-number m-0 ml-2">{globalContext.productData.whatsappNumber}</p>
                     </div>}
                 </div></>}
-        </div>
+        </div>}
 
     </div>);
 }
