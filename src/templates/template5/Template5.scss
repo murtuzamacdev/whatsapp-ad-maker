@@ -6,8 +6,8 @@
   .product-image-card {
     overflow: hidden;
     position: relative;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
+    // border-bottom-right-radius: 25px;
+    // border-bottom-left-radius: 25px;
 
     img.product-image {
       object-fit: cover;
@@ -23,6 +23,7 @@
     font-size: 1.9rem;
     color: white;
     text-align: center;
+    text-shadow: -5px 5px 15px #000000;
   }
 
   .product-price {
@@ -32,7 +33,7 @@
     font-size: 1.1rem;
     
     // background: linear-gradient(90deg, #88ee57 0%, #35a600 113.52%);
-    border-radius: 25px;
+    // border-radius: 25px;
     color: #ffffff;
     min-width: 95px;
     // text-align: center;
@@ -42,9 +43,9 @@
   .product-desc {
     font-family: Montserrat;
     font-style: italic;
-    font-weight: normal;
+    font-weight: bold;
     font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(0, 0, 0, 0.6);
     white-space: break-spaces;
     overflow: hidden;
     text-align: left;
@@ -91,6 +92,7 @@
     height: 100%;
     overflow: hidden;
     border: 0;
+    border-radius: 0;
   }
 
   .order-now{
