@@ -24,7 +24,7 @@ const Template5 = () => {
         }
     }
 
-    return (<div className="template5-cntr" style={{ background: 'linear-gradient( 0.74deg , ' + globalContext.productData.selectedBackgroundColor  + ' 0.59%, ' + hexToRgbA(globalContext.productData.selectedBackgroundColor, 0.7)  + ' 99.01%)' }}>
+    return (<div className="template5-cntr" style={{ background: 'linear-gradient( 0.74deg , ' + globalContext.productData.selectedBackgroundColor  + ' 0.59%, ' + hexToRgbA(globalContext.productData.selectedBackgroundColor, 0.8)  + ' 99.01%)' }}>
         <div className="card p-0 main-card">
             {/* Main Image */}
             <div style={{ minHeight: '60%', flexGrow: 1 }} className="d-flex product-image-card justify-content-center p-0">
@@ -37,7 +37,7 @@ const Template5 = () => {
 
             </div>
 
-            {!hideThisPart(globalContext.productData) && <div style={{ maxHeight: '40%' }} className="pt-4 pb-4 pl-3 pr-3">
+            {!hideThisPart(globalContext.productData) && <div style={{ maxHeight: '40%' }} className="pt-4 pb-4 pl-4 pr-4">
                 {/* Product descrption */}
                 {globalContext.productData.productDescription !== '' && <div style={{ flex: 1 }} className=" product-desc-card justify-content-center mb-1">
                     <p className="m-0 product-desc">{globalContext.productData.productDescription}</p>
