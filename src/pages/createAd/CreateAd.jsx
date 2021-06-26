@@ -132,7 +132,7 @@ const CreateAd = () => {
                     <img src={logo} alt="Create Awesome Ads Logo" width="170px" className="align-self-center" />
 
                     {/* Product name */}
-                    <div className=" fields-ctnr mt-2 ">
+                    <div className=" fields-ctnr mt-3 ">
                         <label>What's your product/service name? *</label>
                         <Field
                             type="text"
