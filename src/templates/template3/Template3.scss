@@ -58,7 +58,7 @@
   }
 
   .product-image-ctrn {
-    flex-grow: 1;
+    flex: 1;
     position: relative;
     width: 90%;
     z-index: 2;
@@ -106,7 +106,7 @@
   }
 
   .product-name {
-    .child1 {
+    .child1-1 {
       background-color: white;
       text-align: left;
       font-family: Rock Salt;

@@ -46,6 +46,7 @@
   input {
     position: absolute;
     transition: visibility 0s linear 0s, opacity 300ms;
+    outline: none;
   }
 
   .fadeOut {

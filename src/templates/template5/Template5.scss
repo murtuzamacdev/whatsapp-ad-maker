@@ -1,8 +1,8 @@
 .template5-cntr {
-    height: 100%;
-    border: 0;
-    padding: 2rem;
-    
+  height: 100%;
+  border: 0;
+  padding: 2rem;
+
   .product-image-card {
     overflow: hidden;
     position: relative;
@@ -13,6 +13,11 @@
       object-fit: cover;
       height: 100%;
       width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
     }
   }
 
@@ -31,7 +36,7 @@
     font-style: normal;
     font-weight: bold;
     font-size: 1.1rem;
-    
+
     // background: linear-gradient(90deg, #88ee57 0%, #35a600 113.52%);
     // border-radius: 25px;
     color: #ffffff;
@@ -95,12 +100,12 @@
     border-radius: 0;
   }
 
-  .order-now{
+  .order-now {
     font-size: 1.4rem;
     font-family: Pacifico;
     text-transform: lowercase;
     // font-weight: bold;
     font-style: normal;
     color: rgb(126, 124, 124);
-  } 
+  }
 }
