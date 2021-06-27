@@ -4,12 +4,16 @@ import './CreateAd.scss';
 import { Form, Formik, Field } from "formik";
 import * as Yup from "yup";
 import { GlobalContext } from '../../context/global.context';
-import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
 import SelectCurrency from 'react-select-currency';
 import { PITCH_DEFAULT } from '../../configs/constants';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
+import { eligibleToShowChromeTip } from '../../utility'
+
+//Components
+import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
+import TipCard from '../../components/tipCard/TipCard';
 
 // Assets
 import logo from '../../assets/images/logo.svg';
@@ -19,6 +23,7 @@ const CreateAd = () => {
     const [safeToShowForm, setSafeToShowForm] = useState(false);
     const [showControls, setShowControls] = useState(false);
     const [shakeThat, setShakeThat] = useState(false);
+    const [showChromeTip, setshowChromeTip] = useState(false);
     const [productData, setProductData] = useState({
         productImage: "",
         productName: "",
@@ -32,6 +37,7 @@ const CreateAd = () => {
     });
     let history = useHistory();
     const ref = useRef(null);
+    const tipText = "For best experience, open app in Chrome browser";
 
     useEffect(() => {
         let data = globalContext.productData;
@@ -55,6 +61,8 @@ const CreateAd = () => {
         setTimeout(() => {
             setShowControls(true);
         }, 200);
+
+        setshowChromeTip(eligibleToShowChromeTip());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -82,6 +90,11 @@ const CreateAd = () => {
         }
     }
 
+    const handleClose = () => {
+        localStorage.setItem('hideChromeTip', true);
+        setshowChromeTip(false);
+    }
+
     const resetFormCustom = (setFieldValue) => {
         setFieldValue('productImage', '');
         setFieldValue('productName', '');
@@ -96,7 +109,9 @@ const CreateAd = () => {
     }
 
     return (<div className="createAd p-3" style={{ backgroundColor: productData.selectedBackgroundColor }}>
-        {/* <div style={{background: 'radial-gradient(50% 50% at 50% 50%, #FAD7A1 0%, rgba(233, 109, 113, 0.21) 100%)', display: 'inline-block', padding: '0 10px'}}></div> */}
+
+        {showChromeTip && <TipCard tipText={tipText} handleClose={handleClose} />}
+
         {safeToShowForm && <Formik
             innerRef={ref}
             initialValues={{

@@ -11,17 +11,12 @@ export const hexToRgbA = (hex, alpha) => {
     throw new Error('Bad Hex');
 }
 
-export const allOptionalEmtpy = (formData) => {
-    console.log('formData :>> ', formData);
-    if (
-        formData.productDescription === '' &&
-        formData.sellerName === '' &&
-        formData.whatsappNumber === '' &&
-        formData.pitchText === ''
-    ) {
-        return true;
-    } else {
+export const eligibleToShowChromeTip = () => {
+    let tipHidden = localStorage.getItem('hideChromeTip');
+    if (tipHidden) {
         return false;
+    } else {
+        return window.chrome ? false : true;
     }
 
 }
