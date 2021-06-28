@@ -32,7 +32,7 @@ const CreateAd = () => {
         productDescription: "",
         sellerName: "",
         whatsappNumber: "",
-        selectedBackgroundColor: process.env.REACT_APP_ENV === "dev" ? "#c2185b" : "#0288d1",
+        selectedBackgroundColor: process.env.REACT_APP_ENV === "dev" ? "#0288d1" : "#c2185b",
         pitchText: ''
     });
     let history = useHistory();
@@ -104,8 +104,8 @@ const CreateAd = () => {
         setFieldValue('sellerName', '');
         setFieldValue('whatsappNumber', '');
         setFieldValue('pitchText', '');
-        setFieldValue('selectedBackgroundColor', process.env.REACT_APP_ENV === "dev" ? "#c2185b" : "#0288d1");
-        setProductData({ ...productData, selectedBackgroundColor: process.env.REACT_APP_ENV === "dev" ? "#c2185b" : "#0288d1" })
+        setFieldValue('selectedBackgroundColor', process.env.REACT_APP_ENV === "dev" ? "#0288d1" : "#c2185b");
+        setProductData({ ...productData, selectedBackgroundColor: process.env.REACT_APP_ENV === "dev" ? "#0288d1" : "#c2185b" })
     }
 
     return (<div className="createAd p-3" style={{ backgroundColor: productData.selectedBackgroundColor }}>
