@@ -277,7 +277,7 @@ const CreateAd = () => {
                     </div>
                 </div>
                 <SelectImageModal updatePicture={updatePicture} setFieldValue={setFieldValue} />
-                <a href="mailto:murtuza.mac.dev@gmail.com" className="contact-link mt-3">Contact developer</a>
+                <a href="mailto:contact.createawesomeads@gmail.com" className="contact-link mt-3">Contact developer</a>
             </Form>
         )}
         </Formik>}
