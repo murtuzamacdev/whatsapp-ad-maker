@@ -27,17 +27,17 @@ const Template5 = () => {
     return (<div className="template5-cntr" style={{ background: 'linear-gradient( 0.74deg , ' + globalContext.productData.selectedBackgroundColor  + ' 0.59%, ' + hexToRgbA(globalContext.productData.selectedBackgroundColor, 0.8)  + ' 99.01%)' }}>
         <div className="card p-0 main-card">
             {/* Main Image */}
-            <div style={{ minHeight: '60%', flexGrow: 1 }} className="d-flex product-image-card justify-content-center p-0">
+            <div style={{  flexGrow: 1 }} className="d-flex product-image-card justify-content-center p-0">
                 <img className="product-image" src={globalContext.productData.productImage} alt="productImage" />
                 <img className="product-image-backdrop" src={backdrop} alt="productBackdrop" />
                 <div className="d-flex name-price-ctnr product-name-card justify-content-between align-items-center flex-column">
                     <p style={{ flexGrow: 0.7 }} className="product-name mb-2">{globalContext.productData.productName}</p>
-                    {globalContext.productData.productPrice !== '' && <p className="m-0 product-price pt-1 pb-2 pl-4 pr-4" style={{ backgroundColor: globalContext.productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</small> {globalContext.productData.productPrice}</p>}
+                    {globalContext.productData.productPrice !== '' && <p className="product-price pt-1 pb-2 pl-4 pr-4" style={{ backgroundColor: globalContext.productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</small> {globalContext.productData.productPrice}</p>}
                 </div>
 
             </div>
 
-            {!hideThisPart(globalContext.productData) && <div style={{ maxHeight: '40%' }} className="pt-4 pb-4 pl-4 pr-4">
+            {!hideThisPart(globalContext.productData) && <div  className="pt-4 pb-4 pl-4 pr-4">
                 {/* Product descrption */}
                 {globalContext.productData.productDescription !== '' && <div style={{ flex: 1 }} className=" product-desc-card justify-content-center mb-1">
                     <p className="m-0 product-desc">{globalContext.productData.productDescription}</p>

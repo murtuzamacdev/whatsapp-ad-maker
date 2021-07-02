@@ -21,7 +21,7 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
     const globalContext = useContext(GlobalContext)
     // const [images, setImages] = useState([]);
     const [searchTxt, setSearchTxt] = useState('');
-    const [searchResultTotalPages, setSearchResultTotalPages] = useState(1);
+    const [searchResultTotalPages, setSearchResultTotalPages] = useState(0);
 
     // Loadings
     const [showSearchBtnLoading, setShowSearchBtnLoading] = useState(false);
@@ -109,7 +109,6 @@ const SelectImageModal = ({ updatePicture, setFieldValue }) => {
                                     </div>
 
                                     {globalContext.unsplashCachedSearchResult.length !== 0 && <>
-                                        {/* <a href="https://www.pexels.com" rel="noreferrer" target="_blank"> <img src="https://images.pexels.com/lib/api/pexels.png" width="60px" className="mb-1 pl-1" alt="Pexels" /> </a> */}
                                         <ImageGrid images={globalContext.unsplashCachedSearchResult} onImageSelect={onImageSelect} />
                                         {currentPage < searchResultTotalPages && <div className="btn-ctrn">
                                             {!showLoadMoreLoading && <button type="button" onClick={() => { setShowLoadMoreLoading(true); fetchImages() }} className="load-more-btn ">Load More</button>}
