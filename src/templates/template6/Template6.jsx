@@ -18,7 +18,7 @@ const Template6 = () => {
         <img className="backdrop-top" src={backdrop} alt="productBackdrop" />
 
         <div className="product-name mt-4" style={{ color: globalContext.productData.selectedBackgroundColor }}>
-            {productNameArr.map((word, index) => <span
+            {productNameArr.map((word, index) => <span key={word}
                 style={{
                     color: index % 2 !== 0 ? 'white' : globalContext.productData.selectedBackgroundColor,
                     fontSize: `${(1.8 + ((1 / (productNameArr.length)) * (index + 1))).toString()}rem`
