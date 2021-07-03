@@ -30,7 +30,7 @@ const Template6 = () => {
 
         {globalContext.productData.productDescription !== '' && <div className="d-flex justify-content-center"><p className='product-desc ml-5 mr-5 mt-3  pl-3 pr-3 pt-2 pb-2'>{globalContext.productData.productDescription}</p></div>}
 
-        {globalContext.productData.pitchText !== '' && <p className="pitch-text pl-4 pr-4 pt-1 pb-1 text-with-border" style={{ backgroundColor: globalContext.productData.selectedBackgroundColor }}>{globalContext.productData.pitchText}</p>}
+        {globalContext.productData.pitchText !== '' && <p className="m-0 pitch-text pl-1 pr-1 pt-4 pb-4 text-with-border" style={{ backgroundColor: globalContext.productData.selectedBackgroundColor }}>{globalContext.productData.pitchText}</p>}
 
         {(globalContext.productData.sellerName !== '' || globalContext.productData.whatsappNumber !== '' || globalContext.productData.productPrice !== '') && <div className={"d-flex p-2 align-items-end p-s-w-ctnr w-100 " + (globalContext.productData.productPrice === '' ? 'justify-content-end' : 'justify-content-between')}>
             {globalContext.productData.productPrice !== '' && <div className="product-price single-line pl-2 pr-2"><span className='currency-symbol'>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</span> <span style={{ color: globalContext.productData.selectedBackgroundColor }}>{globalContext.productData.productPrice}</span></div>}

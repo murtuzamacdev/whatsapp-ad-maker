@@ -38,12 +38,13 @@
   .pitch-text {
     font-family: Passion One;
     font-size: 1.3rem;
-    transform: rotate(-90deg);
+    transform: rotate(-180deg);
     color: white;
     display: inline-block;
     position: absolute;
-    right: -52px;
+    right: 0px;
     top: 40%;
+    writing-mode: vertical-rl;
   }
 
   .product-price {
