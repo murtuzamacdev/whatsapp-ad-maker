@@ -52,7 +52,7 @@ export const TEMPLATES = {
         id: 'template6',
         component: Template6,
         demoImage: template6Img,
-        status: 'COMING_SOON'
+        status: 'ACTIVE'
     },
     template7: {
         id: 'template7',
