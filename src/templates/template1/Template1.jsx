@@ -26,7 +26,7 @@ const Template1 = () => {
     return (<div style={{ backgroundImage: "url(" + globalContext.productData.productImage + ")" }} className="temp1-ctnr">
         {globalContext.productData.productPrice !== '' && <div className="mt-3 d-flex justify-content-center single-line"><div className="product-price pt-2 pb-2 pl-4 pr-4"><small>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</small> {globalContext.productData.productPrice}</div></div>}
         <div className="mb-3 bottom-ctrn">
-            <p className="product-name pt-2 pb-2 pl-1 pr-1 m-0">{globalContext.productData.productName}</p>
+            <p className={"product-name pt-2 pb-2 pl-1 pr-1 m-0 " + (hideThisPart(globalContext.productData) ? 'only-product-name' : 'with-absolute')}>{globalContext.productData.productName}</p>
 
             {!hideThisPart(globalContext.productData) && <div className="purple-ctnr pt-4 pb-4 pl-3 pr-3" style={{ backgroundColor: hexToRgbA(globalContext.productData.selectedBackgroundColor, 0.75) }}>
                 {globalContext.productData.productDescription !== '' && <div className="product-desc mt-4 mb-1 pl-2" >{globalContext.productData.productDescription}</div>}

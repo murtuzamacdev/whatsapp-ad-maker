@@ -24,13 +24,17 @@
     background-color: #5a5a5a;
     text-align: center;
     color: #ffffff;
-    // display: inline-block;
+  }
+
+  .with-absolute {
     position: absolute;
-    // top: -15%;
-    bottom: 82%;
-    // right: 0;
+    top: -33px;
     left: 15%;
     width: 70%;
+  }
+
+  .only-product-name {
+    width: 100%;
   }
 
   .product-desc {
@@ -92,7 +96,7 @@
     left: 0;
   }
 
-  .seller-info-ctrn{
-      max-width: 50%;
+  .seller-info-ctrn {
+    max-width: 50%;
   }
 }
