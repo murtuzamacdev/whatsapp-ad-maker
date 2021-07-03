@@ -20,15 +20,16 @@
     font-style: normal;
     font-weight: normal;
     font-size: 1.7rem;
-    line-height: 47px;
     background-color: #5a5a5a;
     text-align: center;
     color: #ffffff;
   }
 
   .with-absolute {
-    position: absolute;
-    top: -33px;
+    // position: absolute;
+    margin: auto;
+    text-align: center;
+    top: -60px;
     left: 15%;
     width: 70%;
   }
