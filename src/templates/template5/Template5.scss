@@ -37,13 +37,14 @@
     font-style: normal;
     font-weight: bold;
     font-size: 1.1rem;
-
-    // background: linear-gradient(90deg, #88ee57 0%, #35a600 113.52%);
-    // border-radius: 25px;
     color: #ffffff;
     min-width: 95px;
-    // text-align: center;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
   }
 
   .product-desc {
