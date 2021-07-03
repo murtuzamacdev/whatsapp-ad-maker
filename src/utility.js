@@ -18,5 +18,12 @@ export const eligibleToShowChromeTip = () => {
     } else {
         return window.chrome ? false : true;
     }
+}
 
+export const isSafari = () => {
+    if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+        return true;
+    } else {
+        return false;
+    }
 }

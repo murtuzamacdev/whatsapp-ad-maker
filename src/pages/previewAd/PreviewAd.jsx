@@ -8,6 +8,7 @@ import { createApi } from 'unsplash-js';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
+import { isSafari } from '../../utility';
 
 //assets
 import downloadBtn from '../../assets/images/downloadBtn.svg';
@@ -111,16 +112,29 @@ const PreviewAd = () => {
             style
         }
 
-        domtoimage.toJpeg(node, param)
+        domtoimage.toPng(node, param)
             .then(function (dataUrl) {
-                var link = document.createElement('a');
-                link.download = new Date().getTime() + '.jpeg';
-                link.href = dataUrl;
-                link.click();
-                setLoading(false);
-                setShowWatermark(false);
+                if (isSafari()) {
+                    // Need to call domtoimage again due to Safari issue
+                    setTimeout(() => {
+                        domtoimage.toPng(node, param)
+                            .then(function (dataUrlInner) {
+                                simulateDownload(dataUrlInner);
+                            });
+                    }, 1000);
+                } else {
+                    simulateDownload(dataUrl);
+                }
             });
+    }
 
+    const simulateDownload = (dataUrl) => {
+        var link = document.createElement('a');
+        link.download = new Date().getTime() + '.jpeg';
+        link.href = dataUrl;
+        link.click();
+        setLoading(false);
+        setShowWatermark(false);
     }
 
     const goToCreateAd = () => {
