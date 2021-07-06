@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import './PreviewAd.scss';
 import domtoimage from 'dom-to-image';
 import { GlobalContext } from '../../context/global.context';
-import { UNSPLASH_APP_NAME, UNSPLASH_API_KEY } from '../../configs/constants';
+import { UNSPLASH_APP_NAME, UNSPLASH_API_KEY, AVAILALBE_SIZES } from '../../configs/constants';
 import { createApi } from 'unsplash-js';
 import firebase from "firebase/app";
 import "firebase/analytics";
@@ -23,12 +23,14 @@ import { TEMPLATES } from '../../templates/TemplateController';
 import Loading from '../../components/loading/Loading';
 import TemplateSelectionModal from '../../components/modals/templateSelection/TemplateSelectionModal';
 import SelectColorModal from '../../components/modals/selectColorModal/SelectColorModal';
+import SizeSelector from '../../components/sizeSelector/SizeSelector';
 
 const PreviewAd = () => {
     const globalContext = useContext(GlobalContext);
     const [loading, setLoading] = useState(false);
     const [showWatermark, setShowWatermark] = useState(false);
     const [showControls, setShowControls] = useState(false);
+    const [canvasHeight, setcanvasHeight] = useState(AVAILALBE_SIZES[globalContext.selectedSize].calculateCanvasHieghtFunc());
     let history = useHistory();
     const unsplash = createApi({
         accessKey: UNSPLASH_API_KEY
@@ -65,19 +67,17 @@ const PreviewAd = () => {
             setShowControls(true);
         }, 500);
 
+        return () => {
+            document.getElementsByTagName('html')[0].style.fontSize = '15px'; // Setting to default font size on leaving the preview component
+        }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const calculateCanvasHieght = () => {
-        let deviceHeight = window.innerHeight;
-        let calculatedHeight = window.innerWidth * (1280 / 764);
-        if (calculatedHeight > deviceHeight) {
-            return deviceHeight;
-        } else {
-            return calculatedHeight;
-        }
-
-    }
+    useEffect(() => {
+        setcanvasHeight(AVAILALBE_SIZES[globalContext.selectedSize].calculateCanvasHieghtFunc());
+        document.getElementsByTagName('html')[0].style.fontSize = AVAILALBE_SIZES[globalContext.selectedSize].remFontSize;
+    }, [globalContext.selectedSize]);
 
     const downloadScreenshot = (params) => {
         setShowWatermark(true);
@@ -159,7 +159,7 @@ const PreviewAd = () => {
         <div onClick={toggleControls} className="preview-ad-ctnr d-flex align-items-center" style={{ height: containerHieght }}>
             {loading && <Loading fullScreen={true}></Loading>}
             {globalContext.productData && <>
-                <div style={{ height: calculateCanvasHieght() }} className="d-flex flex-column previewAd" id="html-content-holder">
+                <div style={{ height: canvasHeight }} className="d-flex flex-column previewAd" id="html-content-holder">
                     <small className={'logo-badge ' + (showWatermark ? 'd-block' : 'd-none')}>made with createAwesomeAds.com</small>
                     {getSelectedTemplateComponent()}
                 </div>
@@ -177,6 +177,7 @@ const PreviewAd = () => {
                     <div>Photo by <a rel="noreferrer" target="_blank" href={`https://unsplash.com/@${globalContext.selectedUnsplashPhoto.user.username}?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>{globalContext.selectedUnsplashPhoto.user.name}</a> on <a target="_blank" rel="noreferrer" href={`https://unsplash.com/?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>Unsplash</a></div>
                 </div>}
 
+                <div className={"size-select-wrapper " + (showControls ? 'fadeIn' : 'fadeOut')}><SizeSelector /></div>
                 <TemplateSelectionModal />
                 <SelectColorModal handleColorChange={handleColorChange} />
             </>}

@@ -101,6 +101,13 @@
     font-size: 0.6rem;
     opacity: 0.7;
   }
+
+  .size-select-wrapper{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+  }
 }
 
 @media (max-width: 476px) {

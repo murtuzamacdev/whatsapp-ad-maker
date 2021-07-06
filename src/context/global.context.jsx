@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { AVAILALBE_SIZES } from '../configs/constants';
 
 export const GlobalContext = React.createContext();
 
@@ -7,10 +8,14 @@ export const GlobalContextProvider = (props) => {
     const [selectedTemplate, setSelectedTemplate] = useState('template4');
     const [selectedUnsplashPhoto, setSelectedUnsplashPhoto] = useState(null);
     const [unsplashCachedSearchResult, setUnsplashCachedSearchResult] = useState([]);
+    const [selectedSize, setselectedSize] = useState(AVAILALBE_SIZES.WHATSAPP_STATUS.id);
 
     useEffect(() => {
         let _selectedTemplate = localStorage.getItem('selectedTemplate');
+        let _selectedSize = localStorage.getItem('selectedSize');
+
         _selectedTemplate && setSelectedTemplate(_selectedTemplate);
+        _selectedSize && setselectedSize(_selectedSize);
     }, [])
 
     const _setProductData = (productData) => {
@@ -25,14 +30,20 @@ export const GlobalContextProvider = (props) => {
         setSelectedTemplate(templateId);
     }
 
+    const _setselectedSize = (id) => {
+        localStorage.setItem('selectedSize', id);
+        setselectedSize(id)
+    }
+
     return (
         <GlobalContext.Provider
             value={{
-                productData, selectedTemplate, selectedUnsplashPhoto, unsplashCachedSearchResult,
+                productData, selectedTemplate, selectedUnsplashPhoto, unsplashCachedSearchResult, selectedSize,
                 setProductData: _setProductData,
                 setSelectedTemplate: _setSelectedTemplate,
                 setSelectedUnsplashPhoto: setSelectedUnsplashPhoto,
-                setUnsplashCachedSearchResult: setUnsplashCachedSearchResult
+                setUnsplashCachedSearchResult: setUnsplashCachedSearchResult,
+                setselectedSize: _setselectedSize
             }}
         >
             {props.children}
