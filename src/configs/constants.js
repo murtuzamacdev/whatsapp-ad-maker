@@ -11,7 +11,7 @@ export const AVAILALBE_SIZES = {
         id: 'WHATSAPP_STATUS',
         name:'Whatsapp Status',
         icon: whatsappIcon,
-        remFontSize: '15px',
+        remFontSize: '14px',
         demoTileHieght: '100px',
         calculateCanvasHieghtFunc: () => {
             let deviceHeight = window.innerHeight;
@@ -27,7 +27,7 @@ export const AVAILALBE_SIZES = {
     INSTA_STORY: {
         id: 'INSTA_STORY',
         name:'Instagram Story',
-        remFontSize: '15px',
+        remFontSize: '14px',
         icon: instagramIcon,
         demoTileHieght: '110px',
         calculateCanvasHieghtFunc: () => {

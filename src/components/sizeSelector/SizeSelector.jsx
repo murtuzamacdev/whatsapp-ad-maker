@@ -11,6 +11,7 @@ const SizeSelector = () => {
             {Object.keys(AVAILALBE_SIZES).map((key, i) => (
                     <button
                         className="size-tile"
+                        key={AVAILALBE_SIZES[key].id}
                         style={{
                             height: AVAILALBE_SIZES[key].demoTileHieght,
                             backgroundColor: (globalContext.selectedSize === AVAILALBE_SIZES[key].id) ? 'white' : '#CDCDCD',

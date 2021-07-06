@@ -142,13 +142,22 @@ const PreviewAd = () => {
         return <SelectedTemplate />
     }
 
-    const toggleControls = () => {
+    const toggleControls = (e) => {
+        console.log('object :>> ', e);
         setShowControls(!showControls);
     }
 
     const handleColorChange = (newColor) => {
         window.$('#selectColorModal').modal('hide');
+        setShowControls(false);
         globalContext.setProductData({ ...globalContext.productData, selectedBackgroundColor: newColor.hex });
+    }
+
+    const handleTemplateChange = (templateId) => {
+        setTimeout(() => {
+            setShowControls(false);
+        }, 100);
+        globalContext.setSelectedTemplate(templateId);
     }
 
     return (
@@ -174,7 +183,7 @@ const PreviewAd = () => {
                 </div>}
 
                 <div className={"size-select-wrapper " + (showControls ? 'fadeIn' : 'fadeOut')}><SizeSelector /></div>
-                <TemplateSelectionModal />
+                <TemplateSelectionModal handleTemplateChange={handleTemplateChange} />
                 <SelectColorModal handleColorChange={handleColorChange} />
             </>}
         </div>);
