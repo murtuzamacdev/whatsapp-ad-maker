@@ -9,7 +9,8 @@ export const AVAILALBE_SIZES = {
         remFontSize: '15px',
         calculateCanvasHieghtFunc: () => {
             let deviceHeight = window.innerHeight;
-            let calculatedHeight = window.innerWidth * (1280 / 764);
+            let deviceWidth = window.innerWidth < 475 ? window.innerWidth : 475;
+            let calculatedHeight = deviceWidth * (1280 / 764);
             if (calculatedHeight > deviceHeight) {
                 return deviceHeight;
             } else {
@@ -22,7 +23,8 @@ export const AVAILALBE_SIZES = {
         remFontSize: '15px',
         calculateCanvasHieghtFunc: () => {
             let deviceHeight = window.innerHeight;
-            let calculatedHeight = window.innerWidth * (16 / 9);
+            let deviceWidth = window.innerWidth < 475 ? window.innerWidth : 475;
+            let calculatedHeight = deviceWidth * (16 / 9);
             if (calculatedHeight > deviceHeight) {
                 return deviceHeight;
             } else {
@@ -35,7 +37,8 @@ export const AVAILALBE_SIZES = {
         remFontSize: '12px',
         calculateCanvasHieghtFunc: () => {
             let deviceHeight = window.innerHeight;
-            let calculatedHeight = window.innerWidth;
+            let deviceWidth = window.innerWidth < 475 ? window.innerWidth : 475;
+            let calculatedHeight = deviceWidth;
             if (calculatedHeight > deviceHeight) {
                 return deviceHeight;
             } else {
@@ -48,7 +51,8 @@ export const AVAILALBE_SIZES = {
         remFontSize: '12px',
         calculateCanvasHieghtFunc: () => {
             let deviceHeight = window.innerHeight;
-            let calculatedHeight = window.innerWidth * (5 / 4);
+            let deviceWidth = window.innerWidth < 475 ? window.innerWidth : 475;
+            let calculatedHeight = deviceWidth * (5 / 4);
             if (calculatedHeight > deviceHeight) {
                 return deviceHeight;
             } else {

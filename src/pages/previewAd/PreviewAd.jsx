@@ -67,16 +67,12 @@ const PreviewAd = () => {
             setShowControls(true);
         }, 500);
 
-        return () => {
-            document.getElementsByTagName('html')[0].style.fontSize = '15px'; // Setting to default font size on leaving the preview component
-        }
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
         setcanvasHeight(AVAILALBE_SIZES[globalContext.selectedSize].calculateCanvasHieghtFunc());
-        document.getElementsByTagName('html')[0].style.fontSize = AVAILALBE_SIZES[globalContext.selectedSize].remFontSize;
+        document.getElementById('preview-ad-ctrn-id').style.fontSize = AVAILALBE_SIZES[globalContext.selectedSize].remFontSize;
     }, [globalContext.selectedSize]);
 
     const downloadScreenshot = (params) => {
@@ -156,7 +152,7 @@ const PreviewAd = () => {
     }
 
     return (
-        <div onClick={toggleControls} className="preview-ad-ctnr d-flex align-items-center" style={{ height: containerHieght }}>
+        <div id="preview-ad-ctrn-id" onClick={toggleControls} className="preview-ad-ctnr d-flex align-items-center" style={{ height: containerHieght }}>
             {loading && <Loading fullScreen={true}></Loading>}
             {globalContext.productData && <>
                 <div style={{ height: canvasHeight }} className="d-flex flex-column previewAd" id="html-content-holder">
