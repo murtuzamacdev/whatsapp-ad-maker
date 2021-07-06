@@ -160,7 +160,7 @@ const PreviewAd = () => {
             {loading && <Loading fullScreen={true}></Loading>}
             {globalContext.productData && <>
                 <div style={{ height: calculateCanvasHieght() }} className="d-flex flex-column previewAd" id="html-content-holder">
-                    <small className={'logo-badge ' + (showWatermark ? 'd-block' : 'd-none')}>createAwesomeAds.com</small>
+                    <small className={'logo-badge ' + (showWatermark ? 'd-block' : 'd-none')}>made with createAwesomeAds.com</small>
                     {getSelectedTemplateComponent()}
                 </div>
 
