@@ -8,10 +8,18 @@ const SizeSelector = () => {
 
     return (<>
         <div className="size-select-ctrn d-flex">
-            <button onClick={() => { globalContext.setselectedSize(AVAILALBE_SIZES.WHATSAPP_STATUS.id) }} >Whatsapp status</button>
-            <button onClick={() => { globalContext.setselectedSize(AVAILALBE_SIZES.INSTA_STORY.id) }}>Insta story</button>
-            <button onClick={() => { globalContext.setselectedSize(AVAILALBE_SIZES.INSTA_SQUARE.id) }}>Insta square post</button>
-            <button onClick={() => { globalContext.setselectedSize(AVAILALBE_SIZES.INSTA_VERTICLE.id) }}>Insta rectangle post</button>
+            {Object.keys(AVAILALBE_SIZES).map((key, i) => (
+                    <button
+                        className="size-tile"
+                        style={{
+                            height: AVAILALBE_SIZES[key].demoTileHieght,
+                            backgroundColor: (globalContext.selectedSize === AVAILALBE_SIZES[key].id) ? 'white' : '#CDCDCD',
+                            color: (globalContext.selectedSize === AVAILALBE_SIZES[key].id) ? 'black' : 'rgba(0, 0, 0, 0.45)'
+                        }}
+                        onClick={() => { globalContext.setselectedSize(AVAILALBE_SIZES[key].id) }} >
+                            <img src={AVAILALBE_SIZES[key].icon} alt={AVAILALBE_SIZES[key].name} className="mb-2"/>
+                        <p className="mb-0">{AVAILALBE_SIZES[key].name}</p></button>
+            ))}
         </div></>
     );
 }
