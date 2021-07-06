@@ -38,7 +38,7 @@ const Template2 = () => {
 
                 <div className="seller-info-ctrn p-3">
                     {globalContext.productData.sellerName !== '' && <div className='seller-name single-line'>{globalContext.productData.sellerName}</div>}
-                    {globalContext.productData.whatsappNumber !== '' && <div className="d-flex mt-1">
+                    {globalContext.productData.whatsappNumber !== '' && <div className="d-flex mt-1 justify-content-center">
                         <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
                         <p className="whatsapp-number m-0 ml-2">{globalContext.productData.whatsappNumber}</p>
                     </div>}
