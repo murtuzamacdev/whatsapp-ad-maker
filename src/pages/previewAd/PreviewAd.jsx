@@ -143,7 +143,6 @@ const PreviewAd = () => {
     }
 
     const toggleControls = (e) => {
-        console.log('object :>> ', e);
         setShowControls(!showControls);
     }
 
