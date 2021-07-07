@@ -135,9 +135,19 @@ const CreateAd = () => {
                 pitchText: Yup.string().trim().max(10, 'Pitch should be of 10 characters max'),
             })}
             onSubmit={(values) => {
-                firebase.analytics().logEvent(GAEvents.form_submit_successfully.title);
-                globalContext.setProductData(values);
-                history.push('previewAd');
+                // Blur all inputs because if keyboard is opened and next is clicked, the UI on next page breaks.
+                let allInputs = document.getElementsByTagName('input');
+                for(let i=0; i <allInputs.length ; i++){
+                    allInputs[i].blur();
+                }
+
+                // Set timeout to give some time for blur to happen above
+                setTimeout(() => {
+                    firebase.analytics().logEvent(GAEvents.form_submit_successfully.title);
+                    globalContext.setProductData(values);
+                    history.push('previewAd');
+                }, 100);
+
             }}
         // enableReinitialize
         >{({ errors, touched, setFieldValue, values, resetForm, handleChange, isValid, dirty, isInitialValid }) => (
