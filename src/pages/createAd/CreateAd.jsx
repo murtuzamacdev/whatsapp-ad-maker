@@ -9,7 +9,7 @@ import { PITCH_DEFAULT } from '../../configs/constants';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
-import { eligibleToShowChromeTip } from '../../utility'
+import { eligibleToShowChromeTip, getAverageRGB } from '../../utility'
 
 //Components
 import SelectImageModal from '../../components/modals/selectImageModal/SelectImageModal';
@@ -72,10 +72,23 @@ const CreateAd = () => {
             reader.onload = function (event) {
                 setFieldValue('productImage', event.target.result);
                 globalContext.setSelectedUnsplashPhoto(null);
+
+                // Set background color based on the image selected
+                const img = document.createElement("img");
+                img.src = event.target.result;
+                setTimeout(() => {
+                    let imageColorHex = getAverageRGB(img);
+                    setFieldValue('selectedBackgroundColor', imageColorHex);
+                    setProductData({ ...productData, selectedBackgroundColor: imageColorHex })
+                }, 100);
+               
             };
             reader.readAsDataURL(file);
         } else {
             setFieldValue('productImage', file.urls.regular);
+            // Set background color based on the image selected
+            setFieldValue('selectedBackgroundColor', file.color);
+            setProductData({ ...productData, selectedBackgroundColor: file.color })
             globalContext.setSelectedUnsplashPhoto(file);
         }
 
@@ -137,7 +150,7 @@ const CreateAd = () => {
             onSubmit={(values) => {
                 // Blur all inputs because if keyboard is opened and next is clicked, the UI on next page breaks.
                 let allInputs = document.getElementsByTagName('input');
-                for(let i=0; i <allInputs.length ; i++){
+                for (let i = 0; i < allInputs.length; i++) {
                     allInputs[i].blur();
                 }
 
@@ -180,15 +193,15 @@ const CreateAd = () => {
                         {(values.productImage === '' || values.productImage === undefined) ?
                             <>
                                 <label className="btn btn-default buttons-ctrns w-auto blank-image ml-2">
-                                    <button type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button ">Select Image</button>
+                                    <button type="button" data-toggle="modal" data-target="#selectImageModal" className="upload-button pl-5 pr-5 image-select-button ">Select Image</button>
                                 </label>
                             </>
                             :
                             <div className="selected-image ml-2">
-                                <img src={values.productImage} alt="productImage" />
+                                <img id="productImageForRGB" src={values.productImage} alt="productImage" />
                                 <div className="d-flex justify-content-center change-image">
                                     <label className="btn btn-default buttons-ctrns p-0 w-auto">
-                                        <div type="button" data-toggle="modal" data-target="#selectImageModal" style={{ backgroundColor: productData.selectedBackgroundColor }} className="upload-button pl-5 pr-5 image-select-button">Change Image</div>
+                                        <div type="button" data-toggle="modal" data-target="#selectImageModal" className="upload-button pl-5 pr-5 image-select-button">Change Image</div>
                                     </label>
                                 </div>
                             </div>

@@ -79,7 +79,7 @@ button.close{
 }
 
 .image-select-button {
-  background: url(assets/images/gallery.svg) 25px;
+  background: url(assets/images/gallery.svg) #3E3D3D 25px;
   background-repeat: no-repeat;
   background-size: 16px;
 }
