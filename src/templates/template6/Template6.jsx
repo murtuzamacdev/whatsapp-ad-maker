@@ -33,9 +33,9 @@ const Template6 = () => {
         {globalContext.productData.pitchText !== '' && <p className="m-0 pitch-text pl-1 pr-1 pt-4 pb-4 text-with-border" style={{ backgroundColor: globalContext.productData.selectedBackgroundColor }}>{globalContext.productData.pitchText}</p>}
 
         {(globalContext.productData.sellerName !== '' || globalContext.productData.whatsappNumber !== '' || globalContext.productData.productPrice !== '') && <div className={"d-flex p-2 align-items-end p-s-w-ctnr w-100 " + (globalContext.productData.productPrice === '' ? 'justify-content-end' : 'justify-content-between')}>
-            {globalContext.productData.productPrice !== '' && <div className="product-price single-line pl-2 pr-2"><span className='currency-symbol'>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</span> <span className="price-text" style={{ color: globalContext.productData.selectedBackgroundColor }}>{globalContext.productData.productPrice}</span></div>}
+            {globalContext.productData.productPrice !== '' && <div className="product-price pl-2 pr-2"><span className='currency-symbol'>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</span> <span className="price-text" style={{ color: globalContext.productData.selectedBackgroundColor }}>{globalContext.productData.productPrice}</span></div>}
             <div className="seller-info-ctrn">
-                {globalContext.productData.sellerName !== '' && <div className='seller-name single-line pl-4 pr-4 pt-2 pb-2'>{globalContext.productData.sellerName}</div>}
+                {globalContext.productData.sellerName !== '' && <div className='seller-name pl-4 pr-4 pt-2 pb-2'>{globalContext.productData.sellerName}</div>}
                 {globalContext.productData.whatsappNumber !== '' && <div style={{ backgroundColor: globalContext.productData.selectedBackgroundColor }} className="d-flex mt-0 align-items-center justify-content-center contact-ctnr pl-3 pr-3 ">
                     <img src={whatsappLogo} height="20px" width="20px" alt="whatsappLogo"></img>
                     <p className="whatsapp-number ml-2 pt-2 pb-2 m-0 text-with-border">{globalContext.productData.whatsappNumber}</p>
