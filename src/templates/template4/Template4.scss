@@ -21,7 +21,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 2.9em;
-    line-height: 47px;
+    // line-height: 47px;
     text-align: left;
     color: rgba(256, 256, 256, 1);
     
@@ -30,11 +30,9 @@
   }
 
   .product-desc {
-    // font-family: Parisienne;
     font-style: italic;
     font-weight: normal;
     font-size: 1.2em;
-    line-height: 31px;
     white-space: break-spaces;
     color: rgba(256, 256, 256, 0.9);
     overflow: hidden;
@@ -61,7 +59,6 @@
     font-style: italic;
     font-weight: normal;
     font-size: 1em;
-    line-height: 22px;
     width: 100%;
     color: #ffffff;
   }
