@@ -131,7 +131,9 @@ export function lightOrDark(color) {
       )
                );
   
+      // eslint-disable-next-line
       r = color >> 16;
+      // eslint-disable-next-line
       g = color >> 8 & 255;
       b = color & 255;
     }
