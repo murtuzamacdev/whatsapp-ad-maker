@@ -8,7 +8,7 @@ import { createApi } from 'unsplash-js';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
-import { isSafari } from '../../utility';
+import { isSafari, changeColorTone, hexToRgbA, lightOrDark } from '../../utility';
 
 //assets
 import downloadBtn from '../../assets/images/downloadBtn.svg';
@@ -54,7 +54,7 @@ const PreviewAd = () => {
             }
         }
 
-        // Set initial data
+        // if no context, send to create page
         if (!globalContext.productData) {
             history.push('/');
         }
@@ -75,6 +75,24 @@ const PreviewAd = () => {
         document.getElementById('preview-ad-ctrn-id').style.fontSize = AVAILALBE_SIZES[globalContext.selectedSize].remFontSize;
     }, [globalContext.selectedSize]);
 
+    useEffect(() => {
+        if (globalContext.productData) {
+            const selectedTemplateObj = TEMPLATES[globalContext.selectedTemplate];
+            let selectedThemeColor = localStorage.getItem('selectedThemeColor');
+            let rgbColorStr = hexToRgbA(selectedThemeColor, 1);
+            let finalColor;
+
+            if(lightOrDark(rgbColorStr) !== selectedTemplateObj.colorPreference){
+                finalColor = changeColorTone(selectedThemeColor, selectedTemplateObj.colorPreference * 90)
+            }else {
+                finalColor = selectedThemeColor;
+            }
+            // lightOrDark(rgbColorStr);
+            globalContext.setselectedThemeColor(finalColor);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [globalContext.selectedTemplate]);
+
     const downloadScreenshot = (params) => {
         setShowWatermark(true);
         setLoading(true);
@@ -82,14 +100,13 @@ const PreviewAd = () => {
         // Send data to google analytics
         firebase.analytics().logEvent(GAEvents.template_downloaded.title, {
             [GAEvents.template_downloaded.params.template_id]: globalContext.selectedTemplate,
-            [GAEvents.template_downloaded.params.template_color]: globalContext.productData.selectedBackgroundColor
+            [GAEvents.template_downloaded.params.template_color]: globalContext.selectedThemeColor
         });
 
         // To track unsplash image download as per their guidelines
         globalContext.selectedUnsplashPhoto && unsplash.photos.trackDownload({
             downloadLocation: globalContext.selectedUnsplashPhoto.links.download_location,
         });
-
 
         const scale = 3
         const node = document.getElementById("html-content-holder")
@@ -149,7 +166,7 @@ const PreviewAd = () => {
     const handleColorChange = (newColor) => {
         window.$('#selectColorModal').modal('hide');
         setShowControls(false);
-        globalContext.setProductData({ ...globalContext.productData, selectedBackgroundColor: newColor.hex });
+        globalContext.setselectedThemeColor(newColor.hex);
     }
 
     const handleTemplateChange = (templateId) => {

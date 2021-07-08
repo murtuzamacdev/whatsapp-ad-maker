@@ -19,7 +19,7 @@ const Template3 = () => {
                 className={"child1 " + (globalContext.productData.productPrice === '' && 'justify-content-end' : 'justify-content-between')}
                 style={{ backgroundImage: "url(" + globalContext.productData.productImage + ")" }}
             >
-                {globalContext.productData.productPrice !== '' && <div className="mt-2 d-flex justify-content-end single-line mr-2"><div className="product-price pt-1 pb-1 pl-3 pr-3" style={{ backgroundColor: globalContext.productData.selectedBackgroundColor }}><small>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</small> {globalContext.productData.productPrice}</div></div>}
+                {globalContext.productData.productPrice !== '' && <div className="mt-2 d-flex justify-content-end single-line mr-2"><div className="product-price pt-1 pb-1 pl-3 pr-3" style={{ backgroundColor: globalContext.selectedThemeColor }}><small>{currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</small> {globalContext.productData.productPrice}</div></div>}
                 <div className="product-name d-flex pl-2 pr-2 mb-2"><div className="child1-1 pl-2 pr-2">{globalContext.productData.productName}</div></div>
             </div>
 
@@ -43,10 +43,10 @@ const Template3 = () => {
             </div>
         </div>
 
-        <div id="tri-top-right" style={{ borderTopColor: globalContext.productData.selectedBackgroundColor }}></div>
+        <div id="tri-top-right" style={{ borderTopColor: globalContext.selectedThemeColor }}></div>
         <div className='child-ctnr'> <div id="tri-middle-black"></div> </div>
-        <div id="tri-bottom-left" style={{ borderBottomColor: globalContext.productData.selectedBackgroundColor }}></div>
-        <div id="tri-bottom-right" style={{ borderBottomColor: globalContext.productData.selectedBackgroundColor }}></div>
+        <div id="tri-bottom-left" style={{ borderBottomColor: globalContext.selectedThemeColor }}></div>
+        <div id="tri-bottom-right" style={{ borderBottomColor: globalContext.selectedThemeColor }}></div>
     </div>);
 }
 

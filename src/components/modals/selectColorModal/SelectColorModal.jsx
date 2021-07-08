@@ -17,7 +17,7 @@ const SelectColorModal = ({ handleColorChange }) => {
                     </div>
                     <div className="modal-body">
                         <SwatchesPicker
-                            color={globalContext.productData.selectedBackgroundColor}
+                            color={globalContext.selectedThemeColor}
                             onChangeComplete={(color) => { handleColorChange(color) }} />
                     </div>
                 </div>

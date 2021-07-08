@@ -24,9 +24,9 @@ const Template5 = () => {
         }
     }
 
-    return (<div className="template5-cntr" style={{ background: 'linear-gradient( 0.74deg , ' + globalContext.productData.selectedBackgroundColor  + ' 0.59%, ' + hexToRgbA(globalContext.productData.selectedBackgroundColor, 0.8)  + ' 99.01%)' }}>
+    return (<div className="template5-cntr" style={{ background: 'linear-gradient( 0.74deg , ' + globalContext.selectedThemeColor  + ' 0.59%, ' + hexToRgbA(globalContext.selectedThemeColor, 0.8)  + ' 99.01%)' }}>
         <div className="card p-0 main-card">
-        {globalContext.productData.productPrice !== '' && <p className="product-price pt-1 pb-2 pl-4 pr-4 mb-0 mt-2 mr-2" style={{ backgroundColor: hexToRgbA(globalContext.productData.selectedBackgroundColor, 0.9) }}><small>At {currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</small> {globalContext.productData.productPrice}</p>}
+        {globalContext.productData.productPrice !== '' && <p className="product-price pt-1 pb-2 pl-4 pr-4 mb-0 mt-2 mr-2" style={{ backgroundColor: hexToRgbA(globalContext.selectedThemeColor, 0.9) }}><small>At {currencies.find((item) => item.code === globalContext.productData.currencyCode).symbol}</small> {globalContext.productData.productPrice}</p>}
             {/* Main Image */}
             <div style={{  flexGrow: 1 }} className="d-flex product-image-card justify-content-center p-0">
                 <img className="product-image" src={globalContext.productData.productImage} alt="productImage" />

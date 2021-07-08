@@ -16,7 +16,7 @@ const Template4 = () => {
 
     useEffect(() => {
         setSecondaryBgForGradient(generateColorHex());
-    }, [globalContext.productData.selectedBackgroundColor])
+    }, [globalContext.selectedThemeColor])
 
     const generateColorHex = () => {
         const randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -26,8 +26,8 @@ const Template4 = () => {
     return (<div style={{ backgroundImage: "url(" + globalContext.productData.productImage + ")" }} className="temp4-ctnr">
 
         {/* Shapes */}
-        <div className="price-ctrn" style={{ background: 'linear-gradient(233.12deg, ' + globalContext.productData.selectedBackgroundColor + ' 33.2%, ' + secondaryBgForGradient + ' 75.65%)', opacity: '0.75' }}> </div>
-        <div className='content-ctrn' style={{ background: 'linear-gradient(233.12deg, ' + globalContext.productData.selectedBackgroundColor + ' 33.2%, ' + secondaryBgForGradient + ' 75.65%)', opacity: '0.75' }}></div>
+        <div className="price-ctrn" style={{ background: 'linear-gradient(233.12deg, ' + globalContext.selectedThemeColor + ' 33.2%, ' + secondaryBgForGradient + ' 75.65%)', opacity: '0.75' }}> </div>
+        <div className='content-ctrn' style={{ background: 'linear-gradient(233.12deg, ' + globalContext.selectedThemeColor + ' 33.2%, ' + secondaryBgForGradient + ' 75.65%)', opacity: '0.75' }}></div>
 
         <div className="mt-3 d-flex justify-content-center single-line flex-column top-part align-items-center price-order">
             {globalContext.productData.pitchText !== '' && <div className="order-now p-2 ml-5">{globalContext.productData.pitchText}</div>}

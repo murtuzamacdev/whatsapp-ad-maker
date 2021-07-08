@@ -22,37 +22,48 @@ export const TEMPLATES = {
         id: 'template4',
         component: Template4,
         demoImage: template4Img,
-        status: 'ACTIVE'
+        status: 'ACTIVE',
+        colorPreference: 0,
+        
     },
     template2: {
         id: 'template2',
         component: Template2,
         demoImage: template2Img,
-        status: 'ACTIVE'
+        status: 'ACTIVE',
+        colorPreference: 0
     },
     template3: {
         id: 'template3',
         component: Template3,
         demoImage: template3Img,
-        status: 'ACTIVE'
+        status: 'ACTIVE',
+        colorPreference: -1,
+        defaultColor: '#16E1B0'
     },
     template1: {
         id: 'template1',
         component: Template1,
         demoImage: template1Img,
-        status: 'ACTIVE'
+        status: 'ACTIVE',
+        colorPreference: -1,
+        defaultColor: '#3F5CA9'
     },
     template5: {
         id: 'template5',
         component: Template5,
         demoImage: template5Img,
-        status: 'ACTIVE'
+        status: 'ACTIVE',
+        colorPreference: 0,
+        defaultColor: '#0288d1'
     },
     template6: {
         id: 'template6',
         component: Template6,
         demoImage: template6Img,
-        status: 'ACTIVE'
+        status: 'ACTIVE',
+        colorPreference: 1,
+        defaultColor: '#FF7A00'
     },
     template7: {
         id: 'template7',

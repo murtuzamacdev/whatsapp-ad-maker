@@ -83,3 +83,73 @@ function componentToHex(c) {
     var hex = c.toString(16);
     return hex.length === 1 ? "0" + hex : hex;
 }
+
+export const changeColorTone = (color, percent) => {
+    
+    // https://stackoverflow.com/a/13532993/3134134
+    var R = parseInt(color.substring(1, 3), 16);
+    var G = parseInt(color.substring(3, 5), 16);
+    var B = parseInt(color.substring(5, 7), 16);
+
+    R = parseInt(R * (100 + percent) / 100);
+    G = parseInt(G * (100 + percent) / 100);
+    B = parseInt(B * (100 + percent) / 100);
+
+    R = (R < 255) ? R : 255;
+    G = (G < 255) ? G : 255;
+    B = (B < 255) ? B : 255;
+
+    var RR = ((R.toString(16).length === 1) ? "0" + R.toString(16) : R.toString(16));
+    var GG = ((G.toString(16).length === 1) ? "0" + G.toString(16) : G.toString(16));
+    var BB = ((B.toString(16).length === 1) ? "0" + B.toString(16) : B.toString(16));
+
+    console.log('color :>> ', color);
+    console.log('percent :>> ', percent);
+    console.log('converted :>> ', "#" + RR + GG + BB);
+
+    return "#" + RR + GG + BB;
+}
+
+export function lightOrDark(color) {
+    var   r, g, b, hsp;
+
+    // Check the format of the color, HEX or RGB?
+    if (color.match(/^rgb/)) {
+  
+      // If HEX --> store the red, green, blue values in separate variables
+      color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+  
+      r = color[1];
+      g = color[2];
+      b = color[3];
+    } 
+    else {
+  
+      // If RGB --> Convert it to HEX: http://gist.github.com/983661
+      color = +("0x" + color.slice(1).replace( 
+        color.length < 5 && /./g, '$&$&'
+      )
+               );
+  
+      r = color >> 16;
+      g = color >> 8 & 255;
+      b = color & 255;
+    }
+  
+    // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+    hsp = Math.sqrt(
+      0.299 * (r * r) +
+      0.587 * (g * g) +
+      0.114 * (b * b)
+    );
+  
+    // Using the HSP value, determine whether the color is light or dark
+    if (hsp>127.5) {
+  
+      return 1;
+    } 
+    else {
+  
+        return -1
+    }
+  }

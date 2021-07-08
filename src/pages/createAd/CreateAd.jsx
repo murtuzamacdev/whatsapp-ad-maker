@@ -32,7 +32,6 @@ const CreateAd = () => {
         productDescription: "",
         sellerName: "",
         whatsappNumber: "",
-        selectedBackgroundColor: process.env.REACT_APP_ENV === "dev" ? "#0288d1" : "#e57373",
         pitchText: ''
     });
     let history = useHistory();
@@ -78,17 +77,16 @@ const CreateAd = () => {
                 img.src = event.target.result;
                 setTimeout(() => {
                     let imageColorHex = getAverageRGB(img);
-                    setFieldValue('selectedBackgroundColor', imageColorHex);
-                    setProductData({ ...productData, selectedBackgroundColor: imageColorHex })
+                    globalContext.setselectedThemeColor(imageColorHex);
+                    localStorage.setItem('selectedThemeColor', imageColorHex);
                 }, 100);
-               
+
             };
             reader.readAsDataURL(file);
         } else {
             setFieldValue('productImage', file.urls.regular);
-            // Set background color based on the image selected
-            setFieldValue('selectedBackgroundColor', file.color);
-            setProductData({ ...productData, selectedBackgroundColor: file.color })
+            globalContext.setselectedThemeColor(file.color);
+            localStorage.setItem('selectedThemeColor', file.color);
             globalContext.setSelectedUnsplashPhoto(file);
         }
 
@@ -117,11 +115,9 @@ const CreateAd = () => {
         setFieldValue('sellerName', '');
         setFieldValue('whatsappNumber', '');
         setFieldValue('pitchText', '');
-        setFieldValue('selectedBackgroundColor', process.env.REACT_APP_ENV === "dev" ? "#0288d1" : "#e57373");
-        setProductData({ ...productData, selectedBackgroundColor: process.env.REACT_APP_ENV === "dev" ? "#0288d1" : "#e57373" })
     }
 
-    return (<div className="createAd p-3" style={{ backgroundColor: productData.selectedBackgroundColor }}>
+    return (<div className="createAd p-3" style={{ backgroundColor: globalContext.selectedThemeColor }}>
 
         {showChromeTip && <TipCard tipText={tipText} handleClose={handleClose} />}
 
@@ -135,7 +131,6 @@ const CreateAd = () => {
                 productDescription: productData.productDescription,
                 sellerName: productData.sellerName,
                 whatsappNumber: productData.whatsappNumber,
-                selectedBackgroundColor: productData.selectedBackgroundColor,
                 pitchText: productData.pitchText
             }}
             validationSchema={Yup.object().shape({
