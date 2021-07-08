@@ -44,14 +44,18 @@ const Template5 = () => {
                 </div>}
 
                 {/* Business name */}
-                {globalContext.productData.pitchText !== '' && <p className='order-now m-0'>{globalContext.productData.pitchText} </p>}
-                {(globalContext.productData.sellerName !== '' || globalContext.productData.whatsappNumber !== '') && <div style={{ flex: 1 }} className=" business-name-card justify-content-center align-items-start mt-1">
-                    {globalContext.productData.sellerName !== '' && <p className="store-name m-0"> {globalContext.productData.sellerName}</p>}
-                    {globalContext.productData.whatsappNumber !== '' && <div className="d-flex">
-                        <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
-                        <p className="whatsapp-number m-0 ml-2">{globalContext.productData.whatsappNumber}</p>
-                    </div>}
-                </div>}
+                <div className={'d-flex align-items-center mt-3 ' + (globalContext.productData.pitchText === '' ? 'justify-content-end' : 'justify-content-between')}>
+                    {globalContext.productData.pitchText !== '' && <div className="order-now">{globalContext.productData.pitchText}</div>}
+                    {(globalContext.productData.sellerName !== '' || globalContext.productData.whatsappNumber !== '') && <>
+                        <div className="seller-info-ctrn">
+                            {globalContext.productData.sellerName !== '' && <div className='store-name single-line'>{globalContext.productData.sellerName}</div>}
+                            {globalContext.productData.whatsappNumber !== '' && <div className="d-flex mt-1 align-items-center">
+                                <img src={whatsappLogo} height="24px" width="24px" alt="whatsappLogo"></img>
+                                <p className="whatsapp-number m-0 ml-2">{globalContext.productData.whatsappNumber}</p>
+                            </div>}
+                        </div>
+                    </>}
+                </div>
 
             </div>}
         </div>
