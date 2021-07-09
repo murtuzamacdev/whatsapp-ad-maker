@@ -20,6 +20,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-select-currency": "^1.0.7",
+    "react-swipeable": "^6.1.2",
     "react-tabs": "^3.2.2",
     "unsplash-js": "^7.0.11",
     "web-vitals": "^1.0.1",

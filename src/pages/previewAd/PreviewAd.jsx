@@ -9,6 +9,7 @@ import firebase from "firebase/app";
 import "firebase/analytics";
 import GAEvents from '../../configs/GA_events.json';
 import { isSafari, changeColorTone, hexToRgbA, lightOrDark } from '../../utility';
+import { useSwipeable } from 'react-swipeable';
 
 //assets
 import downloadBtn from '../../assets/images/downloadBtn.svg';
@@ -38,6 +39,14 @@ const PreviewAd = () => {
     });
 
     const containerHieght = window.innerHeight;
+
+    const swipeConfig = {
+        delta: 10,                            // min distance(px) before a swipe starts
+        preventDefaultTouchmoveEvent: false,  // call e.preventDefault *See Details*
+        trackTouch: true,                     // track touch input
+        trackMouse: false,                    // track mouse input
+        rotationAngle: 0,                     // set a rotation angle
+    }
 
     useEffect(() => {
 
@@ -168,6 +177,7 @@ const PreviewAd = () => {
         window.$('#selectColorModal').modal('hide');
         setShowControls(false);
         globalContext.setselectedThemeColor(newColor.hex);
+        localStorage.setItem('selectedThemeColor', newColor.hex);
     }
 
     const handleTemplateChange = (templateId) => {
@@ -204,8 +214,14 @@ const PreviewAd = () => {
         }
     }
 
+    const swipeHandlers = useSwipeable({
+        onSwipedLeft: (eventData) => handleChangeTemplate('NEXT'),
+        onSwipedRight: (eventData) => handleChangeTemplate('PREV'),
+        ...swipeConfig,
+    });
+
     return (
-        <div id="preview-ad-ctrn-id" onClick={toggleControls} className="preview-ad-ctnr d-flex align-items-center" style={{ height: containerHieght }}>
+        <div id="preview-ad-ctrn-id" {...swipeHandlers} onClick={toggleControls} className="preview-ad-ctnr d-flex align-items-center" style={{ height: containerHieght }}>
             {loading && <Loading fullScreen={true}></Loading>}
             {globalContext.productData && <>
                 <div style={{ height: canvasHeight }} className="d-flex flex-column previewAd" id="html-content-holder">
