@@ -28,6 +28,19 @@
     z-index: 2;
   }
 
+  .prev-btn {
+    left: -10px;
+    top: 40%;
+    z-index: 2;
+    transform: rotate(180deg);
+  }
+
+  .next-btn {
+    right: -10px;
+    top: 40%;
+    z-index: 2;
+  }
+
   .change-temp-btn {
     height: 70px;
     width: 70px;
@@ -78,32 +91,31 @@
     display: flex;
     font-family: Roboto;
 
-    div{
+    div {
       background-color: transparent;
       display: inline-block;
       font-size: 0.7rem;
-      background-color: #3E3D3D;
+      background-color: #3e3d3d;
     }
 
-    a{
+    a {
       color: white;
       text-decoration: underline;
     }
-    
   }
 
-  .logo-badge{
+  .logo-badge {
     position: absolute;
     bottom: 0;
     right: 0;
     z-index: 2;
-    background-color: #3E3D3D;
+    background-color: #3e3d3d;
     color: white;
     font-size: 0.6rem;
     opacity: 0.7;
   }
 
-  .size-select-wrapper{
+  .size-select-wrapper {
     position: absolute;
     top: 0;
     width: 100%;

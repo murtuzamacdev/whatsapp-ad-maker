@@ -15,6 +15,7 @@ import downloadBtn from '../../assets/images/downloadBtn.svg';
 import editBtn from '../../assets/images/editBtn.svg';
 import changeTemplateBtn from '../../assets/images/changeTempBtn.svg';
 import changeColor from '../../assets/images/changeColor.svg';
+import prevNextBtn from '../../assets/images/prevNextBtn.svg';
 
 // Templates
 import { TEMPLATES } from '../../templates/TemplateController';
@@ -82,9 +83,9 @@ const PreviewAd = () => {
             let rgbColorStr = hexToRgbA(selectedThemeColor, 1);
             let finalColor;
 
-            if(lightOrDark(rgbColorStr) !== selectedTemplateObj.colorPreference){
+            if (lightOrDark(rgbColorStr) !== selectedTemplateObj.colorPreference) {
                 finalColor = changeColorTone(selectedThemeColor, selectedTemplateObj.colorPreference * 90)
-            }else {
+            } else {
                 finalColor = selectedThemeColor;
             }
             // lightOrDark(rgbColorStr);
@@ -176,6 +177,33 @@ const PreviewAd = () => {
         globalContext.setSelectedTemplate(templateId);
     }
 
+    const handleChangeTemplate = (type) => {
+        let templatesArr = [];
+        Object.keys(TEMPLATES).forEach(function (key) {
+            if (TEMPLATES[key].status === 'ACTIVE') {
+                templatesArr.push(TEMPLATES[key]);
+            }
+        });
+
+        const selectedTemplateIndex = templatesArr.findIndex((item) => item.id === globalContext.selectedTemplate);
+
+        if (type === 'NEXT') {
+            if (selectedTemplateIndex === (templatesArr.length - 1)) {
+                globalContext.setSelectedTemplate(templatesArr[0].id);
+            } else {
+                let newIndex = selectedTemplateIndex + 1;
+                globalContext.setSelectedTemplate(templatesArr[newIndex].id);
+            }
+        } else {
+            if (selectedTemplateIndex === 0) {
+                globalContext.setSelectedTemplate(templatesArr[templatesArr.length - 1].id);
+            } else {
+                let newIndex = selectedTemplateIndex - 1;
+                globalContext.setSelectedTemplate(templatesArr[newIndex].id);
+            }
+        }
+    }
+
     return (
         <div id="preview-ad-ctrn-id" onClick={toggleControls} className="preview-ad-ctnr d-flex align-items-center" style={{ height: containerHieght }}>
             {loading && <Loading fullScreen={true}></Loading>}
@@ -189,10 +217,17 @@ const PreviewAd = () => {
                     src={editBtn} onClick={goToCreateAd}></input>
                 <input type="image" className={"download-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Download Button"
                     src={downloadBtn} onClick={downloadScreenshot}></input>
-                <input type="image" className={"change-temp-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Change Template Button"
-                    src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input>
+                {/* <input type="image" className={"change-temp-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Change Template Button"
+                    src={changeTemplateBtn} data-toggle="modal" data-target="#templateSelectionModal"></input> */}
                 <input type="image" className={"change-color-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Change Color Button"
                     src={changeColor} data-toggle="modal" data-target="#selectColorModal" data-backdrop="false"></input>
+
+                {/* Previous Next btn */}
+                <input type="image" className={"prev-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Previous"
+                    src={prevNextBtn} onClick={() => { handleChangeTemplate('PREV') }}></input>
+                <input type="image" className={"next-btn " + (showControls ? 'fadeIn' : 'fadeOut')} alt="Next"
+                    src={prevNextBtn} onClick={() => { handleChangeTemplate('NEXT') }}></input>
+
 
                 {globalContext.selectedUnsplashPhoto && <div className={"unsplash-attr-ctrn " + (showControls ? 'fadeIn' : 'unsplash-attr-ctrn-fadeOut')} >
                     <div>Photo by <a rel="noreferrer" target="_blank" href={`https://unsplash.com/@${globalContext.selectedUnsplashPhoto.user.username}?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>{globalContext.selectedUnsplashPhoto.user.name}</a> on <a target="_blank" rel="noreferrer" href={`https://unsplash.com/?utm_source=${UNSPLASH_APP_NAME}&utm_medium=referral`}>Unsplash</a></div>
