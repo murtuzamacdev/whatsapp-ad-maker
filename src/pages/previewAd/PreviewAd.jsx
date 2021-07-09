@@ -13,7 +13,7 @@ import { isSafari, changeColorTone, hexToRgbA, lightOrDark } from '../../utility
 //assets
 import downloadBtn from '../../assets/images/downloadBtn.svg';
 import editBtn from '../../assets/images/editBtn.svg';
-import changeTemplateBtn from '../../assets/images/changeTempBtn.svg';
+// import changeTemplateBtn from '../../assets/images/changeTempBtn.svg';
 import changeColor from '../../assets/images/changeColor.svg';
 import prevNextBtn from '../../assets/images/prevNextBtn.svg';
 
