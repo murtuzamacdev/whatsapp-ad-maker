@@ -1,21 +1,30 @@
 .size-select-ctrn {
   background-color: #3e3d3d;
-  width: 100%;
-  padding: 5px;
+  font-family: "Roboto";
 
-  .size-tile {
-    border-radius: 3px;
-    margin: 5px;
-    font-size: 0.7rem;
-    color: rgba(0, 0, 0, 0.45);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+  .title {
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
 
-    img {
-      height: 1.1rem;
-      width: 1.1rem;
+  .btns-ctrn {
+    width: 100%;
+
+    .size-tile {
+      border-radius: 3px;
+      margin: 5px;
+      font-size: 0.6rem;
+      color: rgba(0, 0, 0, 0.45);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+
+      img {
+        height: 0.9rem;
+        width: 0.9rem;
+      }
     }
   }
 }
