@@ -12,7 +12,6 @@ export const AVAILALBE_SIZES = {
         name:'Whatsapp Status',
         icon: whatsappIcon,
         remFontSize: '14px',
-        demoTileHieght: '100%',
         calculateCanvasHieghtFunc: () => {
             let deviceHeight = window.innerHeight;
             let deviceWidth = window.innerWidth < 475 ? window.innerWidth : 475;
@@ -29,7 +28,6 @@ export const AVAILALBE_SIZES = {
         name:'Instagram Story',
         remFontSize: '14px',
         icon: instagramIcon,
-        demoTileHieght: '100%',
         calculateCanvasHieghtFunc: () => {
             let deviceHeight = window.innerHeight;
             let deviceWidth = window.innerWidth < 475 ? window.innerWidth : 475;
@@ -46,7 +44,6 @@ export const AVAILALBE_SIZES = {
         name:'Instagram Rectangle',
         icon: instagramIcon,
         remFontSize: '12px',
-        demoTileHieght: '100%',
         calculateCanvasHieghtFunc: () => {
             let deviceHeight = window.innerHeight;
             let deviceWidth = window.innerWidth < 475 ? window.innerWidth : 475;
@@ -63,7 +60,6 @@ export const AVAILALBE_SIZES = {
         name:'Instagram Square',
         icon: instagramIcon,
         remFontSize: '12px',
-        demoTileHieght: '100%',
         calculateCanvasHieghtFunc: () => {
             let deviceHeight = window.innerHeight;
             let deviceWidth = window.innerWidth < 475 ? window.innerWidth : 475;

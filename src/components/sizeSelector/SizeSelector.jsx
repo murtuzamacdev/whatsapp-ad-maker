@@ -14,7 +14,6 @@ const SizeSelector = () => {
                     className="size-tile p-1"
                     key={AVAILALBE_SIZES[key].id}
                     style={{
-                        height: AVAILALBE_SIZES[key].demoTileHieght,
                         backgroundColor: (globalContext.selectedSize === AVAILALBE_SIZES[key].id) ? 'white' : '#989898',
                         color: (globalContext.selectedSize === AVAILALBE_SIZES[key].id) ? 'black' : 'rgba(0, 0, 0, 0.45)'
                     }}
