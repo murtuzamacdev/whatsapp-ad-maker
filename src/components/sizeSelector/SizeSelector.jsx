@@ -7,7 +7,7 @@ const SizeSelector = () => {
     const globalContext = useContext(GlobalContext);
 
     return (<div className="size-select-ctrn">
-        <p className="title mb-0 pl-2">Select Image Size:</p>
+        <p className="title mb-0 pl-2">Select Ad Size:</p>
         <div className="btns-ctrn d-flex p-1">
             {Object.keys(AVAILALBE_SIZES).map((key, i) => (
                 <button
