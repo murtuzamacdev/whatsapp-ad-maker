@@ -153,7 +153,7 @@ const PreviewAd = () => {
 
     const simulateDownload = (dataUrl) => {
         var link = document.createElement('a');
-        link.download = new Date().getTime() + '.jpeg';
+        link.download = new Date().getTime();
         link.href = dataUrl;
         link.click();
         setLoading(false);
