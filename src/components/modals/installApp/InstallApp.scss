@@ -1,0 +1,39 @@
+@media (max-width: 476px) {
+  .install-app-modal-ctrn {
+    .modal-dialog {
+      margin: 0;
+    }
+  }
+}
+
+.install-app-modal-ctrn {
+  .modal-header {
+    border: 0;
+  }
+
+  .modal-content {
+    background-color: white;
+    overflow: hidden;
+  }
+
+  .modal-body {
+    padding: 0;
+    overflow-y: scroll;
+
+    button {
+      width: 70%;
+      margin: auto;
+      
+    }
+
+    button.app{
+      background-color: #3E3D3D;
+    }
+
+    button.web{
+      border: 1px solid #3E3D3D;
+      color: #3E3D3D;
+      background-color: white;
+    }
+  }
+}
